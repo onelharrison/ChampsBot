@@ -96,7 +96,7 @@ function startupMessage(recipientId,messageText) {
             title:"What do you need ?",
             subtitle:"Pick an option",
             image_url:"",
-            buttoms:[{
+            buttons:[{
               type:"postback",
               title:"Points Standing",
               payload:"points_standing"
