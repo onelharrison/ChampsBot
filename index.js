@@ -121,7 +121,7 @@ function postStanding(recipientID,messageText){
             elements: [
                 {
                     title: "Classic T-Shirt Collection",
-                    image_url: "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+                    image_url: "http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
                     subtitle: "See all our colors",
                     default_action: {
                         type: "web_url",
@@ -163,7 +163,7 @@ function postStanding(recipientID,messageText){
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-                    
+
                 }
             ],
              buttons: [
