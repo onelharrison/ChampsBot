@@ -112,7 +112,7 @@ function postStanding(recipientID,messageText){
   }*/
   var messageData = {
     recipient:{
-    id:recipientId
+    id:recipientID
   }, message: {
     attachment: {
         type: "template",
