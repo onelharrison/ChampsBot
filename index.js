@@ -82,7 +82,7 @@ function postStanding(recipientID,messageText){
       },
       {
           title:"KC",
-          image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo-215.gif&imgrefurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo&docid=51M8cVTxJWertM&tbnid=dwNJrazo2YFKxM%3A&vet=1&w=220&h=277&bih=702&biw=1364&q=kingston%20college%20logo&ved=0ahUKEwjm1Y6AqMfRAhWDMSYKHasJC1gQMwgnKA0wDQ&iact=mrc&uact=8",                          
+          image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo-215.gif&imgrefurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo&docid=51M8cVTxJWertM&tbnid=dwNJrazo2YFKxM%3A&vet=1&w=220&h=277&bih=702&biw=1364&q=kingston%20college%20logo&ved=0ahUKEwjm1Y6AqMfRAhWDMSYKHasJC1gQMwgnKA0wDQ&iact=mrc&uact=8",
           subtitle:"Points: 186",
       },
       {
@@ -92,7 +92,7 @@ function postStanding(recipientID,messageText){
       },{
         title:"Calabar",
         image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fasirimagazine.com%2Fen%2Fwp-content%2Fuploads%2F2014%2F12%2Fcalabar-high-school-white.jpg&imgrefurl=http%3A%2F%2Fasirimagazine.com%2Fen%2Fhistory-pride-of-calabar-high-school-jamaica%2F&docid=xhQaPmA8zTJwJM&tbnid=dpYCUIUpIPbQGM%3A&vet=1&w=429&h=493&bih=702&biw=1364&q=calabar%20high%20school&ved=0ahUKEwilla6AqsfRAhUGSiYKHZYsCWIQMwgtKAAwAA&iact=mrc&uact=8",
-        subtitle"Points:123",
+        subtitle:"Points:123",
       }
     ],
     buttons:[
