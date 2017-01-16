@@ -139,15 +139,7 @@ function postStanding(recipientID,messageText){
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-                    buttons: [
-                        {
-                            title: "Shop Now",
-                            type: "web_url",
-                            url: "https://peterssendreceiveapp.ngrok.io/shop?item=100",
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
+
                 },
                 {
                     title: "Classic Blue T-Shirt",
@@ -159,15 +151,7 @@ function postStanding(recipientID,messageText){
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-                    buttons: [
-                        {
-                            title: "Shop Now",
-                            type: "web_url",
-                            ur: "https://peterssendreceiveapp.ngrok.io/shop?item=101",
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
+
                 },
                 {
                     title: "Classic Black T-Shirt",
@@ -179,15 +163,7 @@ function postStanding(recipientID,messageText){
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-                    buttons: [
-                        {
-                            title: "Shop Now",
-                            type: "web_url",
-                            url: "https://peterssendreceiveapp.ngrok.io/shop?item=102",
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
+                    
                 }
             ],
              buttons: [
