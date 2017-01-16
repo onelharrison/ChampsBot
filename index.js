@@ -55,13 +55,13 @@ function getStarted(){
       payload:"get_started",
     }]
   }
-  request.post({url:url, formData: data}, function(err, httpResponse, body) {
+  /*request.post({url:url, formData: data}, function(err, httpResponse, body) {
     if (err){
       return console.error('post failed:', err)
     }
 
     console.log('Post successful!  Server responded with:', body)
-  })
+  })*/
 
 }
 
