@@ -217,6 +217,7 @@ function postStanding(recipientID,messageText){
             ]
         }
     }
+  }
 }
 
   callSendAPI(messageData);
