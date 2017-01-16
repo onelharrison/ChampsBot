@@ -25,29 +25,29 @@
   res.send('Access not authorized')
  })
 
-/* app.post('/webhook', function (req, res) {
-   var data = req.body
+ app.post('/webhook', function (req, res) {
+   var data = req.body;
 
    // Make sure this is a page subscription
    if (data.object === 'page') {
 
      // Iterate over each entry - there may be multiple if batched
      data.entry.forEach(function(entry) {
-       var pageID = entry.id
-       var timeOfEvent = entry.time
+       var pageID = entry.id;
+       var timeOfEvent = entry.time;
 
        // Iterate over each messaging event
        entry.messaging.forEach(function(event) {
          if (event.message) {
-           receivedMessage(event)
+           receivedMessage(event);
          } else {
-           console.log("Webhook received unknown event: ", event)
+           console.log("Webhook received unknown event: ", event);
          }
-       })
-     })*/
+       });
+     });
 
 
-  var url ="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
+  var url "https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
     setting_type:"call_to_actions",
     thread_state:"new_thread",
