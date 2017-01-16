@@ -46,7 +46,7 @@
        })
      })*/
 
-function getStarted(){
+
   var url ="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
     setting_type:"call_to_actions",
@@ -62,7 +62,6 @@ function getStarted(){
 
     console.log('Post successful!  Server responded with:', body)
   })
-}
 
 
 // function for sending simple text messages
@@ -174,6 +173,5 @@ function startupMessage(recipientId,messageText) {
 }
 
 app.listen(app.get('port'), function(){
-  getStarted()
   console.log('running on port', app.get('port'))
 })
