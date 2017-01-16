@@ -76,7 +76,7 @@ function startupMessage(recipientId,messageText) {
       }
     }
   }
-  callSendAPI(messageData)
+  //callSendAPI(messageData)
 }
 
 //Funtion for handling recieved messages
@@ -114,7 +114,7 @@ function startupMessage(recipientId,messageText) {
    console.log("Message data: ", event.message)
 }*/
 
- function callSendAPI(messageData) {
+ /*function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: accessToken},
@@ -134,7 +134,7 @@ function startupMessage(recipientId,messageText) {
       console.error(error)
     }
   })
-}
+}*/
 
 app.listen(app.get('port'), function(){
   console.log('running on port', app.get('port'))
