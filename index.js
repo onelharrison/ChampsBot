@@ -73,7 +73,7 @@ function postStanding(recipientID,messageText){
       id:recipientID
     },
     message:{
-      attachments:{
+      attachment:{
         type:"template",
         payload:{
           template_type:"list",
