@@ -77,7 +77,7 @@ function postStanding(recipientID,messageText){
       payload:{
         template_type:"list",
         elements:[{
-          title:"Boy's Point Standing"''
+          title:"Boy's Point Standing"
           sbubtitle:"After 8 events",
       },
       {
