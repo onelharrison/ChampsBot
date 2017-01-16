@@ -82,7 +82,7 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData)
 }
 
-function startupMessage(recipientId,messageText) {
+function startupMessage(recipientId) {
   var messageData = {
     recipient: {
       id: recipientId
