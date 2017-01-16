@@ -69,8 +69,7 @@ function startupMessage(recipientId,messageText) {
           },{
             type:"postback",
             title:"Get Updates",
-            title: "Open Web URL"
-            payload:"updates"
+            payload:"updates",
             }]
           }]
         }
