@@ -45,7 +45,7 @@ function startupMessage(recipientId,messageText) {
       id: recipientId
     },
     message:{
-      attachment{
+      attachment:{
         type:'template',
         payload:{
           template_type:'genric',
