@@ -52,25 +52,27 @@ function startupMessage(recipientId,messageText) {
           elements:[{
             title:"What do you need ?",
             subtitle:"Pick an option",
-            image_url:"",
+            title: "Open Web URL"
+            image_url:"http://messengerdemo.parseapp.com/img/rift.png",
             buttoms:[{
               type:"postback",
               title:"Points Standing",
-              payload:"points_standing",
+              payload:"points_standing"
             },
           {
             type:"postback",
             title:"Raace Schedule",
-            payload:"schedule",
+            payload:"schedule"
           },{
             type:"postback",
             title:"New Records",
-            payload:"newrecords",
+            payload:"newrecords"
           },{
             type:"postback",
             title:"Get Updates",
-            payload:"updates",
-          }]
+            title: "Open Web URL"
+            payload:"updates"
+            }]
           }]
         }
       }
