@@ -77,7 +77,7 @@ function postStanding(recipientID,messageText){
         type:"template",
         payload:{
           template_type:"list",
-          top_element_style: "large",
+          top_element_style: "compact",
           elements:[{
             title:"Boy's Point Standing",
             image_url:"http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
