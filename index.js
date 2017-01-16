@@ -174,5 +174,6 @@ function startupMessage(recipientId,messageText) {
 }
 
 app.listen(app.get('port'), function(){
+  getStarted()
   console.log('running on port', app.get('port'))
 })
