@@ -195,7 +195,7 @@ function startupMessage(recipientId,messageText) {
       case 'start':
          startupMessage(senderID)
          break;
-      case 'points_standing':
+      case 'Points Standing':
         postStanding(senderID)
         break;
       case 'schedule':
