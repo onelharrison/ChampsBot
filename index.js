@@ -79,7 +79,7 @@ function postStanding(recipientID,messageText){
           template_type:"list",
           elements:[{
             title:"Boy's Point Standing",
-            image_url:"https://champsbot.herokuapp.com/image/topImage.jpg",
+            image_url:"http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
             subtitle:"After 8 events",
         },
         {
