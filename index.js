@@ -57,19 +57,18 @@ function startupMessage(recipientId,messageText) {
               type:"postback",
               title:"Points Standing",
               payload:"points_standing"
-            },
-          {
-            type:"postback",
-            title:"Raace Schedule",
-            payload:"schedule"
-          },{
-            type:"postback",
-            title:"New Records",
-            payload:"newrecords"
-          },{
-            type:"postback",
-            title:"Get Updates",
-            payload:"updates",
+            },{
+              type:"postback",
+              title:"Raace Schedule",
+              payload:"schedule"
+            },{
+              type:"postback",
+              title:"New Records",
+              payload:"newrecords"
+            },{
+              type:"postback",
+              title:"Get Updates",
+              payload:"updates",
             }]
           }]
         }
