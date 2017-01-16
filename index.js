@@ -95,7 +95,7 @@ function startupMessage(recipientId,messageText) {
           elements:[{
             title:"What do you need ?",
             subtitle:"Pick an option",
-            image_url:"http://messengerdemo.parseapp.com/img/rift.png",
+            image_url:"",
             buttoms:[{
               type:"postback",
               title:"Points Standing",
