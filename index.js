@@ -91,7 +91,7 @@ function startupMessage(recipientId,messageText) {
       attachment:{
         type:'template',
         payload:{
-          template_type:'genric',
+          template_type:'generic',
           elements:[{
             title:"What do you need ?",
             subtitle:"Pick an option",
