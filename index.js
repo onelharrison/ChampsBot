@@ -45,7 +45,7 @@
          }
        })
      })
-     
+
 function getStarted(){
   var url ="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
@@ -56,7 +56,7 @@ function getStarted(){
     }]
   }
   request.post({url:url, formData: data}, function(err, httpResponse, body) {
-    if (err) {
+    if (err){
       return console.error('post failed:', err)
     }
 
