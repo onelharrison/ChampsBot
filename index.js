@@ -47,7 +47,7 @@
      });
 
 
-  var url "https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
+  var url="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
     setting_type:"call_to_actions",
     thread_state:"new_thread",
