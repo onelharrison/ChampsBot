@@ -15,7 +15,7 @@
  app.use(bodyParser.json())
 
  app.get('/',function(req,res){
-   req.send('Champs Bot server page')
+   res.send('Champs Bot server page')
  })
 
  app.get('/webhook/',function(req, res){
@@ -28,7 +28,7 @@
 
 
 // function for sending simple text messages
-/*function sendTextMessage(recipientId, messageText) {
+function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -36,7 +36,8 @@
     message: {
       text: messageText
     }
-  };*/
+  }
+}
 
 
 /*function startupMessage(recipientId,messageText) {
