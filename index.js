@@ -52,7 +52,6 @@ function startupMessage(recipientId,messageText) {
           elements:[{
             title:"What do you need ?",
             subtitle:"Pick an option",
-            title: "Open Web URL"
             image_url:"http://messengerdemo.parseapp.com/img/rift.png",
             buttoms:[{
               type:"postback",
