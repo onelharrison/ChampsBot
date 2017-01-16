@@ -45,6 +45,9 @@
          }
        });
      });
+     res.sendStatus(200);
+   }
+ });
 
 
   var url="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
