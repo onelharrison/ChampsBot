@@ -106,10 +106,6 @@ function startupMessage(recipientId,messageText) {
               payload:"schedule"
             },{
               type:"postback",
-              title:"New Records",
-              payload:"newrecords"
-            },{
-              type:"postback",
               title:"Get Updates",
               payload:"updates",
             }]
