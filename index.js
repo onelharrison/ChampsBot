@@ -68,7 +68,7 @@ function getStarted(){
 }
 
 function postStanding(recipientID,messageText){
-  /*var messageData = {
+  var messageData = {
     recipient:{
       id:recipientID
     },
@@ -77,7 +77,7 @@ function postStanding(recipientID,messageText){
         type:"template",
         payload:{
           template_type:"list",
-          top_element_style: "compact",
+          top_element_style: "large",
           elements:[{
             title:"Boy's Point Standing",
             image_url:"http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
@@ -109,75 +109,7 @@ function postStanding(recipientID,messageText){
       }
 
       }
-  }*/
-  var messageData = {
-    recipient:{
-    id:recipientID
-  }, message: {
-    attachment: {
-        type: "template",
-        payload: {
-            template_type: "list",
-            elements: [
-                {
-                    title: "Classic T-Shirt Collection",
-                    image_url: "http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
-                    subtitle: "See all our colors",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://peterssendreceiveapp.ngrok.io/shop_collection",
-                        webview_height_ratio: "tall"
-                      },
-                },
-                {
-                    title: "Classic White T-Shirt",
-                    image_url: "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                    subtitle: "100% Cotton, 200% Comfortable",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                    },
-
-                },
-                {
-                    title: "Classic Blue T-Shirt",
-                    image_url: "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                    subtitle: "100% Cotton, 200% Comfortable",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://peterssendreceiveapp.ngrok.io/view?item=101",
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                    },
-
-                },
-                {
-                    title: "Classic Black T-Shirt",
-                    image_url: "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-                    subtitle: "100% Cotton, 200% Comfortable",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://peterssendreceiveapp.ngrok.io/view?item=102",
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                    },
-
-                }
-            ],
-             buttons: [
-                {
-                    title: "View More",
-                    type: "postback",
-                    payload: "payload"
-                }
-            ]
-        }
-    }
   }
-}
-
   callSendAPI(messageData);
 }
 
