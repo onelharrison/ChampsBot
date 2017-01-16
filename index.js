@@ -80,7 +80,7 @@ function startupMessage(recipientId,messageText) {
 }
 
 //Funtion for handling recieved messages
- function receivedMessage(event) {
+ /*function receivedMessage(event) {
    var senderID = event.sender.id
    var recipientID = event.recipient.id
    var timeOfMessage = event.timestamp
@@ -112,7 +112,7 @@ function startupMessage(recipientId,messageText) {
    }
    // Putting a stub for now, we'll expand it in the following steps
    console.log("Message data: ", event.message)
-}
+}*/
 
  function callSendAPI(messageData) {
   request({
