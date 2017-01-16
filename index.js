@@ -79,7 +79,7 @@ function postStanding(recipientID,messageText){
           template_type:"list",
           elements:[{
             title:"Boy's Point Standing",
-            image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fwww.jamaicaolympics.com%2Fwp-content%2Fuploads%2F2014%2F03%2F1926066_606369646121674_1451416313_o.jpg&imgrefurl=http%3A%2F%2Fwww.jamaicaolympics.com%2Fwatch-2014-issa-boys-girls-champs-live&docid=nEEQIKgiROphqM&tbnid=LasHV63aISenAM%3A&vet=1&w=1907&h=2048&bih=702&biw=1364&q=boys%20and%20girls%20champs&ved=0ahUKEwj1643WsMfRAhXHOSYKHWkWAQcQMwgkKAowCg&iact=mrc&uact=8",
+            "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
             subtitle:"After 8 events",
         },
         {
