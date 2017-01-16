@@ -79,12 +79,11 @@ function postStanding(recipientID,messageText){
           template_type:"list",
           elements:[{
             title:"Boy's Point Standing",
-            "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
             subtitle:"After 8 events",
         },
         {
             title:"KC",
-            image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo-215.gif&imgrefurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo&docid=51M8cVTxJWertM&tbnid=dwNJrazo2YFKxM%3A&vet=1&w=220&h=277&bih=702&biw=1364&q=kingston%20college%20logo&ved=0ahUKEwjm1Y6AqMfRAhWDMSYKHasJC1gQMwgnKA0wDQ&iact=mrc&uact=8",
+            image_url:"https://champsbot.herokuapp.com/image/topImage.jpg",
             subtitle:"Points: 186",
         },
         {
