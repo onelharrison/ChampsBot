@@ -142,12 +142,12 @@ function startupMessage(recipientId,messageText) {
      // If we receive a text message, check to see if it matches a keyword
      // and send back the example. Otherwise, just echo the text we received.
      switch (messageText) {
-       case 'hello':
+       case 'start':
          startupMessage(senderID)
          break;
 
        default:
-         sendTextMessage(senderID,"say hello to see options")
+         sendTextMessage(senderID,"say start to see options")
      }
    } else if (messageAttachments) {
      sendTextMessage(senderID, "Message with attachment received")
