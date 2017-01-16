@@ -39,7 +39,7 @@ function sendTextMessage(recipientId, messageText) {
   }
 }
 
-/*function startupMessage(recipientId,messageText) {
+function startupMessage(recipientId,messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -50,26 +50,26 @@ function sendTextMessage(recipientId, messageText) {
         payload:{
           template_type:'genric',
           elements:[{
-            title:"What do you need ?"
-            subtitle:"Pick an option"
-            image_url:""
+            title:"What do you need ?",
+            subtitle:"Pick an option",
+            image_url:"",
             buttoms:[{
               type:"postback",
-              title:"Points Standing"
-              payload:"points standing for school"
+              title:"Points Standing",
+              payload:"points_standing",
             },
           {
             type:"postback",
-            title:"Raace Schedule"
-            payload:"schedule"
+            title:"Raace Schedule",
+            payload:"schedule",
           },{
             type:"postback",
-            title:"New Records"
-            payload:"new records"
+            title:"New Records",
+            payload:"newrecords",
           },{
             type:"postback",
-            title:"Get Updates"
-            payload:"updates"
+            title:"Get Updates",
+            payload:"updates",
           }]
           }]
         }
@@ -77,7 +77,7 @@ function sendTextMessage(recipientId, messageText) {
     }
   }
   callSendAPI(messageData)
-}*/
+}
 
 //Funtion for handling recieved messages
  function receivedMessage(event) {
