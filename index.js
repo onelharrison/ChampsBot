@@ -126,20 +126,8 @@ function postStanding(recipientID,messageText){
                     default_action: {
                         type: "web_url",
                         url: "https://peterssendreceiveapp.ngrok.io/shop_collection",
-                        messenger_extensions: true,
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                    },
-                    buttons: [
-                        {
-                            title: "View",
-                            type: "web_url",
-                            url: "https://peterssendreceiveapp.ngrok.io/collection",
-                            messenger_extensions: true,
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
+                        webview_height_ratio: "tall"
+                      },
                 },
                 {
                     title: "Classic White T-Shirt",
@@ -148,7 +136,6 @@ function postStanding(recipientID,messageText){
                     default_action: {
                         type: "web_url",
                         url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
-                        messenger_extensions: true,
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
@@ -157,7 +144,6 @@ function postStanding(recipientID,messageText){
                             title: "Shop Now",
                             type: "web_url",
                             url: "https://peterssendreceiveapp.ngrok.io/shop?item=100",
-                            messenger_extensions: true,
                             webview_height_ratio: "tall",
                             fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                         }
@@ -170,7 +156,6 @@ function postStanding(recipientID,messageText){
                     default_action: {
                         type: "web_url",
                         url: "https://peterssendreceiveapp.ngrok.io/view?item=101",
-                        messenger_extensions: true,
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
@@ -179,7 +164,6 @@ function postStanding(recipientID,messageText){
                             title: "Shop Now",
                             type: "web_url",
                             ur: "https://peterssendreceiveapp.ngrok.io/shop?item=101",
-                            messenger_extensions: true,
                             webview_height_ratio: "tall",
                             fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                         }
@@ -192,7 +176,6 @@ function postStanding(recipientID,messageText){
                     default_action: {
                         type: "web_url",
                         url: "https://peterssendreceiveapp.ngrok.io/view?item=102",
-                        messenger_extensions: true,
                         webview_height_ratio: "tall",
                         fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
@@ -201,7 +184,6 @@ function postStanding(recipientID,messageText){
                             title: "Shop Now",
                             type: "web_url",
                             url: "https://peterssendreceiveapp.ngrok.io/shop?item=102",
-                            messenger_extensions: true,
                             webview_height_ratio: "tall",
                             fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                         }
