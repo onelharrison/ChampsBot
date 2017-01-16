@@ -44,9 +44,9 @@
            console.log("Webhook received unknown event: ", event)
          }
        })
-     })
+     })*/
 
-/*function getStarted(){
+function getStarted(){
   var url ="https:graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
     setting_type:"call_to_actions",
@@ -62,7 +62,7 @@
 
     console.log('Post successful!  Server responded with:', body)
   })
-}*/
+}
 
 
 // function for sending simple text messages
