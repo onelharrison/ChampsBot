@@ -28,7 +28,7 @@
 
 
 // function for sending simple text messages
-function sendTextMessage(recipientId, messageText) {
+/*function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -36,10 +36,10 @@ function sendTextMessage(recipientId, messageText) {
     message: {
       text: messageText
     }
-  };
+  };*/
 
 
-function startupMessage(recipientId,messageText) {
+/*function startupMessage(recipientId,messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -77,10 +77,10 @@ function startupMessage(recipientId,messageText) {
     }
   };
   callSendAPI(messageData);
-}
+}*/
 
 //Funtion for handling recieved messages
- function receivedMessage(event) {
+/* function receivedMessage(event) {
    var senderID = event.sender.id;
    var recipientID = event.recipient.id;
    var timeOfMessage = event.timestamp;
@@ -135,7 +135,7 @@ function startupMessage(recipientId,messageText) {
       console.error(error);
     }
   });
-}
+}*/
 
 app.listen(app.get('port'), function(){
   console.log('running on port', app.get('port'))
