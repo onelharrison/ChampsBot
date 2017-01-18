@@ -81,7 +81,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "https://champsbot.herokuapp.com/image/boysPoints.png",
+            image_url: "https://champsbot.herokuapp.com/image/testImage.jpg",
             buttons: [{
               type: "postback",
               title: "Top Boys",
