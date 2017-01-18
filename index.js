@@ -142,36 +142,29 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData)
 }
 
-function startupMessage(recipientId,messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId
+function welcomeMessage(recipientId){
+  var messageData ={
+    recipient :{
+      id:recipientId
     },
     message:{
-      attachment:{
-        type:'template',
-        payload:{
-          template_type:'generic',
-          elements:[{
-            title:"What do you need ?",
-            subtitle:"Pick an option",
-            image_url:"",
-            buttons:[{
-              type:"postback",
-              title:"Points Standing",
-              payload:"points_standing"
-            },{
-              type:"postback",
-              title:"Race Schedule",
-              payload:"schedule"
-            },{
-              type:"postback",
-              title:"New Records",
-              payload:"newRecords",
-            }]
-          }]
+      text:"Hi, Im Champs Bot! \n How can I help you today?",
+      payload:[
+        {
+          content_type:"text",
+          title:"Points",
+          payload:"points_standing"
+        },
+        {
+          content_type:"text",
+          title:"Schedule",
+          payload:"schedule"
+        },{
+          content_type:"text",
+          title:"Records",
+          payload:"records"
         }
-      }
+      ]
     }
   }
   callSendAPI(messageData)
@@ -198,7 +191,7 @@ function startupMessage(recipientId,messageText) {
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
-         startupMessage(senderID)
+         welcomeMessage(senderID)
          break;
       case 'Points Standing':
         postStanding(senderID)
