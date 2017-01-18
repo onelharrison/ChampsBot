@@ -81,7 +81,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+            image_url: "https://champsbot.herokuapp.com/image/boysPoints.png",
             buttons: [{
               type: "postback",
               title: "Top Boys",
@@ -126,7 +126,7 @@ function topStanding(recipientID){
           top_element_style: "large",
           elements:[{
             title:"Boy's Point Standing",
-            image_url:"http://i2.cdn.cnn.com/cnnnext/dam/assets/161103162140-mlk-overlay-tease.jpg",
+            image_url:"https://champsbot.herokuapp.com/image/boysPoints.png",
             subtitle:"After 8 events",
         },
         {
@@ -147,7 +147,7 @@ function topStanding(recipientID){
       buttons:[
         {
           title:"View More",
-          type:"url",
+          type:"web_url",
           url:"https://www.google.com.jm/",
         }
       ]
