@@ -9,6 +9,15 @@
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
 
+ var boyteam1 = ["Calabar", ""]
+ var boyteam2 = ["Kingston College", ""]
+ var boyteam3 = ["St. Jago High School", ""]
+
+ var girlteam1 = ["", ""]
+ var girlteam2 = ["Kingston College", ""]
+ var girlteam3 = ["St. Jago High School", ""]
+
+
  app.set('port',(process.env.PORT || 5000))
 
  app.use(bodyParser.urlencoded({extended:false}))
@@ -68,7 +77,7 @@ function getStarted(){
     console.log('Post successful!  Server responded with:', body)
   })
 }
-function pointStanding(recipientId){
+function pointStanding(recipientId,team1,team2,team3){
   var messageData = {
     recipient: {
       id: recipientId
@@ -81,7 +90,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "https://champsbot.herokuapp.com/image/testImage.jpg",
+            image_url: "http://i.imgur.com/BqhbJwm.png",
             buttons: [{
               type: "postback",
               title: "Top Boys",
