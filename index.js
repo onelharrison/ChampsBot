@@ -94,7 +94,7 @@ function pointStanding(recipientId){
           }, {
             title: "Girl's Points Standings",
             subtitle: "Days 2 - #Champs2017\n after 8 finals",
-            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+            image_url: "https://champsbot.herokuapp.com/image/girlsPoints.png",
             buttons: [{
               type: "postback",
               title: "Top Girls",
