@@ -77,7 +77,7 @@ function getStarted(){
     console.log('Post successful!  Server responded with:', body)
   })
 }
-function pointStanding(recipientId,team1,team2,team3){
+function pointStanding(recipientId){
   var messageData = {
     recipient: {
       id: recipientId
@@ -103,7 +103,7 @@ function pointStanding(recipientId,team1,team2,team3){
           }, {
             title: "Girl's Points Standings",
             subtitle: "Days 2 - #Champs2017\n after 8 finals",
-            image_url: "https://champsbot.herokuapp.com/image/girlsPoints.png",
+            image_url: "http://i.imgur.com/UGuW1oi.png",
             buttons: [{
               type: "postback",
               title: "Top Girls",
@@ -135,21 +135,21 @@ function topStanding(recipientID){
           top_element_style: "large",
           elements:[{
             title:"Boy's Point Standing",
-            image_url:"https://champsbot.herokuapp.com/image/boysPoints.png",
+            image_url:"http://i.imgur.com/vEjbzmH.png",
             subtitle:"After 8 events",
         },
         {
-            title:"KC",
-            image_url:"https://www.google.com.jm/?imgurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo-215.gif&imgrefurl=http%3A%2F%2Fkolors.com%2Fkingston-college-jamaica-logo&docid=51M8cVTxJWertM&tbnid=dwNJrazo2YFKxM%3A&vet=1&w=220&h=277&bih=702&biw=1364&q=kingston%20college%20logo&ved=0ahUKEwjm1Y6AqMfRAhWDMSYKHasJC1gQMwgnKA0wDQ&iact=mrc&uact=8",
+            title:"Calabar",
+            image_url:"http://i.imgur.com/MC42Cw7.png",
             subtitle:"Points: 186",
         },
         {
-          title:"JC",
-          image_url:"https://www.google.com.jm/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F3%2F3d%2FJC_CREST.jpg&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FJamaica_College&docid=KKFW8cwMK-CYvM&tbnid=JDDMjLxwhXnQtM%3A&vet=1&w=260&h=302&bih=702&biw=1364&q=jamaica%20college&ved=0ahUKEwi3x4vuqcfRAhXDTSYKHbMiBNsQMwgvKAAwAA&iact=mrc&uact=8",
-          subtitle:"Points:156",
+          title:"Kingston College",
+          image_url:"http://i.imgur.com/lv5b3Ja.png",
+          subtitle:"Points: 154"
         },{
-          title:"Calabar",
-          image_url:"https://www.google.com.jm/imgres?imgurl=http%3A%2F%2Fasirimagazine.com%2Fen%2Fwp-content%2Fuploads%2F2014%2F12%2Fcalabar-high-school-white.jpg&imgrefurl=http%3A%2F%2Fasirimagazine.com%2Fen%2Fhistory-pride-of-calabar-high-school-jamaica%2F&docid=xhQaPmA8zTJwJM&tbnid=dpYCUIUpIPbQGM%3A&vet=1&w=429&h=493&bih=702&biw=1364&q=calabar%20high%20school&ved=0ahUKEwilla6AqsfRAhUGSiYKHZYsCWIQMwgtKAAwAA&iact=mrc&uact=8",
+          title:"St. Jago High School",
+          image_url:"http://i.imgur.com/9aex0JD.png",
           subtitle:"Points:123",
         }
       ],
