@@ -37,12 +37,12 @@
        var timeOfEvent = entry.time;
 
        // Iterate over each messaging event
-       entry.messaging.forEach(function(event) {
-         if (event.message) {
-           receivedMessage(event)
-         } else if(event.postback){
-           recievedPostback(event)
-         }{
+       entry.messaging.forEach(function(messagingEvent) {
+         if (messagingEvent.message) {
+           receivedMessage(messagingEvent)
+         } else if(messagingEvent.postback){
+           recievedPostback(messagingEvent)
+         }else{
            console.log("Webhook received unknown event: ", event)
          }
        });
