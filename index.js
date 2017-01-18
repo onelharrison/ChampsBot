@@ -237,13 +237,13 @@ function welcomeMessage(recipientId){
       case 'start':
          welcomeMessage(senderID)
          break;
-      case 'Points Standing':
+      case 'Points':
         pointStanding(senderID)
         break;
-      case 'schedule':
+      case 'Schedule':
         postSchedule(senderID)
         break;
-      case 'records':
+      case 'Records':
         newRecords(senderID)
         break;
        default:
