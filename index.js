@@ -41,7 +41,7 @@
          if (messagingEvent.message) {
            receivedMessage(messagingEvent)
          } else if(messagingEvent.postback){
-           recievedPostback(messagingEvent)
+           receivedPostback(messagingEvent)
          }else{
            console.log("Webhook received unknown event: ", event)
          }
