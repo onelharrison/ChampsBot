@@ -147,8 +147,8 @@ function topStanding(recipientID){
       buttons:[
         {
           title:"View More",
-          type:"postback",
-          payload:"veiwMorePoints",
+          type:"url",
+          url:"https://www.google.com.jm/",
         }
       ]
         }
