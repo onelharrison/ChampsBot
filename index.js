@@ -39,9 +39,11 @@
        // Iterate over each messaging event
        entry.messaging.forEach(function(event) {
          if (event.message) {
-           receivedMessage(event);
-         } else {
-           console.log("Webhook received unknown event: ", event);
+           receivedMessage(event)
+         } else if(event.postback){
+           recievedPostback(event)
+         }{
+           console.log("Webhook received unknown event: ", event)
          }
        });
      });
