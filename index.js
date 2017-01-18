@@ -36,6 +36,8 @@
 
  app.post('/webhook', function (req, res) {
    var data = req.body;
+   setMenu()
+   
 
    // Make sure this is a page subscription
    if (data.object === 'page') {
@@ -59,7 +61,29 @@
      res.sendStatus(200);
    }
  });
-
+function setMenu(){
+  var messageData = {
+    setting_type:"call_to_actions",
+    thread_settings:"existing_thread",
+    call_to_actions:[
+      {
+        type:"postback",
+        title:"Points Standing",
+        payload:"points_standing"
+      },
+      {
+        type:"postback",
+        title:"Race Schedule",
+        payload:"schedule"
+      },
+      {
+        type:"postback",
+        title:"Records",
+        payload:"records"
+      }
+    ]
+  }
+}
 function getStarted(){
   var url="https://graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
   var data = {
@@ -120,7 +144,9 @@ function pointStanding(recipientId){
   }
   callSendAPI(messageData)
 }
+function fullStanding(recipientID){
 
+}
 
 function topStanding(recipientID){
   var messageData = {
@@ -313,6 +339,27 @@ function receivedPostback(event) {
       console.error(error)
     }
   })
+}
+function callThreadAPI(messageData) {
+ request({
+   uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
+   qs: { access_token: accessToken},
+   method: 'POST',
+   json: messageData
+
+ }, function (error, response, body) {
+   if (!error && response.statusCode == 200) {
+     var recipientId = body.recipient_id
+     var messageId = body.message_id
+
+     console.log("Successfully sent generic message with id %s to recipient %s",
+       messageId, recipientId)
+   } else {
+     console.error("Unable to send to thread api")
+     console.error(response)
+     console.error(error)
+   }
+ })
 }
 
 app.listen(app.get('port'), function(){
