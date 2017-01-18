@@ -193,7 +193,7 @@ function welcomeMessage(recipientId){
     },
     message:{
       text:"Hi, Im Champs Bot! \n How can I help you today?",
-      payload:[
+      quick_replies:[
         {
           content_type:"text",
           title:"Points",
