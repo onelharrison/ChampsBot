@@ -66,8 +66,52 @@ function getStarted(){
     console.log('Post successful!  Server responded with:', body)
   })
 }
+function pointStanding(recipientId){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "Boy's Points Standing",
+            subtitle: "Day 2 - #Champs2017\n after 8 finals",
+            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+            buttons: [{
+              type: "postback",
+              title: "Top Boys",
+              payload:"top_boys"
+            }, {
+              type: "postback",
+              title: "Boys' List",
+              payload: "boys_list",
+            }],
+          }, {
+            title: "Girl's Points Standings",
+            subtitle: "Days 2 - #Champs2017\n after 8 finals",
+            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+            buttons: [{
+              type: "postback",
+              title: "Top Girls",
+              payload: "top_girls"
+            }, {
+              type: "postback",
+              title: "Girls' List",
+              payload: "girls_list",
+            }]
+          }]
+        }
+      }
+    }
+  }
+  callSendAPI(messageData)
+}
 
-function postStanding(recipientID,messageText){
+
+function topStanding(recipientID){
   var messageData = {
     recipient:{
       id:recipientID
@@ -191,10 +235,10 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
-         welcomeMessage(senderID)
+         startupMessage(senderID)
          break;
       case 'Points Standing':
-        postStanding(senderID)
+        pointStanding(senderID)
         break;
       case 'schedule':
         postSchedule(senderID)
@@ -228,8 +272,12 @@ function receivedPostback(event) {
   if (payload){
     switch(payload){
       case 'points_standing':
-        postStanding(senderID);
+        postStanding(senderID)
         break;
+      case 'top_boys':
+        topStanding(senderID)
+        break;
+
     }
   }
 }
