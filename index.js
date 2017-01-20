@@ -310,7 +310,7 @@ function welcomeMessage(recipientId){
       case 'Records':
         newRecords(senderID)
         break;
-      case 'points_standing'
+      case 'points_standing':
         pointStanding(senderID)
         break;
        default:
@@ -339,7 +339,7 @@ function receivedPostback(event) {
   if (payload){
     switch(payload){
       case 'points_standing':
-        postStanding(senderID)
+        pointStanding(senderID)
         break;
       case 'top_boys':
         topStanding(senderID)
