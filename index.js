@@ -34,24 +34,25 @@
   res.send('Access not authorized')
  })
 
+ app.post({
+    method: 'POST',
+    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+    qs: {
+        setting_type: 'call_to_actions',
+        thread_state: 'new_thread',
+            call_to_actions: [{
+                payload: 'GET_START'
+            }]
+        },
+    json: true
+}, (err, res, body) => {
+    // Deal with the response
+});
+
  app.post('/webhook', function (req, res) {
    var data = req.body;
 
-   request.post({
-       method: 'POST',
-       uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
-       qs: {
-           setting_type: 'call_to_actions',
-           thread_state: 'new_thread',
-               call_to_actions: [{
-                   payload: 'GET_START'
-               }]
-           },
-       json: true
-   }, (err, res, body) => {
-       // Deal with the response
-   });
-   setMenu();
+
 
 
    // Make sure this is a page subscription
