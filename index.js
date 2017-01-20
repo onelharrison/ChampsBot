@@ -53,11 +53,25 @@ request.post({
    method: 'POST',
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
    qs: {
-       setting_type: 'call_to_actions',
-       thread_state: 'new_thread',
-           call_to_actions: [{
-               payload: 'GET_START'
-           }]
+     setting_type:"call_to_actions",
+     thread_settings:"existing_thread",
+     call_to_actions:[
+       {
+         type:"postback",
+         title:"Points Standing",
+         payload:"points_standing"
+       },
+       {
+         type:"postback",
+         title:"Race Schedule",
+         payload:"schedule"
+       },
+       {
+         type:"postback",
+         title:"Records",
+         payload:"records"
+       }
+     ]
        },
    json: true
 }, (err, res, body) => {
@@ -284,7 +298,7 @@ function welcomeMessage(recipientId){
 
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
-      case 'get_started':
+      case 'start':
          welcomeMessage(senderID)
          break;
       case 'Points':
@@ -326,6 +340,9 @@ function receivedPostback(event) {
         break;
       case 'top_boys':
         topStanding(senderID)
+        break;
+      case 'get_started':
+        welcomeMessage(senderID)
         break;
 
     }
