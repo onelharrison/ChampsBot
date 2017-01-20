@@ -41,12 +41,27 @@
         setting_type: 'call_to_actions',
         thread_state: 'new_thread',
             call_to_actions: [{
-                payload: 'GET_START'
+                payload: 'get_started'
             }]
         },
     json: true
 }, (err, res, body) => {
     // Deal with the response
+});
+
+request.post({
+   method: 'POST',
+   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+   qs: {
+       setting_type: 'call_to_actions',
+       thread_state: 'new_thread',
+           call_to_actions: [{
+               payload: 'GET_START'
+           }]
+       },
+   json: true
+}, (err, res, body) => {
+   // Deal with the response
 });
 
  app.post('/webhook', function (req, res) {
@@ -98,23 +113,7 @@ function setMenu(){
     ]
   }
 }
-function getStarted(){
-  var url="https://graph.facebook.com/v2.6/me/thread_settings?access_token=MESSENGER_ACCESS_TOKEN"
-  var data = {
-    setting_type:"call_to_actions",
-    thread_state:"new_thread",
-    call_to_actions:[{
-      payload:"get_started",
-    }]
-  }
-  request.post({url:url, formData: data}, function(err, httpResponse, body) {
-    if (err){
-      return console.error('post failed:', err)
-    }
 
-    console.log('Post successful!  Server responded with:', body)
-  })
-}
 function pointStanding(recipientId){
   var messageData = {
     recipient: {
@@ -285,7 +284,7 @@ function welcomeMessage(recipientId){
 
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
-      case 'start':
+      case 'get_started':
          welcomeMessage(senderID)
          break;
       case 'Points':
@@ -353,27 +352,6 @@ function receivedPostback(event) {
       console.error(error)
     }
   })
-}
-function callThreadAPI(messageData) {
- request({
-   uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
-   qs: { access_token: accessToken},
-   method: 'POST',
-   json: messageData
-
- }, function (error, response, body) {
-   if (!error && response.statusCode == 200) {
-     var recipientId = body.recipient_id
-     var messageId = body.message_id
-
-     console.log("Successfully sent generic message with id %s to recipient %s",
-       messageId, recipientId)
-   } else {
-     console.error("Unable to send to thread api")
-     console.error(response)
-     console.error(error)
-   }
- })
 }
 
 app.listen(app.get('port'), function(){
