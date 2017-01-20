@@ -54,7 +54,7 @@ request.post({
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
    qs: {
      setting_type:"call_to_actions",
-     thread_settings:"existing_thread",
+     thread_state:"existing_thread",
      call_to_actions:[
        {
          type:"postback",
