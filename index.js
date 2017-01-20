@@ -310,6 +310,9 @@ function welcomeMessage(recipientId){
       case 'Records':
         newRecords(senderID)
         break;
+      case 'points_standing'
+        pointStanding(senderID)
+        break;
        default:
          sendTextMessage(senderID,"say start to see options")
      }
