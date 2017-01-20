@@ -34,7 +34,7 @@
   res.send('Access not authorized')
  })
 
- app.post({
+ request.post({
     method: 'POST',
     uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
     qs: {
