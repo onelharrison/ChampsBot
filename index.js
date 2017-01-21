@@ -13,8 +13,8 @@
  var boyteam2 = ["Kingston College", ""]
  var boyteam3 = ["St. Jago High School", ""]
 
- var girlteam1 = ["", ""]
- var girlteam2 = ["Kingston College", ""]
+ var girlteam1 = ["Wolmers Girls", ""]
+ var girlteam2 = ["Andrew's High School", ""]
  var girlteam3 = ["St. Jago High School", ""]
 
 
@@ -226,6 +226,68 @@ function postSchedule(senderID,messageText){
   var messageData={
     recipient:{
       id:recipientID
+    },
+    message:{
+      attachment:{
+        type:"template",
+        payload:{
+          template_type:"generic",
+          elements:[
+            {
+              title:"Day 1 - March 28th",
+              subtitle:"#Champs2017",
+              image_url:"",
+              buttons:[{
+                title:"Day ",
+                type:"web_url",
+                url:"https://www.google.com/"
+              }]
+            },
+            {
+              title:"Day 2 - March 29th",
+              subtitle:"#Champs2017",
+              image_url:"",
+              buttons:[{
+                title:"Day ",
+                type:"web_url",
+                url:"https://www.google.com/"
+              }]
+            },
+            {
+              title:"Day 3 - March 30th",
+              subtitle:"#Champs2017",
+              image_url:"",
+              buttons:[{
+                title:"Day ",
+                type:"web_url",
+                url:"https://www.google.com/"
+              }]
+            },
+            {
+              title:"Day 4 - March 31th",
+              subtitle:"#Champs2017",
+              image_url:"",
+              buttons:[{
+                title:"Day ",
+                type:"web_url",
+                url:"https://www.google.com/"
+              }]
+            },
+            {
+              title:"Day 5 - April 1st",
+              subtitle:"#Champs2017",
+              image_url:"",
+              buttons:[{
+                title:"Day ",
+                type:"web_url",
+                url:"https://www.google.com/"
+              }]
+            }
+          ]
+
+        }
+      }
+
     }
   }
   callSendAPI(messageData);
@@ -265,8 +327,8 @@ function welcomeMessage(recipientId){
         },
         {
           content_type:"text",
-          title:"Schedule",
-          payload:"schedule"
+          title:"Events",
+          payload:"events"
         },{
           content_type:"text",
           title:"Records",
@@ -304,7 +366,7 @@ function welcomeMessage(recipientId){
       case 'Points':
         pointStanding(senderID)
         break;
-      case 'Schedule':
+      case 'Events':
         postSchedule(senderID)
         break;
       case 'Records':
