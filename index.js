@@ -149,7 +149,7 @@ function pointStanding(recipientId){
             }, {
               title:"Boys' List",
               type:"web_url",
-              url:"https://www.google.com.jm/",
+              url:"http://gracechamps.com/points/",
               webview_height_ratio: "tall"
             }],
           }, {
@@ -163,7 +163,7 @@ function pointStanding(recipientId){
             }, {
               title:"Girls' List",
               type:"web_url",
-              url:"https://www.google.com.jm/",
+              url:"http://gracechamps.com/points/",
               webview_height_ratio: "tall"
             }]
           }]
@@ -212,7 +212,7 @@ function topStanding(recipientID,team1,team2,team3,gender){
         {
           title:"View More",
           type:"web_url",
-          url:"https://www.google.com.jm/",
+          url:"http://gracechamps.com/points/",
           webview_height_ratio: "tall"
         }
       ]
