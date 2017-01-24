@@ -63,7 +63,7 @@ request.post({
        },
        {
          type:"postback",
-         title:"Events",
+         title:"Events Schedule",
          payload:"events"
        },
        {
@@ -196,16 +196,16 @@ function topStanding(recipientID,team1,team2,team3,gender){
         {
             title:team1[0],
             image_url:team1[1],
-            subtitle:"Points: " + team1[2],
+            subtitle:"Points: "+team1[2],
         },
         {
           title:team2[0],
           image_url:team2[1],
-          subtitle:team2[2]
+          subtitle:"Points: "+team2[2]
         },{
           title:team3[0],
           image_url:team3[1],
-          subtitle:"Points:" + team3[2],
+          subtitle:"Points: "+team3[2],
         }
       ],
       buttons:[
