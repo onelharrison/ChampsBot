@@ -9,13 +9,13 @@
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
 
- var boyteam1 = ["Calabar", ""]
- var boyteam2 = ["Kingston College", ""]
- var boyteam3 = ["St. Jago High School", ""]
+ var boyteam1 = ["Calabar","http://i.imgur.com/MC42Cw7.png", "186"]
+ var boyteam2 = ["Kingston College","http://i.imgur.com/lv5b3Ja.png", "154"]
+ var boyteam3 = ["St. Jago High School","http://i.imgur.com/9aex0JD.png", "123"]
 
- var girlteam1 = ["Wolmers Girls", ""]
- var girlteam2 = ["Andrew's High School", ""]
- var girlteam3 = ["St. Jago High School", ""]
+ var girlteam1 = ["Excelsior High School","http://i.imgur.com/kVUhwFN.png" ,"192"]
+ var girlteam2 = ["Hydel High School","http://i.imgur.com/VdVI3OU.png","147"]
+ var girlteam3 = ["St. Jago High School","http://i.imgur.com/58B5BYY.png","116"]
 
 
  app.set('port',(process.env.PORT || 5000))
@@ -177,7 +177,7 @@ function fullStanding(recipientID){
 
 }
 
-function topStanding(recipientID){
+function topStanding(recipientID,team1,team2,team3,gender){
   var messageData = {
     recipient:{
       id:recipientID
@@ -189,23 +189,23 @@ function topStanding(recipientID){
           template_type:"list",
           top_element_style: "large",
           elements:[{
-            title:"Boy's Point Standing",
+            title:gender + "'s Point Standing",
             image_url:"http://i.imgur.com/BWfdgKC.png",
             subtitle:"After 8 events",
         },
         {
-            title:"Calabar",
-            image_url:"http://i.imgur.com/MC42Cw7.png",
-            subtitle:"Points: 186",
+            title:team1[0],
+            image_url:team1[1],
+            subtitle:"Points: " + team1[2],
         },
         {
-          title:"Kingston College",
-          image_url:"http://i.imgur.com/lv5b3Ja.png",
-          subtitle:"Points: 154"
+          title:team2[0],
+          image_url:team2[1],
+          subtitle:team2[2]
         },{
-          title:"St. Jago High School",
-          image_url:"http://i.imgur.com/9aex0JD.png",
-          subtitle:"Points:123",
+          title:team3[0],
+          image_url:team3[1],
+          subtitle:"Points:" + team3[2],
         }
       ],
       buttons:[
@@ -412,10 +412,10 @@ function receivedPostback(event) {
         pointStanding(senderID)
         break;
       case 'top_boys':
-        topStanding(senderID)
+        topStanding(senderID,boyteam1,boyteam2,boyteam3,"Boy")
         break;
       case 'top_girls':
-        topStanding(senderID)
+        topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl")
         break;
       case 'get_started':
         welcomeMessage(senderID)
