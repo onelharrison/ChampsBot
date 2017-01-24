@@ -63,8 +63,8 @@ request.post({
        },
        {
          type:"postback",
-         title:"Race Schedule",
-         payload:"schedule"
+         title:"Events",
+         payload:"events"
        },
        {
          type:"postback",
@@ -188,7 +188,7 @@ function topStanding(recipientID){
           top_element_style: "large",
           elements:[{
             title:"Boy's Point Standing",
-            image_url:"http://i.imgur.com/vEjbzmH.png",
+            image_url:"http://i.imgur.com/BWfdgKC.png",
             subtitle:"After 8 events",
         },
         {
@@ -211,6 +211,7 @@ function topStanding(recipientID){
           title:"View More",
           type:"web_url",
           url:"https://www.google.com.jm/",
+          webview_height_ratio: "tall"
         }
       ]
         }
@@ -221,7 +222,7 @@ function topStanding(recipientID){
   callSendAPI(messageData);
 }
 
-function postSchedule(senderID,messageText){
+function postSchedule(recipientID){
   //function for post the race schedule
   var messageData={
     recipient:{
@@ -236,9 +237,9 @@ function postSchedule(senderID,messageText){
             {
               title:"Day 1 - March 28th",
               subtitle:"#Champs2017",
-              image_url:"",
+              image_url:"http://i.imgur.com/Tt4EF9i.png",
               buttons:[{
-                title:"Day ",
+                title:"Day 1 Events",
                 type:"web_url",
                 url:"https://www.google.com/"
               }]
@@ -246,9 +247,9 @@ function postSchedule(senderID,messageText){
             {
               title:"Day 2 - March 29th",
               subtitle:"#Champs2017",
-              image_url:"",
+              image_url:"http://i.imgur.com/3bGHJvf.png",
               buttons:[{
-                title:"Day ",
+                title:"Day 2 Events",
                 type:"web_url",
                 url:"https://www.google.com/"
               }]
@@ -256,9 +257,9 @@ function postSchedule(senderID,messageText){
             {
               title:"Day 3 - March 30th",
               subtitle:"#Champs2017",
-              image_url:"",
+              image_url:"http://i.imgur.com/JKl7yoT.png",
               buttons:[{
-                title:"Day ",
+                title:"Day 3 Events",
                 type:"web_url",
                 url:"https://www.google.com/"
               }]
@@ -266,9 +267,9 @@ function postSchedule(senderID,messageText){
             {
               title:"Day 4 - March 31th",
               subtitle:"#Champs2017",
-              image_url:"",
+              image_url:"http://i.imgur.com/a112XYq.png",
               buttons:[{
-                title:"Day ",
+                title:"Day 4 Events",
                 type:"web_url",
                 url:"https://www.google.com/"
               }]
@@ -276,9 +277,9 @@ function postSchedule(senderID,messageText){
             {
               title:"Day 5 - April 1st",
               subtitle:"#Champs2017",
-              image_url:"",
+              image_url:"http://i.imgur.com/ZCeoA7m.png",
               buttons:[{
-                title:"Day ",
+                title:"Day 5 Events",
                 type:"web_url",
                 url:"https://www.google.com/"
               }]
@@ -409,6 +410,9 @@ function receivedPostback(event) {
       case 'get_started':
         welcomeMessage(senderID)
         break;
+      case 'events':
+        postSchedule(senderID)
+      break;
 
     }
   }
