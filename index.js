@@ -147,9 +147,10 @@ function pointStanding(recipientId){
               title: "Top Boys",
               payload:"top_boys"
             }, {
-              type: "postback",
-              title: "Boys' List",
-              payload: "boys_list",
+              title:"Boys' List",
+              type:"web_url",
+              url:"https://www.google.com.jm/",
+              webview_height_ratio: "tall"
             }],
           }, {
             title: "Girl's Points Standings",
@@ -160,9 +161,10 @@ function pointStanding(recipientId){
               title: "Top Girls",
               payload: "top_girls"
             }, {
-              type: "postback",
-              title: "Girls' List",
-              payload: "girls_list",
+              title:"Girls' List",
+              type:"web_url",
+              url:"https://www.google.com.jm/",
+              webview_height_ratio: "tall"
             }]
           }]
         }
@@ -241,7 +243,8 @@ function postSchedule(recipientID){
               buttons:[{
                 title:"Day 1 Events",
                 type:"web_url",
-                url:"https://www.google.com/"
+                url:"https://www.google.com/",
+                webview_height_ratio: "tall"
               }]
             },
             {
@@ -251,7 +254,8 @@ function postSchedule(recipientID){
               buttons:[{
                 title:"Day 2 Events",
                 type:"web_url",
-                url:"https://www.google.com/"
+                url:"https://www.google.com/",
+                webview_height_ratio: "tall"
               }]
             },
             {
@@ -261,7 +265,8 @@ function postSchedule(recipientID){
               buttons:[{
                 title:"Day 3 Events",
                 type:"web_url",
-                url:"https://www.google.com/"
+                url:"https://www.google.com/",
+                webview_height_ratio: "tall"
               }]
             },
             {
@@ -271,7 +276,8 @@ function postSchedule(recipientID){
               buttons:[{
                 title:"Day 4 Events",
                 type:"web_url",
-                url:"https://www.google.com/"
+                url:"https://www.google.com/",
+                webview_height_ratio: "tall"
               }]
             },
             {
@@ -281,7 +287,8 @@ function postSchedule(recipientID){
               buttons:[{
                 title:"Day 5 Events",
                 type:"web_url",
-                url:"https://www.google.com/"
+                url:"https://www.google.com/",
+                webview_height_ratio: "tall"
               }]
             }
           ]
@@ -405,6 +412,9 @@ function receivedPostback(event) {
         pointStanding(senderID)
         break;
       case 'top_boys':
+        topStanding(senderID)
+        break;
+      case 'top_girls':
         topStanding(senderID)
         break;
       case 'get_started':
