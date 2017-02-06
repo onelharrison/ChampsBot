@@ -5,6 +5,7 @@
  const bodyParser = require('body-parser')
  const request = require('request')
  const app = express()
+ var firebase = require("firebase");
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
@@ -17,6 +18,14 @@
  var girlteam2 = ["Hydel High School","http://i.imgur.com/VdVI3OU.png","147"]
  var girlteam3 = ["St. Jago High School","http://i.imgur.com/58B5BYY.png","116"]
 
+ var config = {
+     apiKey: "AIzaSyAEhQjo8aI4U4YyRj9pWuvI6BEmiIsC7Fk",
+     authDomain: "champs-d5b65.firebaseapp.com",
+     databaseURL: "https://champs-d5b65.firebaseio.com",
+     storageBucket: "champs-d5b65.appspot.com",
+     messagingSenderId: "1003963080880"
+   };
+   firebase.initializeApp(config);
 
  app.set('port',(process.env.PORT || 5000))
 
