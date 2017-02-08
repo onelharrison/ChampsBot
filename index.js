@@ -339,6 +339,7 @@ function topSchools(recipientId){
           schools[i][1] = snapshot.val().logo;
           schools[i][2] = snapshot.val().rank;
           schools[i][3] = snapshot.val().points;
+          return schools
 
     })
   }
@@ -432,7 +433,7 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+  //sendTextMessage(recipientId,"Choose from the list above or type in a school name")
   topSchools(recipientId)
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
 
