@@ -28,12 +28,23 @@
      messagingSenderId: "1003963080880"
    };
    firebase.initializeApp(config);
-   firebase.auth().signInAnonymously().catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
+   var admin = require("firebase-admin");
+
+  // Fetch the service account key JSON file contents
+  var serviceAccount = require("Champs-58be1819cde0.json");
+
+  // Initialize the app with a service account, granting admin privileges
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://champs-d5b65.firebaseio.com"
+  });
+
+  // As an admin, the app has access to read and write all data, regardless of Security Rules
+  var db = admin.database();
+  var ref = db.ref("restricted_access/secret_document");
+  ref.once("value", function(snapshot) {
+    console.log(snapshot.val());
+  });
 
  var database = firebase.database();
 

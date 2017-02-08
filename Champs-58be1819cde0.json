@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "champs-d5b65",
+  "private_key_id": "58be1819cde0dccd44cbbedcfc4a90b5c044ce69",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLMY2EFhO1H9Tq\nUITD1fW8qrn8vKu5XAwbS73nVlH3P6k7VWSuYE9DG38edPnaBjiOhji3Zf3/rhX+\noUaGLD3DYC0+RO9rYDxsS32ECnaarUt0vYoQiMndYeFuAW6b9Wwzs8dheRNkf244\nLWJ6sHXPDo3Qqd9qeIweeESyr+YbxF/smKsJTdi+CWHdgtU2udaB0BIIypipCWF/\nMu1xWZz47oD8gqNNRKttZrWgjev2qOs+zwmI7E4PsdrF5odC//BveYIeiHR6Jtzu\nAccrKpJ+qYurfL/aNmYooVzV6qxzouvydSV0dQh4zoSjr2toysm36VEnWzcXzzjT\nGSsDZrl3AgMBAAECggEAXGSj3LPNMkbPIdyLAiGAI9Hd0DZaP2bDeoXuTArMKokg\nAoLJzSCt6e3O16KJGcJKZURS9dHCtUgLaEUdNFVZoEVTTUU7OLAByZxp7mhzldHG\nxcaJyQrp/2hKgSLVkMT/9mKA/ql3T/NBwvmgFfm3F/eeNIuJs3gs/o3hbv7cuzK3\n9e6Mps6ToTgYvQiok6wQe2EmEnXo5kttbKCQIKk00H5e/zDXKIX/kx12YOHN15XJ\n4YKnCRzsMXU1EG3e9IQnUCPCa5kc1QliO+3FPEOljT/rgMlbHzti/TS3aIGkuKgC\nQWOt0Ji5BNbLrH5U7ETWR2Gt1JYMrx6dIcxL8tF9AQKBgQD3Iq5WABdMAsOQ71qS\n1ZkPlYra3pMN2UUMhs+en9o58kb7aC0kHgBHjcYD0F+0VOtvbcRc/2mcQX3gS5Fw\n7alRREHz7rZ4YhO/NojxfOXZ4SM+cTivZ2YOZLcelH3TyPJxEQoV5EnOimgU/Meh\nmTD6qtbUJC+kW/zF4TLFCIUspwKBgQDSe2AsTgwxvdotHW2N8IRS2fm+PzZp7Mzj\n/HXBB0w1YMtDWYHFEOpKgSgR1gVErXX/Sw7ciyA8KZhUUk8upDUwR14oIs0IaWQ3\nt78y7EArcmMbq8HvP9U0BfZMkv4V8xWvyWHbxtFSAYHaWndXovu4RFPNBeLIXQWu\nY2vQB6+WsQKBgQCHPZtZxML6/ag38EQIhos0VAmgrJycv4Fh0YRcse2iOEtP2Tqa\nwTA1+AecnrNA5BfS6qbCnaMVt2FDFReKTQSTTF8rNj70sfdMdHOMc2T1TpcS3LLA\nijz3M3ZibbBN7XF/Hmv+fudE98jtc0drz4FWK5dUkFjiANTbFNnLqVX3kQKBgFGZ\nMPScIVAbWPzKftFbIAF6rb5ahT7VZa0xD3mQ2bOL3eEzTwLWBu5xWdZoUUyJrsgV\nEiLf8NRCD+MIsdfUIyafVFpc+326VfbfzkjwnAP76X4tvRaCeaYcdZrEFaruvUaT\n3NM2JaoUGYJMNh4Meme6XX6LPJsOrQgpVP+mKyVRAoGAIPFxqhw006G3rS0cC2VU\niDlk0+IUtHy1gvW7ZPLZvkrexz1S1zE43aNvb361QSQPwos62j/jAWoBHezG82Ep\nCHlyyg7pykL+SFuucFrrFrkiCVz9p4f8Mi0JsM4d1nYae4EFsXNqfQIgFWEWF7hm\nhlt0wdRdJNGUz7fsmmVDitc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "champsbrain@champs-d5b65.iam.gserviceaccount.com",
+  "client_id": "102262366661900476100",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/champsbrain%40champs-d5b65.iam.gserviceaccount.com"
+}
