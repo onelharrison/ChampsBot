@@ -20,18 +20,18 @@
 
  var popSchools = ["jago","kc","calabar","jago","hydel","excelsior"]
 
- var config = {
+/* var config = {
      apiKey: "AIzaSyAEhQjo8aI4U4YyRj9pWuvI6BEmiIsC7Fk",
      authDomain: "champs-d5b65.firebaseapp.com",
      databaseURL: "https://champs-d5b65.firebaseio.com",
      storageBucket: "champs-d5b65.appspot.com",
      messagingSenderId: "1003963080880"
-   };
-   firebase.initializeApp(config);
+   };*/
+   //firebase.initializeApp(config);
    var admin = require("firebase-admin");
 
   // Fetch the service account key JSON file contents
-  var serviceAccount = require("Champs-58be1819cde0.json");
+  var serviceAccount = require("/Champs-58be1819cde0.json");
 
   // Initialize the app with a service account, granting admin privileges
   admin.initializeApp({
@@ -46,7 +46,7 @@
     console.log(snapshot.val());
   });
 
- var database = firebase.database();
+ //var database = firebase.database();
 
  app.set('port',(process.env.PORT || 5000))
 
