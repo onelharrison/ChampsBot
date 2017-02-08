@@ -28,6 +28,12 @@
      messagingSenderId: "1003963080880"
    };
    firebase.initializeApp(config);
+   firebase.auth().signInAnonymously().catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
 
  var database = firebase.database();
 
@@ -427,9 +433,10 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-//  topSchools(recipientId)
   sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+  topSchools(recipientId)
+  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
+
 }
 
 //Funtion for handling recieved messages
@@ -453,9 +460,6 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
-      sendTextMessage(senderID,"Choose from the list above or type in a school name")
-      sendTextMessage(senderID,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-    //  topSchools(recipientId)
 
          break;
       case 'Points':
