@@ -428,7 +428,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  topSchools(recipientId)
+//  topSchools(recipientId)
   sendTextMessage(recipientId,"Choose from the list above or type in a school name")
 }
 
