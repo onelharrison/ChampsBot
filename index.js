@@ -453,9 +453,10 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
+      sendTextMessage(senderID,"Choose from the list above or type in a school name")
       sendTextMessage(senderID,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
     //  topSchools(recipientId)
-      sendTextMessage(senderID,"Choose from the list above or type in a school name")
+
          break;
       case 'Points':
         pointStanding(senderID)
