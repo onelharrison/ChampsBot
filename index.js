@@ -18,6 +18,8 @@
  var girlteam2 = ["Hydel High School","http://i.imgur.com/VdVI3OU.png","147"]
  var girlteam3 = ["St. Jago High School","http://i.imgur.com/58B5BYY.png","116"]
 
+ var popSchools = ["jago","kc","calabar","jago","hydel","excelsior"]
+
  var config = {
      apiKey: "AIzaSyAEhQjo8aI4U4YyRj9pWuvI6BEmiIsC7Fk",
      authDomain: "champs-d5b65.firebaseapp.com",
@@ -26,6 +28,8 @@
      messagingSenderId: "1003963080880"
    };
    firebase.initializeApp(config);
+
+ var database = firebase.database();
 
  app.set('port',(process.env.PORT || 5000))
 
@@ -67,6 +71,11 @@ request.post({
      call_to_actions:[
        {
          type:"postback",
+         title:"Top News",
+         payload:"topNews"
+       },
+       {
+         type:"postback",
          title:"Points Standing",
          payload:"points_standing"
        },
@@ -77,8 +86,18 @@ request.post({
        },
        {
          type:"postback",
-         title:"Records",
-         payload:"records"
+         title:"My Schools",
+         payload:"myschools"
+       },
+       {
+         type:"postback",
+         title:"Invite Friends",
+         payload:"invite"
+       },
+       {
+          type:"postack",
+          title:"Help",
+          payload:"help"
        }
      ]
        },
@@ -181,9 +200,6 @@ function pointStanding(recipientId){
     }
   }
   callSendAPI(messageData)
-}
-function fullStanding(recipientID){
-
 }
 
 function topStanding(recipientID,team1,team2,team3,gender){
@@ -310,8 +326,89 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
-function newRecords(senderID,messageText){
-  //function for managing updates
+function topSchools(recipientId){
+  var schools = new Array(6)
+  for (var i = 0; i < schools.length; i++) {
+      firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
+          schools[i][0] = snapshot.val().schoolName;
+          schools[i][1] = snapshot.val().logo;
+          schools[i][2] = snapshot.val().rank;
+          schools[i][3] = snapshot.val().points;
+
+    })
+  }
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: schools[0][0],
+            image_url: schools[0][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[0][0]
+            }],
+          },{
+            title: schools[1][0],
+            image_url: schools[1][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[1][0]
+            }],
+          },{
+            title: schools[2][0],
+            image_url: schools[2][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[2][0]
+            }],
+          },{
+            title: schools[3][0],
+            image_url: schools[3][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[3][0]
+            }],
+          },{
+            title: schools[4][0],
+            image_url: schools[4][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[4][0]
+            }],
+          },{
+            title: schools[5][0],
+            image_url: schools[5][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[5][0]
+            }],
+          },{
+            title: schools[6][0],
+            image_url: schools[6][1],
+            buttons: [{
+              type:"payload",
+              title:"Follow School",
+              payload:"follow" + schools[6][0]
+            }],
+          },]
+        }
+      }
+    }
+  }
+  callSendAPI(messageData)
+
 }
 
 
@@ -330,31 +427,9 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  var messageData ={
-    recipient :{
-      id:recipientId
-    },
-    message:{
-      text:"Hi, Im Champs Bot! \n How can I help you today?",
-      quick_replies:[
-        {
-          content_type:"text",
-          title:"Points",
-          payload:"points_standing"
-        },
-        {
-          content_type:"text",
-          title:"Events",
-          payload:"events"
-        },{
-          content_type:"text",
-          title:"Records",
-          payload:"records"
-        }
-      ]
-    }
-  }
-  callSendAPI(messageData)
+  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
+  topSchools(recipientId)
+  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
 }
 
 //Funtion for handling recieved messages
