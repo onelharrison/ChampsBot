@@ -6,6 +6,7 @@
  const request = require('request')
  const app = express()
  var firebase = require("firebase");
+ var admin = require("firebase-admin");
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
@@ -28,13 +29,13 @@
      messagingSenderId: "1003963080880"
    };*/
   // firebase.initializeApp(config);
-   var admin = require("firebase-admin");
+
 
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
 
   // Initialize the app with a service account, granting admin privileges
-  admin.initializeApp({
+  firebase.initializeApp({
     credential: admin.credential.cert({
       projectId: "champs-d5b65",
       clientEmail:"firebase-adminsdk-iltw1@champs-d5b65.iam.gserviceaccount.com",
@@ -44,7 +45,7 @@
   });
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
-  var db = admin.database();
+  var db = firebase.database();
   var ref = db.ref("restricted_access/secret_document");
   ref.once("value", function(snapshot) {
     console.log(snapshot.val());
@@ -159,7 +160,7 @@ function setMenu(){
     call_to_actions:[
       {
         type:"postback",
-        title:"Points Standing",
+        title:"tst",
         payload:"points_standing"
       },
       {
@@ -349,7 +350,7 @@ function postSchedule(recipientID){
 function topSchools(recipientId){
   var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
-      admin.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
+      firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
           schools[i][0] = snapshot.val().schoolName;
           schools[i][1] = snapshot.val().logo;
           schools[i][2] = snapshot.val().rank;
