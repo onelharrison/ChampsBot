@@ -349,6 +349,12 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
+function displayJago(recipientId){
+  firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
+  var schoolName = snapshot.val().schoolName;
+});
+sendTextMessage(recipientId,schoolName)
+}
 function topSchools(recipientId){
   var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
@@ -479,7 +485,8 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
-          welcomeMessage(senderID)
+          //welcomeMessage(senderID)
+          displayJago(senderID)
          break;
       case 'Points':
         pointStanding(senderID)
