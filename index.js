@@ -353,11 +353,12 @@ function topSchools(recipientId){
   var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
       firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
+          schools[i] = new Array(4)
           schools[i][0] = snapshot.val().schoolName;
           schools[i][1] = snapshot.val().logo;
           schools[i][2] = snapshot.val().rank;
           schools[i][3] = snapshot.val().points;
-          return schools
+          
 
     })
   }
