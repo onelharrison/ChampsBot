@@ -45,11 +45,11 @@
   });
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
-  var db = firebase.database();
+/*  var db = firebase.database();
   var ref = db.ref("restricted_access/secret_document");
   ref.once("value", function(snapshot) {
     console.log(snapshot.val());
-  });
+  });*/
 
  //var database = firebase.database();
 
