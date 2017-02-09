@@ -350,7 +350,7 @@ function postSchedule(recipientID){
 }
 
 function displayJago(recipientId){
-  firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
+  firebase.database().ref('/boySchools/jago/schoolName').once('value').then(function(snapshot) {
   var schoolName = snapshot.val().schoolName;
 });
 sendTextMessage(recipientId,schoolName)
