@@ -22,7 +22,7 @@
 
  var popSchools = ["jago","kingstonCollege","calabar","jago","hydel","excelsior"]
 
-
+if (firebase.apps.length === 0) {
  var config = {
     apiKey: "AIzaSyCrABjTgsewVKiYHhenGhmqld9gjeonP1o",
     authDomain: "champsbot-a783e.firebaseapp.com",
@@ -31,7 +31,8 @@
     messagingSenderId: "249670934233"
   };
   firebase.initializeApp(config);
-
+  console.log("initializeApp")
+}
 
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
@@ -350,7 +351,7 @@ function postSchedule(recipientID){
 }
 
 function displayJago(recipientId){
-  firebase.database().ref('/boySchools/jago/schoolName').once('value').then(function(snapshot) {
+  firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
   var schoolName = snapshot.val().schoolName;
 });
 sendTextMessage(recipientId,schoolName)
@@ -535,7 +536,7 @@ function receivedPostback(event) {
         topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl")
         break;
       case 'get_started':
-      //  welcomeMessage(senderID)
+        welcomeMessage(senderID)
         break;
       case 'events':
         postSchedule(senderID)
