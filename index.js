@@ -20,7 +20,7 @@
  var girlteam2 = ["Hydel High School","http://i.imgur.com/VdVI3OU.png","147"]
  var girlteam3 = ["St. Jago High School","http://i.imgur.com/58B5BYY.png","116"]
 
- var popSchools = ["jago","kc","calabar","jago","hydel","excelsior"]
+ var popSchools = ["jago","kingstonCollege","calabar","jago","hydel","excelsior"]
 
 
  var config = {
@@ -358,7 +358,7 @@ function topSchools(recipientId){
           schools[i][1] = snapshot.val().logo;
           schools[i][2] = snapshot.val().rank;
           schools[i][3] = snapshot.val().points;
-          
+
 
     })
   }
