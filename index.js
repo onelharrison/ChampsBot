@@ -535,7 +535,7 @@ function receivedPostback(event) {
         topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl")
         break;
       case 'get_started':
-        welcomeMessage(senderID)
+      //  welcomeMessage(senderID)
         break;
       case 'events':
         postSchedule(senderID)
