@@ -20,14 +20,14 @@
 
  var popSchools = ["jago","kc","calabar","jago","hydel","excelsior"]
 
- var config = {
+/* var config = {
      apiKey: "AIzaSyAEhQjo8aI4U4YyRj9pWuvI6BEmiIsC7Fk",
      authDomain: "champs-d5b65.firebaseapp.com",
      databaseURL: "https://champs-d5b65.firebaseio.com",
      storageBucket: "champs-d5b65.appspot.com",
      messagingSenderId: "1003963080880"
-   };
-   firebase.initializeApp(config);
+   };*/
+  // firebase.initializeApp(config);
    var admin = require("firebase-admin");
 
   // Fetch the service account key JSON file contents
@@ -349,7 +349,7 @@ function postSchedule(recipientID){
 function topSchools(recipientId){
   var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
-      firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
+      admin.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
           schools[i][0] = snapshot.val().schoolName;
           schools[i][1] = snapshot.val().logo;
           schools[i][2] = snapshot.val().rank;
