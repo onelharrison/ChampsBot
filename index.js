@@ -22,7 +22,7 @@
 
  var popSchools = ["jago","kingstonCollege","calabar","jago","hydel","excelsior"]
 
-if (firebase.apps.length === 0) {
+//if (firebase.apps.length === 0) {
  var config = {
     apiKey: "AIzaSyCrABjTgsewVKiYHhenGhmqld9gjeonP1o",
     authDomain: "champsbot-a783e.firebaseapp.com",
@@ -32,7 +32,7 @@ if (firebase.apps.length === 0) {
   };
   firebase.initializeApp(config);
   console.log("initializeApp")
-}
+//}
 
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
