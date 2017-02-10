@@ -23,7 +23,7 @@
  var popSchools = ["jago","kingstonCollege","calabar","jago","hydel","excelsior"]
 
 //if (firebase.apps.length === 0) {
- var config = {
+ /*var config = {
     apiKey: "AIzaSyCrABjTgsewVKiYHhenGhmqld9gjeonP1o",
     authDomain: "champsbot-a783e.firebaseapp.com",
     databaseURL: "https://champsbot-a783e.firebaseio.com",
@@ -32,7 +32,7 @@
   };
   firebase.initializeApp(config);
   console.log("initializeApp")
-//}
+//}*/
 
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
@@ -376,7 +376,7 @@ function generateSchoolTemp(recipientId){
     }
   }
 
-
+callSendAPI(messageData)
 }
 
 function displayJago(recipientId){
@@ -462,7 +462,6 @@ function topSchools(recipientId){
     }
   }
   callSendAPI(messageData)
-
 }
 
 
@@ -481,9 +480,11 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+
+//  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
   topSchools(recipientId)
-  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
+  //sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+
 
 }
 
