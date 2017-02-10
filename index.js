@@ -7,7 +7,7 @@
  const app = express()
  const firebase = require("firebase");
  var admin = require("firebase-admin");
-// const auth =firebase.auth();
+const auth =firebase.auth();
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
@@ -38,14 +38,14 @@ if (firebase.apps.length === 0) {
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
 
   // Initialize the app with a service account, granting admin privileges
-admin.initializeApp({
+/*admin.initializeApp({
     credential: admin.credential.cert({
       projectId: "champs-d5b65",
       clientEmail:"firebase-adminsdk-iltw1@champs-d5b65.iam.gserviceaccount.com",
       privateKey:"-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDUQ+yDG5qeQ58y\nvn71YovE5c+9cXbsyQUf/ZwA1J/3fi69mCDDDLmEJ7DpHboG9ymAsJz24Q5Johj5\nWlVYyx25+p6hyNARVXOTVQv0n/SJIV9smDyLKOyEtpm3oCJTcxq5iIlJUn/maZJt\nrrS45N/lVPsolAnET9d2d5SwdESUjk1UO6vkGyCrgKAsr/18h0PpmmLr8Vt4lHOH\nJsrJ3r4GjQi2y8t83Qaev2qMySFBhC6bbILk+h/R9BNWMsyMQiObJTPKbzX8Kyeh\nQO6kHVjg99NxX4UmE2tivxO6R1XLoFaq5x16Rrc9TXow2vdBmddlA6XIdXs/1guF\nBJpgopuxAgMBAAECggEBAMuB59L3dzE/YfVzwCMhfSGkt5xImZ2BSSGXs6b0M/5E\nAyoRHXAD1iWHLE0EDCO7ehYAvizQLzOXbtw6qFL+QhzZ1JcGAb5sr+dUhabeaMPE\ntElYV8uPy9udehkcNWzOkZPJ/N3IdAmDtDjmZCxUevjTlg0ciZSme8v/8BWRE2Nc\noFIQavNXPngaZ1QJozRSe2+cPvTHZziVZ0wzEOiNryRzbvIZeNtEi3V/abxHqH8M\nt9EQEgPx195SGFGpcRV0EqWY8tv5dW5hsG3IhTpwIHMGTn0TpKmNzugLkZ7lgCbm\nJi795OqmKLgJ8WUoaDBVWM783CtJFRsB4nOoFK2BbrUCgYEA7yxBBBdRIxSD17qn\nYMvMT6mX9i1ZHn89IoyE+9lRGvlFgN5D+nREPoIorP7PJN+UQnIK/gfILNbzlSjM\naDv5EvFflomB8roXS6BWg0vB5H7NnbDSPqgfw1y+KVdy0sUBDh9py0HT1hZ7w7Wm\nPVtTAp7zq4MmIabDOnI/f+n9AGsCgYEA4zMJrnAeUzvsZw9Wj3k4JmJCX2BskeYJ\n4ofZgOTh0CMvPf9CUUPMeCIV6AOYfCIYozAZkygW3jq8eVq4I7U+6FAOwyL+6jxI\nj6ZALMru2+DFOwn9jTuudv+C5BPAbvqNjDKrbijnrxLeZwg7/DKMoJSkgVt9SC8e\nFIqYxhH8q1MCgYAF3kgaGZhcC/zQJjxFG7r/mWGpIKO3I9gUKO56X3Kl/se9ybZR\nRtkFz5u/4uCiPvocR0ANy5MVxpBjcITTaeVKmbGGuAkAM6CuslhtEEbJnHLfE5+U\n+fsNiBECYqrmkP7dodeurQbNke+ndaWGi98ViWDhLG6bFMRlgrgcI1mZ0QKBgQCr\n0Xsu2kd0tsqPHgBePFQEYybCrk8s/wTWtdn9KhrDpvghMJtcjaNh7pUWgzGcHsT3\nFHci3Jx+r3i9ZagACR9r3K9tT1fsmG5fhGDf/xAoZJGDloiTeGD2SUEZbv6GbyEA\nt4kBpBmiQujCjm2eyjOjdQX7dc8G+esLqczjbdLhVQKBgQDn5l75RhvZA+GoYZMe\nr/xX5l5ySa5YXfJe5ot6kFOYHBxBFWYkp8+Xmbg0fy746C5zMdmLsvswvMK/0k9q\nr2azQJUAgPIeRco2nirWqC8/xpsIgje2VG00xq9QxaiN7ly/wtENXVfBMvsrr4ZC\nv/lk5DpcYVX1peqn//PEZEiNew==\n-----END PRIVATE KEY-----\n",
     }),
     databaseURL: "https://champs-d5b65.firebaseio.com"
-  });
+  });*/
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
 //  var db = firebase.database();
