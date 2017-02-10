@@ -379,13 +379,13 @@ function generateSchoolTemp(recipientId){
 callSendAPI(messageData)
 }
 
-function displayJago(recipientId){
+/*function displayJago(recipientId){
   var schoolName
   firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
   schoolName = snapshot.val().schoolName;
 });
 sendTextMessage(recipientId,schoolName)
-}
+}*/
 function topSchools(recipientId){
   /*var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
