@@ -481,9 +481,9 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
 
-//  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
+  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
   topSchools(recipientId)
-  //sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
 
 
 }
@@ -509,9 +509,7 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
-          displayJago(senderID)
           welcomeMessage(senderID)
-          displayJago(senderID)
          break;
       case 'Points':
         pointStanding(senderID)
