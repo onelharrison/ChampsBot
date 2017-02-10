@@ -333,6 +333,52 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
+function generateSchoolTemp(school,gender){
+  var schoolName
+  var logo
+  var rank
+  var points
+  if(gender==="boys"){
+      firebase.datbase().ref('/boySchools/' + school).once('value').then(function(snapshot){
+        schoolName = snapshot.val().schoolName
+        logo = snapshot.val().logo
+        rank = snapshot.val().rank
+        points = snapshot.val().points
+      })
+  } else{
+    firebase.datbase().ref('/girlSchools/' + school).once('value').then(function(snapshot){
+      schoolName = snapshot.val().schoolName
+      logo = snapshot.val().logo
+      rank = snapshot.val().rank
+      points = snapshot.val().points
+    })
+  }
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "St Jago High School",
+            image_url: "http://i.imgur.com/9aex0JD.png",
+            buttons: [{
+              type: "postback",
+              title: "Follow",
+              payload:"followjago"
+            }],
+          }]
+        }
+      }
+    }
+  }
+
+
+}
+
 function displayJago(recipientId){
   var schoolName
   firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
@@ -363,62 +409,54 @@ function topSchools(recipientId){
         payload: {
           template_type: "generic",
           elements: [{
-            title: schools[0][0],
-            image_url: schools[0][1],
+            title: "St. Jago High School",
+            image_url: "http://i.imgur.com/58B5BYY.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[0][0]
+              payload:"follow" //+ schools[0][0]
             }],
           },{
-            title: schools[1][0],
-            image_url: schools[1][1],
+            title: "Kingston College",
+            image_url: "http://i.imgur.com/lv5b3Ja.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[1][0]
+              payload:"follow" //+ schools[1][0]
             }],
           },{
-            title: schools[2][0],
-            image_url: schools[2][1],
+            title: "Calabar High School",
+            image_url: "http://i.imgur.com/MC42Cw7.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[2][0]
+              payload:"follow" //+ schools[2][0]
             }],
           },{
-            title: schools[3][0],
-            image_url: schools[3][1],
+            title: "Excelsior High School",
+            image_url: "http://i.imgur.com/kVUhwFN.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[3][0]
+              payload:"follow" //+ schools[3][0]
             }],
           },{
-            title: schools[4][0],
-            image_url: schools[4][1],
+            title: "Hydel High School",
+            image_url: "http://i.imgur.com/VdVI3OU.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[4][0]
+              payload:"follow" //+ schools[4][0]
             }],
           },{
-            title: schools[5][0],
-            image_url: schools[5][1],
+            title: "St. Jago High School",
+            image_url: "http://i.imgur.com/58B5BYY.png",
             buttons: [{
               type:"payload",
               title:"Follow School",
-              payload:"follow" + schools[5][0]
+              payload:"follow" //+ schools[5][0]
             }],
-          },{
-            title: schools[6][0],
-            image_url: schools[6][1],
-            buttons: [{
-              type:"payload",
-              title:"Follow School",
-              payload:"follow" + schools[6][0]
-            }],
-          },]
+          }]
         }
       }
     }
