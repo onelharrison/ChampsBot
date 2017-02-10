@@ -387,7 +387,7 @@ function displayJago(recipientId){
 sendTextMessage(recipientId,schoolName)
 }
 function topSchools(recipientId){
-  var schools = new Array(6)
+  /*var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
       firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
           schools[i] = new Array(4)
@@ -398,7 +398,7 @@ function topSchools(recipientId){
 
 
     })
-  }
+  }*/
   var messageData = {
     recipient: {
       id: recipientId
