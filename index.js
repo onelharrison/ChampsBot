@@ -333,12 +333,12 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
-function generateSchoolTemp(school,gender){
+function generateSchoolTemp(recipientId){
   var schoolName
   var logo
   var rank
   var points
-  if(gender==="boys"){
+  /*if(gender==="boys"){
       firebase.datbase().ref('/boySchools/' + school).once('value').then(function(snapshot){
         schoolName = snapshot.val().schoolName
         logo = snapshot.val().logo
@@ -352,7 +352,7 @@ function generateSchoolTemp(school,gender){
       rank = snapshot.val().rank
       points = snapshot.val().points
     })
-  }
+  }*/
   var messageData = {
     recipient: {
       id: recipientId
@@ -481,7 +481,7 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  //sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
   topSchools(recipientId)
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
 
@@ -523,6 +523,9 @@ function welcomeMessage(recipientId){
       case 'points_standing':
         pointStanding(senderID)
         break;
+        case 'jago':
+          generateSchoolTemp(senderID)
+          break;
        default:
          sendTextMessage(senderID,"say start to see options")
      }
