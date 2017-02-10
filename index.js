@@ -509,6 +509,7 @@ function welcomeMessage(recipientId){
      // If we receive a text message, check to see if it matches a keyword
      switch (messageText) {
       case 'start':
+          displayJago(senderID)
           welcomeMessage(senderID)
           displayJago(senderID)
          break;
