@@ -129,11 +129,6 @@ request.post({
          type:"postback",
          title:"Invite Friends",
          payload:"invite"
-       },
-       {
-          type:"postack",
-          title:"Help",
-          payload:"help"
        }]
        },
    json: true
