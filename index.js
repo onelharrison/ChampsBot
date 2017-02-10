@@ -412,7 +412,7 @@ function topSchools(recipientId){
             title: "St. Jago High School",
             image_url: "http://i.imgur.com/58B5BYY.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[0][0]
             }],
@@ -420,7 +420,7 @@ function topSchools(recipientId){
             title: "Kingston College",
             image_url: "http://i.imgur.com/lv5b3Ja.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[1][0]
             }],
@@ -428,7 +428,7 @@ function topSchools(recipientId){
             title: "Calabar High School",
             image_url: "http://i.imgur.com/MC42Cw7.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[2][0]
             }],
@@ -436,7 +436,7 @@ function topSchools(recipientId){
             title: "Excelsior High School",
             image_url: "http://i.imgur.com/kVUhwFN.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[3][0]
             }],
@@ -444,7 +444,7 @@ function topSchools(recipientId){
             title: "Hydel High School",
             image_url: "http://i.imgur.com/VdVI3OU.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[4][0]
             }],
@@ -452,7 +452,7 @@ function topSchools(recipientId){
             title: "St. Jago High School",
             image_url: "http://i.imgur.com/58B5BYY.png",
             buttons: [{
-              type:"payload",
+              type:"postback",
               title:"Follow School",
               payload:"follow" //+ schools[5][0]
             }],
