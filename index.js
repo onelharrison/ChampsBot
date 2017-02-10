@@ -88,6 +88,17 @@
 });
 
 request.post({
+  method:'DELETE',
+  uri:'https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}',
+  qs:{setting_type:"call_to_actions",
+      thread_state:"existing_thread"
+    },
+    json:true
+}, (err,res,body) =>{
+  //Deal with response
+})
+
+request.post({
    method: 'POST',
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
    qs: {
@@ -156,29 +167,6 @@ request.post({
    }
  });
 
-function setMenu(){
-  var messageData = {
-    setting_type:"call_to_actions",
-    thread_settings:"existing_thread",
-    call_to_actions:[
-      {
-        type:"postback",
-        title:"tst",
-        payload:"points_standing"
-      },
-      {
-        type:"postback",
-        title:"Race Schedule",
-        payload:"schedule"
-      },
-      {
-        type:"postback",
-        title:"Records",
-        payload:"records"
-      }
-    ]
-  }
-}
 
 function pointStanding(recipientId){
   var messageData = {
