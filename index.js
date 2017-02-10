@@ -7,7 +7,7 @@
  const app = express()
  const firebase = require("firebase");
  var admin = require("firebase-admin");
-const auth =firebase.auth();
+//const auth =firebase.auth();
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
