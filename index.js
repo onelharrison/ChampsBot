@@ -463,6 +463,10 @@ function topSchools(recipientId){
   callSendAPI(messageData)
 }
 
+function schoolScore(recipientId,schoolName){
+  //generate score template
+}
+
 function inviteFriends(recipientId){
 
   var messageData = {
@@ -476,12 +480,10 @@ function inviteFriends(recipientId){
           template_type: "generic",
           elements: [{
             title: "Champs Bot",
-            subtitle:"Your digital guide to all things champs. Message e and get the latest updates"
+            subtitle:"Your digital guide to all things champs. Message e and get the latest updates",
             image_url: "http://i.imgur.com/BqhbJwm.png",
             buttons: [{
-              type: "postback",
-              title: "Follow",
-              payload:"followjago"
+              type: "element_share",
             }],
           }]
         }
