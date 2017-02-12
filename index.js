@@ -193,8 +193,8 @@ function defaultResponse(recipientId){
 
     ]
   }
-}
-callSendAPI(messageData)
+  }
+  callSendAPI(messageData)
   }
 
 function pointStanding(recipientId){
@@ -588,6 +588,9 @@ function receivedMessage(event) {
       case 'events':
         postSchedule(senderID)
         break;
+      case 'schedule':
+        postSchedule(senderID)
+      break;
       case 'jago':
           generateSchoolTemp(senderID)
           break;
