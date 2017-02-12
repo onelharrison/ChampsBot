@@ -198,7 +198,7 @@ callSendAPI(messageData)
   }
 
 function pointStanding(recipientId){
-  sendTextMessage(senderID,"Do you want boys or girls points?")
+  sendTextMessage(recipientId,"Do you want boys or girls points?")
   var messageData = {
     recipient: {
       id: recipientId
@@ -292,7 +292,7 @@ function topStanding(recipientID,team1,team2,team3,gender){
 }
 
 function postSchedule(recipientID){
-  sendTextMessage(senderID,"Select an event Day")
+  sendTextMessage(recipientID,"Select an event Day")
   //function for post the race schedule
   var messageData={
     recipient:{
@@ -527,7 +527,7 @@ function inviteFriends(recipientId){
     }
   }
   callSendAPI(messageData)
-  sendTextMessage(senderID,"Tap on the “Share” button to invite your friends")
+  sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
 }
 
 function followSchool(recipientId,payload){
@@ -588,13 +588,7 @@ function receivedMessage(event) {
       case 'events':
         postSchedule(senderID)
         break;
-      case 'Records':
-        newRecords(senderID)
-        break;
-      case 'points_standing':
-        pointStanding(senderID)
-        break;
-        case 'jago':
+      case 'jago':
           generateSchoolTemp(senderID)
           break;
        default:
