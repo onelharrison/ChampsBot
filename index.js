@@ -194,6 +194,7 @@ function defaultResponse(recipientId){
     ]
   }
 }
+callSendAPI(messageData)
   }
 
 function pointStanding(recipientId){
