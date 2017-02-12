@@ -61,11 +61,11 @@
  app.use(bodyParser.urlencoded({extended:false}))
  app.use(bodyParser.json())
 
- app.get('/',function(req,res){
+app.get('/',function(req,res){
    res.send('Champs Bot server page')
  })
 
- app.get('/webhook/',function(req, res){
+app.get('/webhook/',function(req, res){
    if(req.query['hub.verify_token']===token){
      res.send(req.query['hub.challenge'])
    }
@@ -83,9 +83,9 @@
             }]
         },
     json: true
-}, (err, res, body) => {
+  }, (err, res, body) => {
     // Deal with the response
-});
+  });
 
 request.post({
   method:'DELETE',
@@ -95,8 +95,8 @@ request.post({
     },
     json:true
 }, (err,res,body) =>{
-  //Deal with response
-})
+    //Deal with response
+  })
 
 request.post({
    method: 'POST',
@@ -133,10 +133,10 @@ request.post({
        },
    json: true
 }, (err, res, body) => {
-   // Deal with the response
-});
+// Deal with the response
+})
 
- app.post('/webhook', function (req, res) {
+app.post('/webhook', function (req, res) {
    var data = req.body;
 
    // Make sure this is a page subscription
@@ -375,8 +375,7 @@ function generateSchoolTemp(recipientId){
       }
     }
   }
-
-callSendAPI(messageData)
+  callSendAPI(messageData)
 }
 
 /*function displayJago(recipientId){
@@ -464,6 +463,38 @@ function topSchools(recipientId){
   callSendAPI(messageData)
 }
 
+function inviteFriends(recipientId){
+
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "Champs Bot",
+            subtitle:"Your digital guide to all things champs. Message e and get the latest updates"
+            image_url: "http://i.imgur.com/BqhbJwm.png",
+            buttons: [{
+              type: "postback",
+              title: "Follow",
+              payload:"followjago"
+            }],
+          }]
+        }
+      }
+    }
+  }
+  callSendAPI(messageData)
+}
+
+function followSchool(recipientId,payload){
+  var result =  payload.split("!")
+
+}
 
 
 // function for sending simple text messages
@@ -489,7 +520,7 @@ function welcomeMessage(recipientId){
 }
 
 //Funtion for handling recieved messages
- function receivedMessage(event) {
+function receivedMessage(event) {
    var senderID = event.sender.id
    var recipientID = event.recipient.id
    var timeOfMessage = event.timestamp
@@ -534,7 +565,7 @@ function welcomeMessage(recipientId){
    }
    // Putting a stub for now, we'll expand it in the following steps
    console.log("Message data: ", event.message)
-}
+ }
 
 function receivedPostback(event) {
   var senderID = event.sender.id;
@@ -566,6 +597,9 @@ function receivedPostback(event) {
       case 'events':
         postSchedule(senderID)
       break;
+      case 'invite':
+        inviteFriends(senderID)
+        break;
 
     }
   }
@@ -591,7 +625,7 @@ function receivedPostback(event) {
       console.error(error)
     }
   })
-}
+  }
 
 app.listen(app.get('port'), function(){
   console.log('running on port', app.get('port'))
