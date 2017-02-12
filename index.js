@@ -162,6 +162,38 @@ app.post('/webhook', function (req, res) {
    }
  });
 
+function defaultResponse(recipientId){
+  var messageData = recipient:{
+    id:recipientId
+  },
+  message:{
+    text:"Let’s get you back on track. I can help you with the following: \n - My Schools: schools you are following and alerts you’re subscribed to",
+    quick_replies:[
+      {
+        content_type:"postback",
+        title:"My Schools",
+        payload:"myschools"
+      },
+      {
+        content_type:"postback",
+        title:"Points",
+        payload:"points_standing"
+      },
+      {
+          content_type:"postback",
+          title:"News",
+          payload:"news"
+        },
+        {
+            content_type:"postback",
+            title:"Schedule",
+            payload:"events"
+          },
+
+    ]
+  }
+}
+}
 
 function pointStanding(recipientId){
   var messageData = {
@@ -560,7 +592,7 @@ function receivedMessage(event) {
           generateSchoolTemp(senderID)
           break;
        default:
-         sendTextMessage(senderID,"say start to see options")
+         defaultResponse(senderID)
      }
    } else if (messageAttachments) {
      sendTextMessage(senderID, "Message with attachment received")
