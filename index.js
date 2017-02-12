@@ -163,9 +163,10 @@ app.post('/webhook', function (req, res) {
  });
 
 function defaultResponse(recipientId){
-  var messageData = recipient:{
-    id:recipientId
-  },
+  var messageData = {
+    recipient:{
+      id:recipientId
+    },
   message:{
     text:"Let’s get you back on track. I can help you with the following: \n - My Schools: schools you are following and alerts you’re subscribed to",
     quick_replies:[
@@ -193,7 +194,7 @@ function defaultResponse(recipientId){
     ]
   }
 }
-}
+  }
 
 function pointStanding(recipientId){
   var messageData = {
