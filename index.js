@@ -171,22 +171,22 @@ function defaultResponse(recipientId){
     text:"Let’s get you back on track. I can help you with the following: \n - My Schools: schools you are following and alerts you’re subscribed to",
     quick_replies:[
       {
-        content_type:"postback",
+        content_type:"text",
         title:"My Schools",
-        payload:"myschools"
+        payload:"my schools"
       },
       {
-        content_type:"postback",
+        content_type:"text",
         title:"Points",
-        payload:"points_standing"
+        payload:"points"
       },
       {
-          content_type:"postback",
+          content_type:"text",
           title:"News",
           payload:"news"
         },
         {
-            content_type:"postback",
+            content_type:"text",
             title:"Schedule",
             payload:"events"
           },
@@ -198,6 +198,7 @@ callSendAPI(messageData)
   }
 
 function pointStanding(recipientId){
+  sendTextMessage(senderID,"Do you want boys or girls points?")
   var messageData = {
     recipient: {
       id: recipientId
@@ -291,6 +292,7 @@ function topStanding(recipientID,team1,team2,team3,gender){
 }
 
 function postSchedule(recipientID){
+  sendTextMessage(senderID,"Select an event Day")
   //function for post the race schedule
   var messageData={
     recipient:{
@@ -525,6 +527,7 @@ function inviteFriends(recipientId){
     }
   }
   callSendAPI(messageData)
+  sendTextMessage(senderID,"Tap on the “Share” button to invite your friends")
 }
 
 function followSchool(recipientId,payload){
@@ -578,10 +581,10 @@ function receivedMessage(event) {
       case 'start':
           welcomeMessage(senderID)
          break;
-      case 'Points':
+      case 'points':
         pointStanding(senderID)
         break;
-      case 'Events':
+      case 'events':
         postSchedule(senderID)
         break;
       case 'Records':
@@ -619,7 +622,6 @@ function receivedPostback(event) {
   if (payload){
     switch(payload){
       case 'points_standing':
-       sendTextMessage(senderID,"Do you want boys or girls points?")
         pointStanding(senderID)
         break;
       case 'top_boys':
@@ -632,12 +634,10 @@ function receivedPostback(event) {
         welcomeMessage(senderID)
         break;
       case 'events':
-      sendTextMessage(senderID,"Select an event Day")
         postSchedule(senderID)
       break;
       case 'invite':
         inviteFriends(senderID)
-        sendTextMessage(senderID,"Tap on the “Share” button to invite your friends")
         break;
 
     }
