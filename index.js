@@ -585,6 +585,7 @@ function receivedPostback(event) {
   if (payload){
     switch(payload){
       case 'points_standing':
+       sendTextMessage(senderID,"Do you want boys or girls points?")
         pointStanding(senderID)
         break;
       case 'top_boys':
@@ -597,10 +598,12 @@ function receivedPostback(event) {
         welcomeMessage(senderID)
         break;
       case 'events':
+      sendTextMessage(senderID,"Select an event Day")
         postSchedule(senderID)
       break;
       case 'invite':
         inviteFriends(senderID)
+        sendTextMessage(senderID,"Tap on the “Share” button to invite your friends")
         break;
 
     }
