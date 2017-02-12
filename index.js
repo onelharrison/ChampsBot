@@ -575,9 +575,10 @@ function receivedMessage(event) {
    var messageAttachments = message.attachments
 
    if (messageText) {
+     var simpleText = messageText.toLowerCase()
 
      // If we receive a text message, check to see if it matches a keyword
-     switch (messageText) {
+     switch (simpleText) {
       case 'start':
           welcomeMessage(senderID)
          break;
