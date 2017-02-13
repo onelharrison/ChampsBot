@@ -603,7 +603,9 @@ function receivedMessage(event) {
    // Putting a stub for now, we'll expand it in the following steps
    console.log("Message data: ", event.message)
  }
-function recievePostback(event){
+
+function receivePostback(event){
+
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
