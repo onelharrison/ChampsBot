@@ -604,7 +604,7 @@ function receivedMessage(event) {
    console.log("Message data: ", event.message)
  }
 
-function receivePostback(event){
+function receivedPostback(event){
 
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
