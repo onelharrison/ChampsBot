@@ -6,7 +6,7 @@
  const request = require('request')
  const app = express()
  const firebase = require("firebase");
- var admin = require("firebase-admin");
+ const admin = require("firebase-admin");
 //const auth =firebase.auth();
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
@@ -38,14 +38,14 @@
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
 
   // Initialize the app with a service account, granting admin privileges
-/*admin.initializeApp({
+admin.initializeApp({
     credential: admin.credential.cert({
-      projectId: "champs-d5b65",
-      clientEmail:"firebase-adminsdk-iltw1@champs-d5b65.iam.gserviceaccount.com",
-      privateKey:"-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDUQ+yDG5qeQ58y\nvn71YovE5c+9cXbsyQUf/ZwA1J/3fi69mCDDDLmEJ7DpHboG9ymAsJz24Q5Johj5\nWlVYyx25+p6hyNARVXOTVQv0n/SJIV9smDyLKOyEtpm3oCJTcxq5iIlJUn/maZJt\nrrS45N/lVPsolAnET9d2d5SwdESUjk1UO6vkGyCrgKAsr/18h0PpmmLr8Vt4lHOH\nJsrJ3r4GjQi2y8t83Qaev2qMySFBhC6bbILk+h/R9BNWMsyMQiObJTPKbzX8Kyeh\nQO6kHVjg99NxX4UmE2tivxO6R1XLoFaq5x16Rrc9TXow2vdBmddlA6XIdXs/1guF\nBJpgopuxAgMBAAECggEBAMuB59L3dzE/YfVzwCMhfSGkt5xImZ2BSSGXs6b0M/5E\nAyoRHXAD1iWHLE0EDCO7ehYAvizQLzOXbtw6qFL+QhzZ1JcGAb5sr+dUhabeaMPE\ntElYV8uPy9udehkcNWzOkZPJ/N3IdAmDtDjmZCxUevjTlg0ciZSme8v/8BWRE2Nc\noFIQavNXPngaZ1QJozRSe2+cPvTHZziVZ0wzEOiNryRzbvIZeNtEi3V/abxHqH8M\nt9EQEgPx195SGFGpcRV0EqWY8tv5dW5hsG3IhTpwIHMGTn0TpKmNzugLkZ7lgCbm\nJi795OqmKLgJ8WUoaDBVWM783CtJFRsB4nOoFK2BbrUCgYEA7yxBBBdRIxSD17qn\nYMvMT6mX9i1ZHn89IoyE+9lRGvlFgN5D+nREPoIorP7PJN+UQnIK/gfILNbzlSjM\naDv5EvFflomB8roXS6BWg0vB5H7NnbDSPqgfw1y+KVdy0sUBDh9py0HT1hZ7w7Wm\nPVtTAp7zq4MmIabDOnI/f+n9AGsCgYEA4zMJrnAeUzvsZw9Wj3k4JmJCX2BskeYJ\n4ofZgOTh0CMvPf9CUUPMeCIV6AOYfCIYozAZkygW3jq8eVq4I7U+6FAOwyL+6jxI\nj6ZALMru2+DFOwn9jTuudv+C5BPAbvqNjDKrbijnrxLeZwg7/DKMoJSkgVt9SC8e\nFIqYxhH8q1MCgYAF3kgaGZhcC/zQJjxFG7r/mWGpIKO3I9gUKO56X3Kl/se9ybZR\nRtkFz5u/4uCiPvocR0ANy5MVxpBjcITTaeVKmbGGuAkAM6CuslhtEEbJnHLfE5+U\n+fsNiBECYqrmkP7dodeurQbNke+ndaWGi98ViWDhLG6bFMRlgrgcI1mZ0QKBgQCr\n0Xsu2kd0tsqPHgBePFQEYybCrk8s/wTWtdn9KhrDpvghMJtcjaNh7pUWgzGcHsT3\nFHci3Jx+r3i9ZagACR9r3K9tT1fsmG5fhGDf/xAoZJGDloiTeGD2SUEZbv6GbyEA\nt4kBpBmiQujCjm2eyjOjdQX7dc8G+esLqczjbdLhVQKBgQDn5l75RhvZA+GoYZMe\nr/xX5l5ySa5YXfJe5ot6kFOYHBxBFWYkp8+Xmbg0fy746C5zMdmLsvswvMK/0k9q\nr2azQJUAgPIeRco2nirWqC8/xpsIgje2VG00xq9QxaiN7ly/wtENXVfBMvsrr4ZC\nv/lk5DpcYVX1peqn//PEZEiNew==\n-----END PRIVATE KEY-----\n",
+      projectId: "champsbot-a783e",
+      clientEmail:"firebase-adminsdk-hk865@champsbot-a783e.iam.gserviceaccount.com",
+      privateKey:"-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDk5AVlixaJv1gV\nP2PEVhyFFVf6E7EHKaRJKZIqQN//m4Wq2M0zGUGfR5pL3H7+4iWMazQ6BJZC+XEt\nVGd8Eec1GauRxTh6PJpmmPB3n2rl0tIH3NQaon5IJiuTB713fWRf+eoXuy4HBrjp\nCiEO6Wy66YFJeK9FP0/qQgmYedvhmmBgmGyeDH/uZ/+FS/wabHZPqbhUIgm0dGbC\nEcZeH7a/NMXozvkivnyvtgAYh3H1DSC+sgv2ODkrLnjeaY7jNOzCxyWE53HI9r0H\nzNjsnF0D4/9xA47aXePlDwcBFQ4g6IsKK7YenjkPAyrEBwj+zMjdZCLBUvVFwXsY\nMjrI8IwtAgMBAAECggEAJNNKyvuFtMPEOCbqtjvkesTkUqe4Y56ff+XgTkwBve4X\no1UeLopxtF6gxHPFOtzHjb/xtyPlyQC45MIfpCZ9PF3U7K7+VyxI6xjQF27ek/tH\nL1yoA2EBUDpT6GPmZ8MU0xwyPX8v+JFsTpICn5OOmsPWuSthh5KYGOhnAtEYP0N5\nOZ+hoT4Bgftt80fR/GABu1/JHY8rM1iN20EVxqWL77Ui2tmbv40EE+VkEWSqSPHg\noPtyW/Yt3oL6rxI5Zwi4K9eJ+vt49mnGhOVLRCjOvI6H6174YsLlPxsHsLxudV5h\ntnhaCTF3zU5h2IojlZVWMNZcTOwVNJ/lFGr5GFVMAQKBgQDzRNDdOLiAlkwj5Ovb\nmKkh8MwBI1hKQDjcDbmEE2KFqNBMJiRDmQOBtKClZ1IkjdG5fLfxvCtJZLUwrCh3\nvnAWKCLPn9bJvXzhUGh+V0FtLWyRrKjx4rI1FVEkS0P2H0I35wdmHSICEmuAJBFo\ngTrFkKsXotRBKz9+DwiPDv2/8QKBgQDw3pM7dzTacKgYpayG9d3Kk6kp2ljhMIxQ\nV4bZm0PtXdgtO5Do+1aq7zMSqToRoyYxlG1laNkIIoUZ6z1jcmkt5gL67qT0hvEx\nNiJPehBH472h+D3Gfc5zU9Bd9Qlw6/jleL+v63Ok8+VhbMd+T+cwmbkc6K7SYwb/\nQwsK0hKL/QKBgCrFx7+N0IrzYjHRd1LmFZ7dGtF8aHKtthGi7CJ30hPUKcOp1Sh5\nh+9PVgufDgdVVDG75w++2RGPfngvXPIo7sZGilBdN0PDaGipXaYRK3TJztQSOqZF\nCLZiqCCshyeIOXlgyqE+sBMTMAmYzeLFDhNcq2h9fbpzozdD52pX5W/RAoGAVo61\nfBYfcSwwzAKlWC58kHK1xKuJawsmMSzy8boBFAi4SbDxJzhC8dRZlygnDPWDISgE\nk/+0ll7JVAIcImOX9n2ErqYZsyHXBOc+Ny9XMG5f1BfAI1dMXFdPNqR6yxCRde0J\nfW9wNGPNF1Ce8/5Ex0tGoWPghww9FHgEPNQ3BAUCgYB4WpWSTMiOCJGswcLOJzzt\nelV01PCHMXKHEjB5NN6KDVT6KL2spIs2Fv7JwckAvEA0yuTkeI9JgP3qzno8ulMv\nxywRi/YjXO0iRZdwNeG78OUhSpgH+J9zGXltmhTRF3n8h+cFgeOm023j8u4Ritbx\nIyxg8hLnCrey4dQ2cIkUwA==\n-----END PRIVATE KEY-----\n",
     }),
-    databaseURL: "https://champs-d5b65.firebaseio.com"
-  });*/
+    databaseURL: "https://champsbot-a783e.firebaseio.com/"
+  });
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
 //  var db = firebase.database();
@@ -603,8 +603,7 @@ function receivedMessage(event) {
    // Putting a stub for now, we'll expand it in the following steps
    console.log("Message data: ", event.message)
  }
-
-function receivedPostback(event) {
+function recievePostbacks(event){
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
