@@ -48,7 +48,7 @@ admin.initializeApp({
   });
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
-//  var db = firebase.database();
+ var db = admin.database();
 /*  var ref = db.ref("restricted_access/secret_document");
   ref.once("value", function(snapshot) {
     console.log(snapshot.val());
@@ -414,13 +414,17 @@ function generateSchoolTemp(recipientId){
   callSendAPI(messageData)
 }
 
-/*function displayJago(recipientId){
+function displayJago(recipientId){
   var schoolName
-  firebase.database().ref('/boySchools/jago').once('value').then(function(snapshot) {
+  db.ref('/boySchools/').child('jago').set({
+    schoolName:"Jago High School"
+  })
+  db.ref('/boySchools/jago').once('value').then(function(snapshot) {
   schoolName = snapshot.val().schoolName;
-});
-sendTextMessage(recipientId,schoolName)
-}*/
+  });
+  sendTextMessage(recipientId,schoolName)
+}
+
 function topSchools(recipientId){
   /*var schools = new Array(6)
   for (var i = 0; i < schools.length; i++) {
@@ -535,6 +539,10 @@ function followSchool(recipientId,payload){
 
 }
 
+function generateUpdate(recipientId){
+  //generate update carosel with news
+}
+
 
 // function for sending simple text messages
 function sendTextMessage(recipientId, messageText) {
@@ -592,6 +600,7 @@ function receivedMessage(event) {
         postSchedule(senderID)
       break;
       case 'jago':
+          displayJago(senderID)
           generateSchoolTemp(senderID)
           break;
        default:
