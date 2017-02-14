@@ -601,7 +601,7 @@ function receivedMessage(event) {
       break;
       case 'jago':
           displayJago(senderID)
-          generateSchoolTemp(senderID)
+          //generateSchoolTemp(senderID)
           break;
        default:
          defaultResponse(senderID)
