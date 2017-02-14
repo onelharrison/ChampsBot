@@ -422,7 +422,8 @@ function displayJago(recipientId){
   db.ref('/boySchools/jago').once('value').then(function(snapshot) {
   schoolName = snapshot.val().schoolName;
   });
-  sendTextMessage(recipientId,schoolName)
+  //sendTextMessage(recipientId,schoolName)
+  console.log(schoolName);
 }
 
 function topSchools(recipientId){
