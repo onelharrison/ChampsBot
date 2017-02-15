@@ -439,11 +439,11 @@ function topSchools(recipientId,popSchools){
  for (var i = 0; i < popSchools.length; i++) {
      	 db.ref('/boySchools/' + popSchools[i]).on('value',function(snapshot){
 		  schools= new Array()
-		  schools[1][0] = snapshot.val().schoolName
-		  schools[1][1] = snapshot.val().logo
-		  schools[1][2] = snapshot.val().rank
-		  schools[1][3] = snapshot.val().points
-      schools[1][4] = snapshot.val().nickName
+		  schools[i][0] = snapshot.val().schoolName
+		  schools[i][1] = snapshot.val().logo
+		  schools[i][2] = snapshot.val().rank
+		  schools[i][3] = snapshot.val().points
+      schools[i][4] = snapshot.val().nickName
 		  //schools.push(school_details)
 	})
   }
@@ -457,15 +457,15 @@ function topSchools(recipientId,popSchools){
         payload: {
           template_type: "generic",
           elements: [{
-            title: schools[1][0],
-            image_url: schools[1][1],
+            title: schools[0][0],
+            image_url: schools[0][1],
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[1][4]
+              payload:"follow!" + schools[0][4]
             }],
           },
-          /*{
+          {
             title: schools[1][0],
             image_url: schools[1][1],
             buttons: [{
@@ -508,7 +508,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[5][4]
             }],
-          }*/]
+          }]
           }
         }
       }
