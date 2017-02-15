@@ -419,7 +419,7 @@ function displayJago(recipientId){
 /*  db.ref('/boySchools/').child('jago').set({
     schoolName:"Jago High School"
   })*/
-  db.ref('/boySchools/jago').once('value',function(snapshot) {
+  db.ref('/boySchools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName;
   });
   sendTextMessage(recipientId,schoolName)
