@@ -428,7 +428,7 @@ function displayJago(recipientId){
 
 function topSchools(recipientId){
   var schools = new Array();
-for (var i = 0; i < popSchools.length; i++) {
+ for (var i = 0; i < popSchools.length; i++) {
 
      	 db.ref('/boySchools/jago').on('value',function(snapshot) {
 		  var school_details = new Array()
@@ -439,8 +439,8 @@ for (var i = 0; i < popSchools.length; i++) {
       school_details[4] = snapshot.val().nickName
 		  schools.push(school_details);
 	});
-}
-  var messageData = {
+  }
+    var messageData = {
     recipient: {
       id: recipientId
     },
@@ -502,10 +502,10 @@ for (var i = 0; i < popSchools.length; i++) {
               payload:"follow!" + schools[5][4]
             }],
           }]
+          }
         }
       }
     }
-  }
   callSendAPI(messageData)
 }
 
@@ -653,7 +653,7 @@ function sendTextMessage(recipientId, messageText) {
 function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  topSchools(recipientId)
+  //topSchools(recipientId)
 }
 
 //Funtion for handling recieved messages
