@@ -436,6 +436,13 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
+  db.ref('/boySchools/').child('calabar').set({
+     schoolName:"Calabar High School",
+     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Calabar.jpg?alt=media&token=b8ade407-e13c-403f-9672-b33a879d0a51",
+     points: 21,
+     rank:23,
+     nickName:"calabar"
+   })
  //for (var i = 0; i < popSchools.length; i++) {
      db.ref('/boySchools/' + popSchools[2]).on('value',function(snapshot){
 		  schools= new Array()
