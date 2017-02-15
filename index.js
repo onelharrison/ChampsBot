@@ -561,8 +561,8 @@ function sendTextMessage(recipientId, messageText) {
 function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  var continue = topSchools(recipientId)
-  if(continue){
+  var cont = topSchools(recipientId)
+  if(cont){
       sendTextMessage(recipientId,"Choose from the list above or type in a school name")
   }
 
