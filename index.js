@@ -444,7 +444,7 @@ function topSchools(recipientId,popSchools){
       rank:0,
       nickName:"excelsior"
     })
- for (var i = 0; i < 2; i++) {
+ for (var i = 0; i < 3; i++) {
       db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
       var school_details= new Array()
        school_details[0] = snapshot.val().schoolName
@@ -482,7 +482,7 @@ function topSchools(recipientId,popSchools){
               payload:"follow!" + schools[1][4]
             }],
           },
-        /*  {
+         {
             title: schools[2][0],
             image_url: schools[2][1],
             buttons: [{
@@ -491,7 +491,7 @@ function topSchools(recipientId,popSchools){
               payload:"follow!" + schools[2][4]
             }],
           },
-          {
+          /*{
             title: schools[3][0],
             image_url: schools[3][1],
             buttons: [{
