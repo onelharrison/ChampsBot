@@ -443,16 +443,9 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/girlSchools/').child("hydel").set({
-     schoolName:"Hydel High Shcool",
-     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
-     points: 0,
-     rank:0,
-     nickName:"hydel"
-   })
    db.ref('/girlSchools/').child("excelsior").set({
       schoolName:"Excelsior High Shcool",
-      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
+      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Excelsior.jpg?alt=media&token=2083e477-bca9-4325-87e8-5c9a32cd7e5c",
       points: 0,
       rank:0,
       nickName:"excelsior"
