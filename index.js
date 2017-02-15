@@ -422,7 +422,7 @@ function displayJago(recipientId){
   db.ref('/boySchools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName;
   });
-  //sendTextMessage(recipientId,schoolName)
+  sendTextMessage(recipientId,schoolName)
   console.log(schoolName);
 }
 
