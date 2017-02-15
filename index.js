@@ -430,14 +430,14 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/girlSchools/').child("hydel").update({
+  db.ref('/girlSchools/').child("hydel").set({
      schoolName:"Hydel High Shcool",
      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
      points: 0,
      rank:0,
      nickName:"hydel"
    })
-   db.ref('/girlSchools/').child("excelsior").update({
+   db.ref('/girlSchools/').child("excelsior").set({
       schoolName:"Excelsior High Shcool",
       logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
       points: 0,
@@ -445,7 +445,6 @@ function topSchools(recipientId,popSchools){
       nickName:"excelsior"
     })
  for (var i = 0; i < 3; i++) {
-    if(i<3){
       db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
       var school_details= new Array()
        school_details[0] = snapshot.val().schoolName
@@ -455,7 +454,6 @@ function topSchools(recipientId,popSchools){
        school_details[4] = snapshot.val().nickName
        schools.push(school_details)
    })
- }
   }
     var messageData = {
     recipient: {
@@ -475,7 +473,7 @@ function topSchools(recipientId,popSchools){
               payload:"follow!" + schools[0][4]
             }],
           },
-          {
+          /*{
             title: schools[1][0],
             image_url: schools[1][1],
             buttons: [{
@@ -501,7 +499,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[3][4]
             }],
-          },/*
+          },
           {
             title: schools[4][0],
             image_url: schools[4][1],
