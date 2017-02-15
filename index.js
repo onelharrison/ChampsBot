@@ -430,7 +430,7 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/boySchools/').child('newschool').set({
+  db.ref('/boySchools/').child('newschool').update({
      schoolName:"Mikhail High",
      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/KC.jpg?alt=media&token=9faf0e8c-5b6c-40cd-b6f4-0e9806f59397",
      points: 0,
