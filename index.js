@@ -463,8 +463,8 @@ function topSchools(recipientId,popSchools){
     schools[i][2] = snapshot.val().rank
     schools[i][3] = snapshot.val().points
     schools[i][4] = snapshot.val().nickName
-    //schools.push(school_details)*/
-})
+    //schools.push(school_details)
+})*/
  }
   }
     var messageData = {
