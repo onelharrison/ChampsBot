@@ -437,17 +437,29 @@ function topSchools(recipientId,popSchools){
      rank:0,
      nickName:"newschool"
    })
- //for (var i = 0; i < popSchools.length; i++) {
-     db.ref('/boySchools/newschool').on('value',function(snapshot){
-		  schools= new Array()
-		  schools[0] = snapshot.val().schoolName
-		  schools[1] = snapshot.val().logo
-		  schools[2] = snapshot.val().rank
-		  schools[3] = snapshot.val().points
-      schools[4] = snapshot.val().nickName
-		  //schools.push(school_details)
-	})
-  //}
+ for (var i = 0; i < popSchools.length; i++) {
+    if(i<3){
+      db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
+       schools= new Array()
+       schools[i][0] = snapshot.val().schoolName
+       schools[i][1] = snapshot.val().logo
+       schools[i][2] = snapshot.val().rank
+       schools[i][3] = snapshot.val().points
+       schools[i][4] = snapshot.val().nickName
+       //schools.push(school_details)
+   })
+ }else {
+   db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
+    schools= new Array()
+    schools[i][0] = snapshot.val().schoolName
+    schools[i][1] = snapshot.val().logo
+    schools[i][2] = snapshot.val().rank
+    schools[i][3] = snapshot.val().points
+    schools[i][4] = snapshot.val().nickName
+    //schools.push(school_details)
+})
+ }
+  }
     var messageData = {
     recipient: {
       id: recipientId
@@ -458,15 +470,15 @@ function topSchools(recipientId,popSchools){
         payload: {
           template_type: "generic",
           elements: [{
-            title: schools[0],
-            image_url: schools[1],
+            title: schools[0][0],
+            image_url: schools[0][1],
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[4]
+              payload:"follow!" + schools[0][4]
             }],
           },
-          /*{
+          {
             title: schools[1][0],
             image_url: schools[1][1],
             buttons: [{
@@ -509,7 +521,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[5][4]
             }],
-          }*/]
+          }]
           }
         }
       }
