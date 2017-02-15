@@ -637,7 +637,7 @@ function receivedPostback(event){
         break;
       case 'get_started':
         welcomeMessage(senderID)
-        sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+        sendTextMessage(senderID,"Choose from the list above or type in a school name")
         break;
       case 'events':
         postSchedule(senderID)
