@@ -586,7 +586,7 @@ function receivedMessage(event) {
      switch (simpleText) {
       case 'start':
           welcomeMessage(senderID)
-          sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+          sendTextMessage(senderID,"Choose from the list above or type in a school name")
          break;
       case 'points':
         pointStanding(senderID)
