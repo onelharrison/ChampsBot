@@ -20,7 +20,7 @@
  var girlteam2 = ["Hydel High School","http://i.imgur.com/VdVI3OU.png","147"]
  var girlteam3 = ["St. Jago High School","http://i.imgur.com/58B5BYY.png","116"]
 
- var popSchools = ["jago","kingstonCollege","calabar","jago","hydel","excelsior"]
+ var popSchools = ["jago","kingstonCollege","calabar","hydel","excelsior"]
 
 //if (firebase.apps.length === 0) {
  /*var config = {
@@ -427,18 +427,19 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId){
-  /*var schools = new Array(6)
-  for (var i = 0; i < schools.length; i++) {
-      firebase.database().ref('/boySchools/' + popSchools[i]).once('value').then(function(snapshot) {
-          schools[i] = new Array(4)
-          schools[i][0] = snapshot.val().schoolName;
-          schools[i][1] = snapshot.val().logo;
-          schools[i][2] = snapshot.val().rank;
-          schools[i][3] = snapshot.val().points;
+  var schools = new Array();
+for (var i = 0; i < popSchools.length; i++) {
 
-
-    })
-  }*/
+     	 db.ref('/boySchools/' + popSchools[i]).on('value',function(snapshot) {
+		  var school_details = new Array()
+		  school_details[0] = snapshot.val().schoolName
+		  school_details[1] = snapshot.val().logo
+		  school_details[2] = snapshot.val().rank
+		  school_details[3] = snapshot.val().points
+      school_details[4] = snapshot.val().nickName
+		  schools.push(school_details);
+	});
+}
   var messageData = {
     recipient: {
       id: recipientId
@@ -449,52 +450,56 @@ function topSchools(recipientId){
         payload: {
           template_type: "generic",
           elements: [{
-            title: "St. Jago High School",
-            image_url: "http://i.imgur.com/58B5BYY.png",
+            title: schools[0][0],
+            image_url: schools[0][1],
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow" //+ schools[0][0]
+              payload:"follow!" + schools[0][4]
+            }],
+          },
+          {
+            title: schools[1][0],
+            image_url: schools[1][1],
+            buttons: [{
+              type:"postback",
+              title:"Follow School",
+              payload:"follow!" + schools[1][4]
+            }],
+          },
+          {
+            title: schools[2][0],
+            image_url: schools[2][1],
+            buttons: [{
+              type:"postback",
+              title:"Follow School",
+              payload:"follow!" + schools[2][4]
+            }],
+          },
+          {
+            title: schools[3][0],
+            image_url: schools[3][1],
+            buttons: [{
+              type:"postback",
+              title:"Follow School",
+              payload:"follow!" + schools[3][4]
+            }],
+          },
+          {
+            title: schools[4][0],
+            image_url: schools[4][1],
+            buttons: [{
+              type:"postback",
+              title:"Follow School",
+              payload:"follow!" + schools[4][4]
             }],
           },{
-            title: "Kingston College",
-            image_url: "http://i.imgur.com/lv5b3Ja.png",
+            title: schools[5][0],
+            image_url: schools[5][1],
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow" //+ schools[1][0]
-            }],
-          },{
-            title: "Calabar High School",
-            image_url: "http://i.imgur.com/MC42Cw7.png",
-            buttons: [{
-              type:"postback",
-              title:"Follow School",
-              payload:"follow" //+ schools[2][0]
-            }],
-          },{
-            title: "Excelsior High School",
-            image_url: "http://i.imgur.com/kVUhwFN.png",
-            buttons: [{
-              type:"postback",
-              title:"Follow School",
-              payload:"follow" //+ schools[3][0]
-            }],
-          },{
-            title: "Hydel High School",
-            image_url: "http://i.imgur.com/VdVI3OU.png",
-            buttons: [{
-              type:"postback",
-              title:"Follow School",
-              payload:"follow" //+ schools[4][0]
-            }],
-          },{
-            title: "St. Jago High School",
-            image_url: "http://i.imgur.com/58B5BYY.png",
-            buttons: [{
-              type:"postback",
-              title:"Follow School",
-              payload:"follow" //+ schools[5][0]
+              payload:"follow!" + schools[5][4]
             }],
           }]
         }
@@ -504,8 +509,91 @@ function topSchools(recipientId){
   callSendAPI(messageData)
 }
 
-function schoolScore(recipientId,schoolName){
+function schoolScore(recipientId,shortName){
   //generate score template
+  var schoolName
+  var logo
+  var rank
+  var points
+  var nickname
+  var follow
+  var followbtn
+  db.ref('/fans/' + recipientId ).on('value',function(snapshot){
+    follow = snapshot.val()
+  })
+  if (follow != null){
+    followbtn = "unfollow"
+  }else{
+    followbtn = "follow"
+  }
+
+  db.ref('/boySchools/' + shortName).on('value',function(snapshot) {
+  schoolName = snapshot.val().schoolName
+  logo = snapshot.val().logo
+  rank = snapshot.val().rank
+  points = snapshot.val().points
+
+  });
+  if(schoolName != null){
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: schoolName,
+              image_url:logo,
+              buttons: [{
+                type: "postback",
+                title: followbtn,
+                payload: followbtn +"!"+ nickname
+              }],
+            }]
+          }
+        }
+      }
+    }
+    callSendAPI(messageData)
+  }
+
+  db.ref('/girlSchools/' + shortName).on('value',function(snapshot) {
+  schoolName = snapshot.val().schoolName
+  logo = snapshot.val().logo
+  rank = snapshot.val().rank
+  points = snapshot.val().points
+
+  });
+  if(schoolName != null){
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: schoolName,
+              image_url:logo,
+              buttons: [{
+                type: "postback",
+                title: followbtn,
+                payload: followbtn +"!"+ nickname
+              }],
+            }]
+          }
+        }
+      }
+    }
+    callSendAPI(messageData)
+  }
+
+
 }
 
 function inviteFriends(recipientId){
@@ -536,6 +624,11 @@ function inviteFriends(recipientId){
 
 function followSchool(recipientId,payload){
   var result =  payload.split("!")
+  db.ref('/fans/').child(result[1]).set({
+    senderID : true
+  })
+  schoolScore(recipientId,result[1])
+
 
 }
 
