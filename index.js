@@ -436,17 +436,17 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
- for (var i = 0; i < popSchools.length; i++) {
-     	 db.ref('/boySchools/' + popSchools[i]).on('value',function(snapshot){
+ //for (var i = 0; i < popSchools.length; i++) {
+     db.ref('/boySchools/' + popSchools[0]).on('value',function(snapshot){
 		  schools= new Array()
-		  schools[i][0] = snapshot.val().schoolName
-		  schools[i][1] = snapshot.val().logo
-		  schools[i][2] = snapshot.val().rank
-		  schools[i][3] = snapshot.val().points
-      schools[i][4] = snapshot.val().nickName
+		  schools[0][0] = snapshot.val().schoolName
+		  schools[0][1] = snapshot.val().logo
+		  schools[0][2] = snapshot.val().rank
+		  schools[0][3] = snapshot.val().points
+      schools[0][4] = snapshot.val().nickName
 		  //schools.push(school_details)
 	})
-  }
+  //}
     var messageData = {
     recipient: {
       id: recipientId
