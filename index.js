@@ -424,18 +424,18 @@ function displayJago(recipientId){
     nickName:"jago"
   })*/
   db.ref('/boySchools/jago').on('value',function(snapshot) {
-  schoolName = snapshot.val().schoolName;
+  schoolName = snapshot.val().schoolName
   points = snapshot.val().points
   rank = snapshot.val().rank
   });
   sendTextMessage(recipientId,schoolName)
   sendTextMessage(recipientId,"" + points)
   sendTextMessage(recipientId,"" + rank)
-  console.log(schoolName);
+  console.log(schoolName)
 }
 
 function topSchools(recipientId){
-  var schools = new Array();
+  var schools = new Array()
  for (var i = 0; i < popSchools.length; i++) {
 
      	 db.ref('/boySchools/' + popSchools[i]).on('value',function(snapshot) {
@@ -445,8 +445,8 @@ function topSchools(recipientId){
 		  school_details[2] = snapshot.val().rank
 		  school_details[3] = snapshot.val().points
       school_details[4] = snapshot.val().nickName
-		  schools.push(school_details);
-	});
+		  schools.push(school_details)
+	})
   }
     var messageData = {
     recipient: {
