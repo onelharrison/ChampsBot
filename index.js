@@ -522,7 +522,7 @@ function inviteFriends(recipientId){
           elements: [{
             title: "Champs Bot",
             subtitle:"Your digital guide to all things champs. Message e and get the latest updates",
-            image_url: "./Assets/Share/bot_logo.jpg",
+            image_url: "gs://champsbot-a783e.appspot.com/bot_logo.jpg",
             buttons: [{
               type: "element_share",
             }],
