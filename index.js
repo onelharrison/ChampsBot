@@ -400,7 +400,7 @@ function generateSchoolTemp(recipientId){
           template_type: "generic",
           elements: [{
             title: "St Jago High School",
-            image_url: "http://i.imgur.com/9aex0JD.png",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad",
             buttons: [{
               type: "postback",
               title: "Follow",
