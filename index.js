@@ -448,22 +448,22 @@ function topSchools(recipientId,popSchools){
     if(i<3){
       db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
        schools= new Array()
-       schools[i][0] = snapshot.val().schoolName
-       schools[i][1] = snapshot.val().logo
-       schools[i][2] = snapshot.val().rank
-       schools[i][3] = snapshot.val().points
-       schools[i][4] = snapshot.val().nickName
-       //schools.push(school_details)
+       school_details[0] = snapshot.val().schoolName
+       school_details[1] = snapshot.val().logo
+       school_details[2] = snapshot.val().rank
+       school_details[3] = snapshot.val().points
+       school_details[4] = snapshot.val().nickName
+       schools.push(school_details)
    })
  }else {
-   db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
+   /*db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
     schools= new Array()
     schools[i][0] = snapshot.val().schoolName
     schools[i][1] = snapshot.val().logo
     schools[i][2] = snapshot.val().rank
     schools[i][3] = snapshot.val().points
     schools[i][4] = snapshot.val().nickName
-    //schools.push(school_details)
+    //schools.push(school_details)*/
 })
  }
   }
