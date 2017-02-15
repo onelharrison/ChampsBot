@@ -211,7 +211,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/bot_logo.jpg?alt=media&token=cb8ab096-1259-47f8-9c45-77a810cc66b2",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/boys.jpg?alt=media&token=9c64ce9e-6cde-4a10-82d1-c84813ee8fe6",
             buttons: [{
               type: "postback",
               title: "Top Boys",
