@@ -139,7 +139,7 @@ request.post({
    method: 'POST',
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
    qs: {
-       setting_type: 'greeting',
+       setting_type: "greeting",
        greeting:{
          text:"Hi {{user_first_name}}, I'm your personal champs assistant, I will provide you with school points, event schedule and updates for your favourite schools"
        }
@@ -148,7 +148,7 @@ request.post({
  }, (err, res, body) => {
    // Deal with the response
  });
- 
+
 app.post('/webhook', function (req, res) {
    var data = req.body;
 
