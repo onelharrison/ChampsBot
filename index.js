@@ -695,8 +695,9 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
+  sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you updated with the latest scores and updates.")
   topSchools(recipientId,popSchools)
+  setTimeout(sendTextMessage(recipientId,"Choose from the list above or type in a school name."),5000)
 }
 
 //Funtion for handling recieved messages
@@ -722,7 +723,6 @@ function receivedMessage(event) {
      switch (simpleText) {
       case 'start':
           welcomeMessage(senderID)
-          sendTextMessage(senderID,"Choose from the list above or type in a school name")
          break;
       case 'points':
         pointStanding(senderID)
