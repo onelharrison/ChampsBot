@@ -430,12 +430,12 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/boySchools/').child('newschool').update({
-     schoolName:"Mikhail High",
-     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/KC.jpg?alt=media&token=9faf0e8c-5b6c-40cd-b6f4-0e9806f59397",
+  db.ref('/girlSchools/').child('hydel').update({
+     schoolName:"Hydel High Shcool",
+     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
      points: 0,
      rank:0,
-     nickName:"newschool"
+     nickName:"hydel"
    })
  for (var i = 0; i < popSchools.length; i++) {
     if(i<3){
