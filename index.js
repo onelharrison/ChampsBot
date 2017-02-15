@@ -561,11 +561,6 @@ function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
   topSchools(recipientId)
-  var cont = true
-  if(cont == true){
-      sendTextMessage(recipientId,"Choose from the list above or type in a school name")
-  }
-
 }
 
 //Funtion for handling recieved messages
@@ -642,6 +637,7 @@ function receivedPostback(event){
         break;
       case 'get_started':
         welcomeMessage(senderID)
+        sendTextMessage(recipientId,"Choose from the list above or type in a school name")
         break;
       case 'events':
         postSchedule(senderID)
