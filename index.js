@@ -430,13 +430,20 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/girlSchools/').child('hydel').update({
+  db.ref('/girlSchools/').child("hydel").update({
      schoolName:"Hydel High Shcool",
      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
      points: 0,
      rank:0,
      nickName:"hydel"
    })
+   db.ref('/girlSchools/').child("excelsior").update({
+      schoolName:"Excelsior High Shcool",
+      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a",
+      points: 0,
+      rank:0,
+      nickName:"excelsior"
+    })
  for (var i = 0; i < popSchools.length; i++) {
     if(i<3){
       db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
