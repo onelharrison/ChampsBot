@@ -416,13 +416,13 @@ function generateSchoolTemp(recipientId){
 
 function displayJago(recipientId){
   var schoolName
- /*db.ref('/boySchools/').child('jago').set({
+ db.ref('/boySchools/').child('jago').set({
     schoolName:"Jago High School",
     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad",
     points: 321,
     rank:10,
     nickName:"jago"
-  })*/
+  })
   db.ref('/boySchools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   points = snapshot.val().points
