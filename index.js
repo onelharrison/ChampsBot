@@ -416,13 +416,13 @@ function generateSchoolTemp(recipientId){
 
 function displayJago(recipientId){
   var schoolName
- db.ref('/boySchools/').child('jago').set({
+ /*db.ref('/boySchools/').child('jago').set({
     schoolName:"Jago High School",
     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad",
     points: 321,
     rank:10,
     nickName:"jago"
-  })
+  })*/
   db.ref('/boySchools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   points = snapshot.val().points
@@ -436,7 +436,13 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-
+  db.ref('/boySchools/').child('calabar').set({
+     schoolName:"Calabar High School",
+     logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Calabar.jpg?alt=media&token=b8ade407-e13c-403f-9672-b33a879d0a51",
+     points: 21,
+     rank:23,
+     nickName:"calabar"
+   })
  //for (var i = 0; i < popSchools.length; i++) {
      db.ref('/boySchools/' + popSchools[2]).on('value',function(snapshot){
 		  schools= new Array()
