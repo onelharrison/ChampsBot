@@ -562,7 +562,7 @@ function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
   var cont = topSchools(recipientId)
-  if(cont){
+  if(cont == true){
       sendTextMessage(recipientId,"Choose from the list above or type in a school name")
   }
 
