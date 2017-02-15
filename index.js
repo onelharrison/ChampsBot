@@ -289,6 +289,7 @@ function topStanding(recipientID,team1,team2,team3,gender,gimage){
       }
   }
   callSendAPI(messageData);
+  return true
 }
 
 function postSchedule(recipientID){
@@ -509,7 +510,7 @@ function schoolScore(recipientId,schoolName){
 }
 
 function inviteFriends(recipientId){
-sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
+ sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
   var messageData = {
     recipient: {
       id: recipientId
@@ -560,9 +561,10 @@ function sendTextMessage(recipientId, messageText) {
 function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  topSchools(recipientId)
-  sendTextMessage(recipientId,"Choose from the list above or type in a school name")
-
+  var continue = topSchools(recipientId)
+  if(continue){
+      sendTextMessage(recipientId,"Choose from the list above or type in a school name")
+  }
 
 }
 
