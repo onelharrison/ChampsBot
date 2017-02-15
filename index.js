@@ -455,16 +455,6 @@ function topSchools(recipientId,popSchools){
        school_details[4] = snapshot.val().nickName
        schools.push(school_details)
    })
- }else {
-   /*db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
-    schools= new Array()
-    schools[i][0] = snapshot.val().schoolName
-    schools[i][1] = snapshot.val().logo
-    schools[i][2] = snapshot.val().rank
-    schools[i][3] = snapshot.val().points
-    schools[i][4] = snapshot.val().nickName
-    //schools.push(school_details)
-})*/
  }
   }
     var messageData = {
