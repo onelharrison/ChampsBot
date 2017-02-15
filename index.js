@@ -434,11 +434,11 @@ function displayJago(recipientId){
   console.log(schoolName)
 }
 
-function topSchools(recipientId){
+function topSchools(recipientId,popSchools){
   var schools = new Array()
  for (var i = 0; i < popSchools.length; i++) {
 
-     	 db.ref('/boySchools/jago').on('value',function(snapshot) {
+     	 db.ref('/boySchools/jago').on('value',function(snapshot){
 		  var school_details = new Array()
 		  school_details[0] = snapshot.val().schoolName
 		  school_details[1] = snapshot.val().logo
@@ -660,7 +660,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  topSchools(recipientId)
+  topSchools(recipientId,popSchools)
 }
 
 //Funtion for handling recieved messages
