@@ -511,7 +511,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[3][4]
             }],
-          },
+          },/*
           {
             title: schools[4][0],
             image_url: schools[4][1],
@@ -528,7 +528,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[5][4]
             }],
-          }]
+          }*/]
           }
         }
       }
