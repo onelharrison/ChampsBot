@@ -136,6 +136,16 @@ request.post({
 // Deal with the response
 })
 request.post({
+   method: 'DELETE',
+   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+   qs: {
+       setting_type: "greeting",
+       },
+   json: true
+ }, (err, res, body) => {
+   // Deal with the response
+ });
+request.post({
    method: 'POST',
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
    qs: {
