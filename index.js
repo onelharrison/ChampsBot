@@ -509,7 +509,7 @@ function schoolScore(recipientId,schoolName){
 }
 
 function inviteFriends(recipientId){
-
+sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
   var messageData = {
     recipient: {
       id: recipientId
@@ -532,7 +532,6 @@ function inviteFriends(recipientId){
     }
   }
   callSendAPI(messageData)
-  sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
 }
 
 function followSchool(recipientId,payload){
