@@ -437,7 +437,7 @@ function displayJago(recipientId){
 function topSchools(recipientId,popSchools){
   var schools = new Array()
  //for (var i = 0; i < popSchools.length; i++) {
-     db.ref('/boySchools/' + popSchools[0]).on('value',function(snapshot){
+     db.ref('/boySchools/' + popSchools[2]).on('value',function(snapshot){
 		  schools= new Array()
 		  schools[0] = snapshot.val().schoolName
 		  schools[1] = snapshot.val().logo
