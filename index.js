@@ -509,7 +509,7 @@ function schoolScore(recipientId,schoolName){
 }
 
 function inviteFriends(recipientId){
- sendTextMessage(receiptId,"Tap on the “Share” button to invite your friends")
+ sendTextMessage(recipientId,"Tap on the “Share” button to invite your friends")
   var messageData = {
     recipient: {
       id: recipientId
