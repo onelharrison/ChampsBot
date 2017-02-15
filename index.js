@@ -211,7 +211,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "http://i.imgur.com/BqhbJwm.png",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/bot_logo.jpg?alt=media&token=cb8ab096-1259-47f8-9c45-77a810cc66b2",
             buttons: [{
               type: "postback",
               title: "Top Boys",
@@ -225,7 +225,7 @@ function pointStanding(recipientId){
           }, {
             title: "Girl's Points Standings",
             subtitle: "Days 2 - #Champs2017\n after 8 finals",
-            image_url: "http://i.imgur.com/UGuW1oi.png",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls.jpg?alt=media&token=75d03ed0-ec14-43ea-97e9-562b0ae1fa7f",
             buttons: [{
               type: "postback",
               title: "Top Girls",
