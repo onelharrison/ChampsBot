@@ -211,7 +211,7 @@ function pointStanding(recipientId){
           elements: [{
             title: "Boy's Points Standing",
             subtitle: "Day 2 - #Champs2017\n after 8 finals",
-            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/boys.jpg?alt=media&token=9c64ce9e-6cde-4a10-82d1-c84813ee8fe6",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Boys_points.jpg?alt=media&token=40b2625e-816e-46f6-86fe-40e4c9efb5f4",
             buttons: [{
               type: "postback",
               title: "Top Boys",
@@ -225,7 +225,7 @@ function pointStanding(recipientId){
           }, {
             title: "Girl's Points Standings",
             subtitle: "Days 2 - #Champs2017\n after 8 finals",
-            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls.jpg?alt=media&token=75d03ed0-ec14-43ea-97e9-562b0ae1fa7f",
+            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls_points.jpg?alt=media&token=5fd1341e-6f9c-4097-80cf-165dc725d190",
             buttons: [{
               type: "postback",
               title: "Top Girls",
@@ -244,7 +244,7 @@ function pointStanding(recipientId){
   callSendAPI(messageData)
 }
 
-function topStanding(recipientID,team1,team2,team3,gender){
+function topStanding(recipientID,team1,team2,team3,gender,gimage){
   var messageData = {
     recipient:{
       id:recipientID
@@ -257,7 +257,7 @@ function topStanding(recipientID,team1,team2,team3,gender){
           top_element_style: "large",
           elements:[{
             title:gender + "'s Point Standing",
-            image_url:"http://i.imgur.com/BWfdgKC.png",
+            image_url:gimage,
             subtitle:"After 8 events",
         },
         {
@@ -634,10 +634,10 @@ function receivedPostback(event){
         pointStanding(senderID)
         break;
       case 'top_boys':
-        topStanding(senderID,boyteam1,boyteam2,boyteam3,"Boy")
+        topStanding(senderID,boyteam1,boyteam2,boyteam3,"Boy","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/boys.jpg?alt=media&token=9c64ce9e-6cde-4a10-82d1-c84813ee8fe6")
         break;
       case 'top_girls':
-        topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl")
+        topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls.jpg?alt=media&token=75d03ed0-ec14-43ea-97e9-562b0ae1fa7f")
         break;
       case 'get_started':
         welcomeMessage(senderID)
