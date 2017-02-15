@@ -289,7 +289,6 @@ function topStanding(recipientID,team1,team2,team3,gender,gimage){
       }
   }
   callSendAPI(messageData);
-  return true
 }
 
 function postSchedule(recipientID){
@@ -561,7 +560,8 @@ function sendTextMessage(recipientId, messageText) {
 function welcomeMessage(recipientId){
 
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  var cont = topSchools(recipientId)
+  topSchools(recipientId)
+  var cont = true
   if(cont == true){
       sendTextMessage(recipientId,"Choose from the list above or type in a school name")
   }
