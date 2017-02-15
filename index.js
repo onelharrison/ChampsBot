@@ -660,7 +660,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   sendTextMessage(recipientId,"Hi! I'm Champs Bot I can keep you updated with the latest champs scores and news")
-  //topSchools(recipientId)
+  topSchools(recipientId)
 }
 
 //Funtion for handling recieved messages
