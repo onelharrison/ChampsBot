@@ -430,15 +430,15 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  db.ref('/boySchools/').child('kingstonCollege').set({
-     schoolName:"Kingston College",
+  db.ref('/boySchools/').child('newschool').set({
+     schoolName:"Mikhail High",
      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/KC.jpg?alt=media&token=9faf0e8c-5b6c-40cd-b6f4-0e9806f59397",
      points: 0,
      rank:0,
-     nickName:"kingstonCollege"
+     nickName:"newschool"
    })
  //for (var i = 0; i < popSchools.length; i++) {
-     db.ref('/boySchools/' + popSchools[1]).on('value',function(snapshot){
+     db.ref('/boySchools/newschool').on('value',function(snapshot){
 		  schools= new Array()
 		  schools[0] = snapshot.val().schoolName
 		  schools[1] = snapshot.val().logo
