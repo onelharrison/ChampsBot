@@ -444,7 +444,7 @@ function topSchools(recipientId,popSchools){
       rank:0,
       nickName:"excelsior"
     })
- for (var i = 0; i < popSchools.length; i++) {
+ for (var i = 0; i < 3; i++) {
     if(i<3){
       db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
        schools= new Array()
