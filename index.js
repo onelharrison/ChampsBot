@@ -695,9 +695,9 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you updated with the latest scores and updates.")
+  sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
   topSchools(recipientId,popSchools)
-  setTimeout(sendTextMessage(recipientId,"Choose from the list above or type in a school name."),5000)
+  setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},5000)
 }
 
 //Funtion for handling recieved messages
