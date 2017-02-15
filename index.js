@@ -416,9 +416,9 @@ function generateSchoolTemp(recipientId){
 
 function displayJago(recipientId){
   var schoolName
-  db.ref('/boySchools/').child('jago').set({
+/*  db.ref('/boySchools/').child('jago').set({
     schoolName:"Jago High School"
-  })
+  })*/
   db.ref('/boySchools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName;
   });
