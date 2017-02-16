@@ -64,6 +64,7 @@ function testFeed(){
 
   while (item = stream.read()) {
     console.log(item);
+    console.log("IT WORKED!!!!!!!!!!")
   }
 })
 }
@@ -217,6 +218,7 @@ app.post('/webhook', function (req, res) {
      res.sendStatus(200);
    }
  });
+
 
 function defaultResponse(recipientId){
   var messageData = {
