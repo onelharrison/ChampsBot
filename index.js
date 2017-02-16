@@ -397,6 +397,7 @@ function generateSchoolTemp(recipientId,nickName){
   var logo
   var rank
   var points
+  console.log(nickName)
     db.ref('/test/').child(nickName).set(true)
     db.ref('/boySchools/' + nickName).on('value', function(snapshot){
     schoolName = snapshot.val().schoolName
