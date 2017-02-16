@@ -686,12 +686,11 @@ function mySchool(recipientId){
   if(schls!= null){
     for (var i = 0; i < schls.length; i++) {
       generateSchoolTemp(recipientId,schls[1])
-    }else {
-
-          sendTextMessage(recipientId,"You’re not following any schools yet.")
-          topSchools(recipientId,popSchools)
-          setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
     }
+  }else{
+        sendTextMessage(recipientId,"You’re not following any schools yet.")
+        topSchools(recipientId,popSchools)
+        setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
   }
 }
 // function for sending simple text messages
