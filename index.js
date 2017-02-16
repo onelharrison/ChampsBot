@@ -675,8 +675,8 @@ function inviteFriends(recipientId){
 function followSchool(recipientId,payload){
   var result =  payload.split("!")
   if(result[0] === "follow"){
-    db.ref('/fans/').child(result[1]).set({
-      senderID : true
+    db.ref('/fans/' + result[1]).child(recipientId).set({
+      true
     })
     schoolScore(recipientId,result[1])
   }else if(result[0] === "unfollow") {
