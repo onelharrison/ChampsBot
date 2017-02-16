@@ -459,9 +459,9 @@ function topSchools(recipientId,popSchools){
       points: 0,
       rank:0,
       nickName:"excelsior"
-    })
- for (var i = 0; i < 5; i++) {
-   if(i < 3){
+     })
+  for (var i = 0; i < 5; i++) {
+    if(i < 3){
      db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
      var school_details= new Array()
       school_details[0] = snapshot.val().schoolName
@@ -471,7 +471,7 @@ function topSchools(recipientId,popSchools){
       school_details[4] = snapshot.val().nickName
       schools.push(school_details)
   })
-}else {
+ }else {
   db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
   var school_details= new Array()
    school_details[0] = snapshot.val().schoolName
@@ -480,8 +480,8 @@ function topSchools(recipientId,popSchools){
    school_details[3] = snapshot.val().points
    school_details[4] = snapshot.val().nickName
    schools.push(school_details)
-})
-}
+  })
+  }
 
   }
     var messageData = {
@@ -553,13 +553,12 @@ function topSchools(recipientId,popSchools){
   callSendAPI(messageData)
 }
 
-function schoolScore(recipientId,shortName){
+function schoolScore(recipientId,nickName){
   //generate score template
   var schoolName
   var logo
   var rank
   var points
-  var nickname
   var follow
   var followbtn
   db.ref('/fans/' + recipientId ).on('value',function(snapshot){
@@ -571,7 +570,7 @@ function schoolScore(recipientId,shortName){
     followbtn = "follow"
   }
 
-  db.ref('/boySchools/' + shortName).on('value',function(snapshot) {
+  db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   logo = snapshot.val().logo
   rank = snapshot.val().rank
@@ -590,6 +589,7 @@ function schoolScore(recipientId,shortName){
             template_type: "generic",
             elements: [{
               title: schoolName,
+              subtitle: " Points: " + points,
               image_url:logo,
               buttons: [{
                 type: "postback",
@@ -604,7 +604,7 @@ function schoolScore(recipientId,shortName){
     callSendAPI(messageData)
   }
 
-  db.ref('/girlSchools/' + shortName).on('value',function(snapshot) {
+  db.ref('/girlSchools/' + nickName).on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   logo = snapshot.val().logo
   rank = snapshot.val().rank
@@ -623,6 +623,7 @@ function schoolScore(recipientId,shortName){
             template_type: "generic",
             elements: [{
               title: schoolName,
+              subtitle: "Points : " + points,
               image_url:logo,
               buttons: [{
                 type: "postback",
@@ -668,12 +669,14 @@ function inviteFriends(recipientId){
 
 function followSchool(recipientId,payload){
   var result =  payload.split("!")
-  db.ref('/fans/').child(result[1]).set({
-    senderID : true
-  })
-  schoolScore(recipientId,result[1])
-
-
+  if(result[0] === "follow"){
+    db.ref('/fans/').child(result[1]).set({
+      senderID : true
+    })
+    schoolScore(recipientId,result[1])
+  }else if(result[0] === "unfollow") {
+    db.ref('/fans/' + result[1]).child(senderID).remove()
+  }
 }
 
 function generateUpdate(recipientId){
@@ -781,6 +784,8 @@ function receivedPostback(event){
       case 'invite':
         inviteFriends(senderID)
         break;
+        default:
+        followSchool(senderID,payload)
 
     }
   }
