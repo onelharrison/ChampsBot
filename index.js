@@ -609,12 +609,12 @@ console.log(nickName)
   }
 
   db.ref('/girlSchools/' + nickName).on('value',function(snapshot) {
-    if (snapshot.val().schoolName!= null){
+  /*  if (snapshot.val().schoolName!= null){
       schoolName = snapshot.val().schoolName
       logo = snapshot.val().logo
       rank = snapshot.val().rank
       points = snapshot.val().points
-    }
+    }*/
 
 
   });
