@@ -686,7 +686,7 @@ function generateUpdate(recipientId){
 function mySchool(recipientId){
   var schls = new Array()
   try {
-    db.ref('/users/'  + recipientId ).on('child_added',function(snapshot) {
+    db.ref('/users/'  + recipientId ).on('value',function(snapshot) {
 
     schls = snapshot.key
     })
@@ -698,7 +698,7 @@ function mySchool(recipientId){
   }
   if(schls!= null){
     for (var i = 0; i < schls.length; i++) {
-      generateSchoolTemp(recipientId,schls)
+      generateSchoolTemp(recipientId,schls[1])
     }
   }
 }
