@@ -594,7 +594,7 @@ function schoolScore(recipientId,nickName){
               buttons: [{
                 type: "postback",
                 title: followbtn,
-                payload: followbtn +"!"+ nickname
+                payload: followbtn +"!"+ nickName
               }],
             }]
           }
@@ -628,7 +628,7 @@ function schoolScore(recipientId,nickName){
               buttons: [{
                 type: "postback",
                 title: followbtn,
-                payload: followbtn +"!"+ nickname
+                payload: followbtn +"!"+ nickName
               }],
             }]
           }
