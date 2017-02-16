@@ -9,7 +9,7 @@
  const admin = require("firebase-admin");
  const FeedParser = require('feedparser')
 
- var feedReq = request('http://gracechamps.com/feed/')
+ var feedReq = request('http://rss.cnn.com/rss/edition.rss')
  var feedparser = new FeedParser()
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
