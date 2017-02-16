@@ -7,7 +7,10 @@
  const app = express()
  const firebase = require("firebase");
  const admin = require("firebase-admin");
-//const auth =firebase.auth();
+ const FeedParser = require('feedparser')
+
+ var feedReq = request('http://gracechamps.com/feed/')
+ var feedparser = new FeedParser([options])
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
@@ -33,7 +36,36 @@
   firebase.initializeApp(config);
   console.log("initializeApp")
 //}*/
+feedReq.on('error', function (error) {
+// handle any request errors
+})
 
+
+feedReq.on('response', function (res) {
+  var stream = this; // `this` is `req`, which is a stream
+
+  if (res.statusCode !== 200) {
+    this.emit('error', new Error('Bad status code'));
+  }
+  else {
+    stream.pipe(feedparser);
+  }
+});
+
+feedparser.on('error', function (error) {
+  // always handle errors
+})
+
+feedparser.on('readable', function () {
+  // This is where the action is!
+  var stream = this; // `this` is `feedparser`, which is a stream
+  var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
+  var item;
+
+  while (item = stream.read()) {
+    console.log(item);
+  }
+})
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
 
