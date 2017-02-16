@@ -686,8 +686,8 @@ function generateUpdate(recipientId){
 function mySchool(recipientId){
   var schls = new Array()
   try {
-    db.ref('/users/'  + recipientId ).on('value',function(snapshot) {
-    schls = snapshot.key()
+    db.ref('/users/'  + recipientId ).on('child',function(snapshot) {
+    schls = snapshot.key
     })
   } catch (e) {
     console.log(e)
