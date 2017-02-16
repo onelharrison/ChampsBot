@@ -446,13 +446,6 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-   db.ref('/girlSchools/').child("excelsior").set({
-      schoolName:"Excelsior High Shcool",
-      logo:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Excelsior.jpg?alt=media&token=2083e477-bca9-4325-87e8-5c9a32cd7e5c",
-      points: 0,
-      rank:0,
-      nickName:"excelsior"
-     })
   for (var i = 0; i < 5; i++) {
     if(i < 3){
      db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
@@ -686,16 +679,18 @@ function generateUpdate(recipientId){
 function mySchool(recipientId){
   var schls = new Array()
 
-    db.ref('/users/'  + recipientId ).on('child_moved',function(snapshot) {
+    db.ref('/users/'  + recipientId ).on('child_added',function(snapshot) {
     schls = snapshot.key
     })
 
-    sendTextMessage(recipientId,"You’re not following any schools yet.")
-    topSchools(recipientId,popSchools)
-    setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
   if(schls!= null){
     for (var i = 0; i < schls.length; i++) {
       generateSchoolTemp(recipientId,schls[1])
+    }else {
+
+          sendTextMessage(recipientId,"You’re not following any schools yet.")
+          topSchools(recipientId,popSchools)
+          setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
     }
   }
 }
