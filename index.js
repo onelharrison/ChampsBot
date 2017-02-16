@@ -566,7 +566,7 @@ function schoolScore(recipientId,nickName){
   })
 
   followbtn= "unfollow"
-console.log(nickName)
+  console.log(nickName)
 
   db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
   if (snapshot.val().schoolName!= null){
