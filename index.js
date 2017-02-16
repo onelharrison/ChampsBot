@@ -802,7 +802,7 @@ function receivedPostback(event){
         inviteFriends(senderID)
         break;
       case 'myschools':
-        mySchool(recipientId)
+        mySchool(senderID)
         break;
         default:
         followSchool(senderID,payload)
