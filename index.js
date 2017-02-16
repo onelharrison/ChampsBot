@@ -392,26 +392,19 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
-function generateSchoolTemp(recipientId){
+function generateSchoolTemp(recipientId,nickName){
   var schoolName
   var logo
   var rank
   var points
-  /*if(gender==="boys"){
-      firebase.datbase().ref('/boySchools/' + school).once('value').then(function(snapshot){
-        schoolName = snapshot.val().schoolName
-        logo = snapshot.val().logo
-        rank = snapshot.val().rank
-        points = snapshot.val().points
-      })
-  } else{
-    firebase.datbase().ref('/girlSchools/' + school).once('value').then(function(snapshot){
-      schoolName = snapshot.val().schoolName
-      logo = snapshot.val().logo
-      rank = snapshot.val().rank
-      points = snapshot.val().points
-    })
-  }*/
+
+  db.ref('/boySchools/' + nickName).on('value', function(snapshot){
+    schoolName = snapshot.val().schoolName
+    points = snapshot.val().points
+    rank = snapshot.val().rank
+    logo = snapshot.val().logo
+  })
+
   var messageData = {
     recipient: {
       id: recipientId
@@ -422,12 +415,12 @@ function generateSchoolTemp(recipientId){
         payload: {
           template_type: "generic",
           elements: [{
-            title: "St Jago High School",
-            image_url: "https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad",
+            title: schoolName,
+            image_url: logo,
             buttons: [{
               type: "postback",
-              title: "Follow",
-              payload:"followjago"
+              title: "unfollow",
+              payload:"unfollow!" + nickName
             }],
           }]
         }
@@ -565,7 +558,7 @@ function schoolScore(recipientId,nickName){
     follow = snapshot.val()
   })
 
-  followbtn= "unfollow"
+  followbtn = "unfollow"
   console.log(nickName)
 
   db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
@@ -676,10 +669,13 @@ function followSchool(recipientId,payload){
   var result =  payload.split("!")
   if(result[0] === "follow"){
     db.ref('/fans/' + result[1]).child(recipientId).set(true)
+    db.ref('/users/' + recipientId).child(result[1]).set(true)
     schoolScore(recipientId,result[1])
   }else if(result[0] === "unfollow") {
     db.ref('/fans/' + result[1]).child(recipientId).remove()
+    db.ref('/users/' + recipientId).child(result[1]).remove()
     sendTextMessage(recipientId,"You are no longer following this school")
+    mySchool(recipientId)
   }
 }
 
@@ -687,7 +683,24 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
-
+function mySchool(recipientId){
+  var schls = new Array()
+  try {
+    db.ref('/users/'  + recipientId ).on('child_added',function(snapshot) {
+    schls = snapshot.key
+    })
+  } catch (e) {
+    console.log(e)
+    sendTextMessage(recipientId,"You’re not following any schools yet.")
+    topSchools(recipientId,popSchools)
+    setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
+  }
+  if(schls!= null){
+    for (var i = 0; i < schls.length; i++) {
+      generateSchoolTemp(recipientId,schls[i])
+    }
+  }
+}
 // function for sending simple text messages
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
@@ -787,6 +800,9 @@ function receivedPostback(event){
       break;
       case 'invite':
         inviteFriends(senderID)
+        break;
+      case 'myschools':
+        mySchool(recipientId)
         break;
         default:
         followSchool(senderID,payload)
