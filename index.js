@@ -569,7 +569,7 @@ function schoolScore(recipientId,nickName){
   }else{
     followbtn = "follow"
   }
-
+console.log(nickName)
   db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   logo = snapshot.val().logo
