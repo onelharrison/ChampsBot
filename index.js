@@ -688,7 +688,8 @@ function generateUpdate(recipientId){
 function mySchool(recipientId){
   var schls = new Array()
   try {
-    db.ref('/users/'  + recipientId ).orderByKey().on('child_added',function(snapshot) {
+    db.ref('/users/'  + recipientId ).on('child_added',function(snapshot) {
+
     schls = snapshot.key
     })
   } catch (e) {
@@ -699,7 +700,7 @@ function mySchool(recipientId){
   }
   if(schls!= null){
     for (var i = 0; i < schls.length; i++) {
-      generateSchoolTemp(recipientId,schls[i])
+      generateSchoolTemp(recipientId,schls)
     }
   }
 }
