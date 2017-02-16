@@ -55,8 +55,8 @@ feedReq.on('response', function (res) {
 feedparser.on('error', function (error) {
   // always handle errors
 })
-
-feedparser.on('readable', function () {
+function testFeed(){
+  feedparser.on('readable', function () {
   // This is where the action is!
   var stream = this; // `this` is `feedparser`, which is a stream
   var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
@@ -66,6 +66,7 @@ feedparser.on('readable', function () {
     console.log(item);
   }
 })
+}
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
 
@@ -766,6 +767,9 @@ function receivedMessage(event) {
 
      // If we receive a text message, check to see if it matches a keyword
      switch (simpleText) {
+       case 'testfeed':
+         testFeed()
+         break;
       case 'start':
           welcomeMessage(senderID)
          break;
