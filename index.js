@@ -570,11 +570,14 @@ function schoolScore(recipientId,nickName){
     followbtn = "follow"
   }
 console.log(nickName)
+
   db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
-  schoolName = snapshot.val().schoolName
-  logo = snapshot.val().logo
-  rank = snapshot.val().rank
-  points = snapshot.val().points
+  if (snapshot.val().schoolName!= null){
+    schoolName = snapshot.val().schoolName
+    logo = snapshot.val().logo
+    rank = snapshot.val().rank
+    points = snapshot.val().points
+  }
 
   });
   if(schoolName != null){
@@ -605,10 +608,13 @@ console.log(nickName)
   }
 
   db.ref('/girlSchools/' + nickName).on('value',function(snapshot) {
-  schoolName = snapshot.val().schoolName
-  logo = snapshot.val().logo
-  rank = snapshot.val().rank
-  points = snapshot.val().points
+    if (snapshot.val().schoolName!= null){
+      schoolName = snapshot.val().schoolName
+      logo = snapshot.val().logo
+      rank = snapshot.val().rank
+      points = snapshot.val().points
+    }
+
 
   });
   if(schoolName != null){
