@@ -687,7 +687,6 @@ function mySchool(recipientId){
   var schls = new Array()
   try {
     db.ref('/users/'  + recipientId ).on('value',function(snapshot) {
-
     schls = snapshot.key
     })
   } catch (e) {
