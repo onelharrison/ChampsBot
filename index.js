@@ -605,6 +605,7 @@ console.log(nickName)
       }
     }
     callSendAPI(messageData)
+    break;
   }
 
   db.ref('/girlSchools/' + nickName).on('value',function(snapshot) {
@@ -642,6 +643,7 @@ console.log(nickName)
       }
     }
     callSendAPI(messageData)
+    break;
   }
 
 
