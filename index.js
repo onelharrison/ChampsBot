@@ -680,7 +680,8 @@ function followSchool(recipientId,payload){
     })
     schoolScore(recipientId,result[1])
   }else if(result[0] === "unfollow") {
-    db.ref('/fans/' + result[1]).child(senderID).remove()
+    db.ref('/fans/' + result[1]).child(recipientId).remove()
+    sendTextMessage(recipientId,"You are no longer following this school")
   }
 }
 
