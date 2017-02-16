@@ -565,11 +565,6 @@ function schoolScore(recipientId,nickName){
     follow = snapshot.val()
   })
 
-  if (follow != null){
-    followbtn = "unfollow"
-  }else{
-    followbtn = "follow"
-  }
   followbtn= "unfollow"
 console.log(nickName)
 
