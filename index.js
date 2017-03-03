@@ -759,7 +759,7 @@ function askAgent(message,recipientId){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
-   var text = response.fulfillment.speech
+   var text = response.speech
    sendTextMessage(text,recipientId)
     console.log(response);
  });
