@@ -759,8 +759,8 @@ function askAgent(message,recipientId){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
-   var result = JSON.parse(response)
-   var text = response.fulfillment.speech
+   var parseResponse = JSON.parse(response)
+   var text = parseResponse.result.fulfillment.speech
    sendTextMessage(text,recipientId)
     console.log(response);
  });
