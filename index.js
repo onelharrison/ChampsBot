@@ -9,6 +9,12 @@
  const admin = require("firebase-admin");
  const FeedParser = require('feedparser')
 
+ var apiai= require('apiai')
+ const agentapp= apiai("e3c7e92607ec4caca07cfb4c50990954")
+
+ var options = {
+     sessionId: 'champsMessenId'
+ }
  var feedReq = request('http://rss.cnn.com/rss/edition.rss')
  var feedparser = new FeedParser()
 
@@ -129,6 +135,7 @@ request.post({
     },
     json:true
 }, (err,res,body) =>{
+    console.log("error deleting previous thread");
     //Deal with response
   })
 
@@ -748,6 +755,20 @@ function welcomeMessage(recipientId){
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
 }
 
+function askAgent(message,recipientId){
+  var request = agentapp.textRequest(message,options);
+
+ request.on('response', function(response) {
+    console.log(response);
+ });
+
+ request.on('error', function(error) {
+    console.log(error);
+ });
+
+ request.end();
+}
+
 //Funtion for handling recieved messages
 function receivedMessage(event) {
    var senderID = event.sender.id
@@ -789,6 +810,7 @@ function receivedMessage(event) {
           generateSchoolTemp(senderID)
           break;
        default:
+       askAgent(simpleText)
          defaultResponse(senderID)
      }
    } else if (messageAttachments) {
