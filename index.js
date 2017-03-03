@@ -759,6 +759,8 @@ function askAgent(message,recipientId){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
+   var text = response.fulfillment.speech
+   sendTextMessage(text,recipientId)
     console.log(response);
  });
 
@@ -811,7 +813,7 @@ function receivedMessage(event) {
           break;
        default:
        askAgent(simpleText)
-         defaultResponse(senderID)
+      //defaultResponse(senderID)
      }
    } else if (messageAttachments) {
      sendTextMessage(senderID, "Message with attachment received")
