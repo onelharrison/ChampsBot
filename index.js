@@ -43,7 +43,7 @@
   console.log("initializeApp")
 //}*/
 feedReq.on('error', function (error) {
-// handle any request errors
+  // handle any request errors
 })
 
 
@@ -750,7 +750,8 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function welcomeMessage(recipientId){
-  sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
+  //sendTextMessage(recipientId,"")
+  setTimeout(function(){sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")},1500)
   topSchools(recipientId,popSchools)
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
 }
