@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Points</title>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrABjTgsewVKiYHhenGhmqld9gjeonP1o",
+    authDomain: "champsbot-a783e.firebaseapp.com",
+    databaseURL: "https://champsbot-a783e.firebaseio.com",
+    storageBucket: "champsbot-a783e.appspot.com",
+    messagingSenderId: "249670934233"
+  };
+  firebase.initializeApp(config);
+</script>
 </head>
 <body>
-    <h1>Points</h1>
+    <h1>Schools</h1>
     <form action="" method="">
         <lable for="nickName">nickName:</lable>
         <input id="nickName" name="nickName" type="text" class="" placeholder="nickname" required>
@@ -20,10 +34,10 @@
 
         <lable for="gender">Gender:</lable>
         <input id="gender" name="gender" type="number" class="" placeholder="3" required>
-        
-        <input type="submit" value="SUBMIT">
-    </form>
 
+        <input type="submit" onclick="addSchool()" value="SUBMIT">
+    </form>
+<script src="scripts/app.js"></script>
 
 </body>
 </html>
