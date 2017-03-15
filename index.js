@@ -102,7 +102,7 @@ admin.initializeApp({
  app.use(bodyParser.json())
 
 app.get('/',function(req,res){
-   res.send('Champs Bot server page')
+   displaySchoolForm(res)
  })
 
 app.get('/webhook/',function(req, res){
@@ -441,42 +441,76 @@ function generateSchoolTemp(recipientId,nickName){
   var points
   console.log(nickName)
     db.ref('/test/').child(nickName).set(true)
-    db.ref('/boySchools/' + nickName).on('value', function(snapshot){
+    db.ref('/schools/' + nickName).on('value', function(snapshot){
     schoolName = snapshot.val().schoolName
-    points = snapshot.val().points
-    rank = snapshot.val().rank
     logo = snapshot.val().logo
   })
 
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: schoolName,
-            image_url: logo,
-            buttons: [{
-              type: "postback",
-              title: "unfollow",
-              payload:"unfollow!" + nickName
-            }],
-          }]
+  db.ref('/schools/' + nickName'/boys').on('value',function(snapshot){
+    points = snapshot.val().points
+    rank = snapshot.val().rank
+  })
+  if(points != null){
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: schoolName,
+              image_url: logo,
+              buttons: [{
+                type: "postback",
+                title: "unfollow",
+                payload:"unfollow!" + nickName
+              }],
+            }]
+          }
         }
       }
     }
+    callSendAPI(messageData)
   }
-  callSendAPI(messageData)
+  db.ref('/schools/' + nickName'/girls').on('value',function(snapshot){
+    points = snapshot.val().points
+    rank = snapshot.val().rank
+  })
+  if(points != null){
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: schoolName,
+              image_url: logo,
+              buttons: [{
+                type: "postback",
+                title: "unfollow",
+                payload:"unfollow!" + nickName
+              }],
+            }]
+          }
+        }
+      }
+    }
+    callSendAPI(messageData)
+  }
+
 }
 
 function displayJago(recipientId){
   var schoolName
 
-  db.ref('/boySchools/jago').on('value',function(snapshot) {
+  db.ref('/schools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   points = snapshot.val().points
   rank = snapshot.val().rank
@@ -489,29 +523,14 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  for (var i = 0; i < 5; i++) {
-    if(i < 3){
-     db.ref('/boySchools/' + popSchools[i] ).on('value',function(snapshot){
+  for (var i = 0; i < schools.length; i++) {
+  db.ref('/schools/' + popSchools[i] ).on('value',function(snapshot){
      var school_details= new Array()
       school_details[0] = snapshot.val().schoolName
       school_details[1] = snapshot.val().logo
-      school_details[2] = snapshot.val().rank
-      school_details[3] = snapshot.val().points
-      school_details[4] = snapshot.val().nickName
+      school_details[2] = snapshot.val().nickName
       schools.push(school_details)
   })
- }else {
-  db.ref('/girlSchools/' + popSchools[i] ).on('value',function(snapshot){
-  var school_details= new Array()
-   school_details[0] = snapshot.val().schoolName
-   school_details[1] = snapshot.val().logo
-   school_details[2] = snapshot.val().rank
-   school_details[3] = snapshot.val().points
-   school_details[4] = snapshot.val().nickName
-   schools.push(school_details)
-  })
-  }
-
   }
     var messageData = {
     recipient: {
@@ -528,7 +547,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[0][4]
+              payload:"follow!" + schools[0][2]
             }],
           },
           {
@@ -537,7 +556,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[1][4]
+              payload:"follow!" + schools[1][2]
             }],
           },
          {
@@ -546,7 +565,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[2][4]
+              payload:"follow!" + schools[2][2]
             }],
           },
           {
@@ -555,7 +574,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[3][4]
+              payload:"follow!" + schools[3][2]
             }],
           },
           {
@@ -564,7 +583,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[4][4]
+              payload:"follow!" + schools[4][2]
             }],
           },/*{
             title: schools[5][0],
@@ -572,7 +591,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[5][4]
+              payload:"follow!" + schools[5][2]
             }],
           }*/]
           }
@@ -597,82 +616,70 @@ function schoolScore(recipientId,nickName){
   followbtn = "unfollow"
   console.log(nickName)
 
-  db.ref('/boySchools/' + nickName).on('value',function(snapshot) {
+  db.ref('/schools/' + nickName).on('value',function(snapshot) {
   if (snapshot.val().schoolName!= null){
     schoolName = snapshot.val().schoolName
     logo = snapshot.val().logo
-    rank = snapshot.val().rank
+  }
+  })
+    db.ref('/schools/' + nickName'/boys').on('value',function(snapshot){
     points = snapshot.val().points
-  }
-
-  });
-  if(schoolName != null){
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: schoolName,
-              subtitle: " Points: " + points,
-              image_url:logo,
-              buttons: [{
-                type: "postback",
-                title: followbtn,
-                payload: followbtn +"!"+ nickName
-              }],
-            }]
-          }
+    rank = snapshot.val().rank
+    })
+    if(points != null){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: schoolName,
+            image_url: logo,
+            buttons: [{
+              type: "postback",
+              title: "unfollow",
+              payload:"unfollow!" + nickName
+            }],
+          }]
         }
       }
     }
-    callSendAPI(messageData)
-    return null
   }
-
-  db.ref('/girlSchools/' + nickName).on('value',function(snapshot) {
-  /*  if (snapshot.val().schoolName!= null){
-      schoolName = snapshot.val().schoolName
-      logo = snapshot.val().logo
-      rank = snapshot.val().rank
-      points = snapshot.val().points
-    }*/
-
-
-  });
-  if(schoolName != null){
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: schoolName,
-              subtitle: "Points : " + points,
-              image_url:logo,
-              buttons: [{
-                type: "postback",
-                title: followbtn,
-                payload: followbtn +"!"+ nickName
-              }],
-            }]
-          }
+  callSendAPI(messageData)
+}
+  db.ref('/schools/' + nickName'/girls').on('value',function(snapshot){
+  points = snapshot.val().points
+  rank = snapshot.val().rank
+})
+  if(points != null){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: schoolName,
+            image_url: logo,
+            buttons: [{
+              type: "postback",
+              title: "unfollow",
+              payload:"unfollow!" + nickName
+            }],
+          }]
         }
       }
     }
-    callSendAPI(messageData)
-    return null
   }
-
-
+  callSendAPI(messageData)
+}
 }
 
 function inviteFriends(recipientId){
@@ -751,7 +758,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   //sendTextMessage(recipientId,"")
-  setTimeout(function(){sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")},1500)
+  sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
   topSchools(recipientId,popSchools)
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
 }
@@ -814,8 +821,9 @@ function receivedMessage(event) {
           //generateSchoolTemp(senderID)
           break;
        default:
-       askAgent(simpleText)
-      //defaultResponse(senderID)
+       generateSchoolTemp(senderID,simpleText)
+       //askAgent(simpleText)
+      defaultResponse(senderID)
      }
    } else if (messageAttachments) {
      sendTextMessage(senderID, "Message with attachment received")
