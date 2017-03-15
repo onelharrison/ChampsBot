@@ -446,7 +446,7 @@ function generateSchoolTemp(recipientId,nickName){
     logo = snapshot.val().logo
   })
 
-  db.ref('/schools/' + nickName'/boys').on('value',function(snapshot){
+  db.ref('/schools/' + nickName +'/boys').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
@@ -475,7 +475,7 @@ function generateSchoolTemp(recipientId,nickName){
     }
     callSendAPI(messageData)
   }
-  db.ref('/schools/' + nickName'/girls').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/girls').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
@@ -622,7 +622,7 @@ function schoolScore(recipientId,nickName){
     logo = snapshot.val().logo
   }
   })
-    db.ref('/schools/' + nickName'/boys').on('value',function(snapshot){
+    db.ref('/schools/' + nickName+'/boys').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
     })
@@ -651,7 +651,7 @@ function schoolScore(recipientId,nickName){
   }
   callSendAPI(messageData)
 }
-  db.ref('/schools/' + nickName'/girls').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/girls').on('value',function(snapshot){
   points = snapshot.val().points
   rank = snapshot.val().rank
 })
