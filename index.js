@@ -585,7 +585,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[4][2]
             }],
-          },/*{
+          },{
             title: schools[5][0],
             image_url: schools[5][1],
             buttons: [{
@@ -593,7 +593,7 @@ function topSchools(recipientId,popSchools){
               title:"Follow School",
               payload:"follow!" + schools[5][2]
             }],
-          }*/]
+          }]
           }
         }
       }
