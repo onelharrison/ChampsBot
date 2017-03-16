@@ -60,19 +60,19 @@ feedReq.on('response', function (res) {
 
 feedparser.on('error', function (error) {
   // always handle errors
-})
-function testFeed(){
+  })
+  function testFeed(){
   feedparser.on('readable', function () {
   // This is where the action is!
   var stream = this; // `this` is `feedparser`, which is a stream
   var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
   var item;
-console.log("About to Work");
+  console.log("About to Work");
   while (item = stream.read()) {
     console.log(item);
     console.log("IT WORKED!!!!!!!!!!")
-  }
-})
+    }
+  })
 }
   // Fetch the service account key JSON file contents
   //var serviceAccount = require("service/champs-d5b65-firebase-adminsdk-iltw1-bcf02f2e31.jsons");
@@ -102,7 +102,7 @@ admin.initializeApp({
  app.use(bodyParser.json())
 
 app.get('/',function(req,res){
-   form.displaySchoolForm(res)
+   res.send("Champs Bot Server")
  })
 
 app.get('/webhook/',function(req, res){
@@ -446,7 +446,7 @@ function generateSchoolTemp(recipientId,nickName){
     logo = snapshot.val().logo
   })
 
-  db.ref('/schools/' + nickName +'/boys').on('value',function(snapshot){
+  db.ref('/schools/' + nickName +'/boy').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
@@ -475,7 +475,7 @@ function generateSchoolTemp(recipientId,nickName){
     }
     callSendAPI(messageData)
   }
-  db.ref('/schools/' + nickName+'/girls').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/girl').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
@@ -622,12 +622,12 @@ function schoolScore(recipientId,nickName){
     logo = snapshot.val().logo
   }
   })
-    db.ref('/schools/' + nickName+'/boys').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/boy').on('value',function(snapshot){
     points = snapshot.val().points
     rank = snapshot.val().rank
     })
     if(points != null){
-  var messageData = {
+    var messageData = {
     recipient: {
       id: recipientId
     },
@@ -650,11 +650,11 @@ function schoolScore(recipientId,nickName){
     }
   }
   callSendAPI(messageData)
-}
-  db.ref('/schools/' + nickName+'/girls').on('value',function(snapshot){
+  }
+  db.ref('/schools/' + nickName+'/girl').on('value',function(snapshot){
   points = snapshot.val().points
   rank = snapshot.val().rank
-})
+  })
   if(points != null){
   var messageData = {
     recipient: {
@@ -679,7 +679,7 @@ function schoolScore(recipientId,nickName){
     }
   }
   callSendAPI(messageData)
-}
+  }
 }
 
 function inviteFriends(recipientId){
@@ -821,7 +821,7 @@ function receivedMessage(event) {
           //generateSchoolTemp(senderID)
           break;
        default:
-       generateSchoolTemp(senderID,simpleText)
+       //generateSchoolTemp(senderID,simpleText)
        //askAgent(simpleText)
       defaultResponse(senderID)
      }
