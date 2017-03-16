@@ -509,7 +509,8 @@ function generateSchoolTemp(recipientId,nickName){
 
 function displayJago(recipientId){
   var schoolName
-
+  var points
+  var rank
   db.ref('/schools/jago').on('value',function(snapshot) {
   schoolName = snapshot.val().schoolName
   points = snapshot.val().points
