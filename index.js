@@ -8,7 +8,7 @@
  const firebase = require("firebase");
  const admin = require("firebase-admin");
  const FeedParser = require('feedparser')
-
+ var form = require('./server.js');
  var apiai= require('apiai')
  const agentapp= apiai("e3c7e92607ec4caca07cfb4c50990954")
 
@@ -102,7 +102,7 @@ admin.initializeApp({
  app.use(bodyParser.json())
 
 app.get('/',function(req,res){
-   displaySchoolForm(res)
+   form.displaySchoolForm(res)
  })
 
 app.get('/webhook/',function(req, res){
