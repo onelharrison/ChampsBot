@@ -148,11 +148,6 @@ request.post({
      call_to_actions:[
        {
          type:"postback",
-         title:"Top News",
-         payload:"topNews"
-       },
-       {
-         type:"postback",
          title:"Points Standing",
          payload:"points_standing"
        },
