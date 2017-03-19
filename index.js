@@ -225,7 +225,7 @@ app.post('/webhook', function (req, res) {
      res.sendStatus(200);
    }
  });
-function initialize(){
+/*function initialize(){
   for (var i = 0; i < schools.length; i++) {
     firebase.database().ref('schools/' + nickName).set({
       schoolName: ,
@@ -257,7 +257,7 @@ function initialize(){
       })
     }
   }
-}
+}*/
 
 function defaultResponse(recipientId){
   var messageData = {
