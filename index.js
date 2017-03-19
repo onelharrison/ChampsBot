@@ -634,7 +634,6 @@ function topSchools(recipientId,popSchools){
       }
     }
   callSendAPI(messageData)
-  re
 }
 
 function schoolScore(recipientId,nickName){
