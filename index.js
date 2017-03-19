@@ -232,13 +232,13 @@ function initializeSchool(){
       logo: logos[i],
       nickName: popSchools[i]
     });
-    if(gender[i] = 0){
+    if(gender[i] == 0){
       db.ref('schools/' + popSchools[i] + "/boy").update({
         points: 0,
         rank: 0,
 
       })
-    }else if(gender[i] = 1){
+    }else if(gender[i] == 1){
       db.ref('schools/' + popSchools[i] + "/girl").update({
         points: 0,
         rank: 0,
@@ -653,18 +653,18 @@ function schoolScore(recipientId,nickName){
   console.log(nickName)
 
   db.ref('/schools/' + nickName).once('value',function(snapshot) {
-  if (snapshot.val().schoolName!= null){
+  if (snapshot.val().schoolName!== null){
     schoolName = snapshot.val().schoolName
     logo = snapshot.val().logo
   }
   })
   db.ref('/schools/' + nickName+'/boy').once('value',function(snapshot){
-    if (snapshot.val().points!= null) {
+    if (snapshot.val().points!== null) {
       points = snapshot.val().points
       rank = snapshot.val().rank
     }
     })
-  if(points != null){
+  if(points !== null){
     var messageData = {
     recipient: {
       id: recipientId
@@ -694,7 +694,7 @@ function schoolScore(recipientId,nickName){
   points = snapshot.val().points
   rank = snapshot.val().rank
   })
-  if(points =! null){
+  if(points !== null){
   var messageData = {
     recipient: {
       id: recipientId
