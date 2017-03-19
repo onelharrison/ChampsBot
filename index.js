@@ -675,11 +675,12 @@ function schoolScore(recipientId,nickName){
           template_type: "generic",
           elements: [{
             title: schoolName,
+            subtitle: "after 8 finals",
             image_url: logo,
             buttons: [{
               type: "postback",
               title: "unfollow",
-              payload:"unfollow!"
+              payload:"unfollow!" + nickName
             }],
           }]
         }
@@ -704,11 +705,12 @@ function schoolScore(recipientId,nickName){
           template_type: "generic",
           elements: [{
             title: schoolName,
+            subtitle: "after 8 finals",
             image_url: logo,
             buttons: [{
               type: "postback",
               title: "unfollow",
-              payload:"unfollow!" 
+              payload:"unfollow!" + nickName
             }],
           }]
         }
