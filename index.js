@@ -798,12 +798,12 @@ function welcomeMessage(recipientId){
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
 }
 
-function askAgent(message,recipientId){
+function askAgent(recipientId,text){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
    var text = response.result.fulfillment.speech
-   sendTextMessage(text,recipientId)
+   sendTextMessage(recipientId,text)
     console.log(response);
  });
 
@@ -856,7 +856,7 @@ function receivedMessage(event) {
           break;
        default:
        //generateSchoolTemp(senderID,simpleText)
-       askAgent(simpleText)
+       askAgent(senderID,simpleText)
       //defaultResponse(senderID)
      }
    } else if (messageAttachments) {
