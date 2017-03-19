@@ -227,30 +227,30 @@ function initializeSchool(){
   var gender = [2,0,0,1,1]
   for (var i = 0; i < popSchools.length; i++) {
 
-    firebase.database().ref('schools/' + popSchools[i]).set({
+    db.ref('schools/' + popSchools[i]).set({
       schoolName: schoolNames[i] ,
       logo: logos[i],
       nickName: popSchools[i]
     });
     if(gender[i] = 0){
-      firebase.database().ref('schools/' + popSchools[i] + "/boy").update({
+      db.ref('schools/' + popSchools[i] + "/boy").update({
         points: 0,
         rank: 0,
 
       })
     }else if(gender[i] = 1){
-      firebase.database().ref('schools/' + popSchools[i] + "/girl").update({
+      db.ref('schools/' + popSchools[i] + "/girl").update({
         points: 0,
         rank: 0,
 
       })
     }else {
-      firebase.database().ref('schools/' + popSchools[i] + "/boy").update({
+      db.ref('schools/' + popSchools[i] + "/boy").update({
         points: 0,
         rank: 0,
 
       })
-      firebase.database().ref('schools/' + popSchools[i] + "/girl").update({
+      db.ref('schools/' + popSchools[i] + "/girl").update({
         points: 0,
         rank: 0,
 
