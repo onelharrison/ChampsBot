@@ -857,8 +857,8 @@ function receivedMessage(event) {
           break;
        default:
        //generateSchoolTemp(senderID,simpleText)
-       //askAgent(simpleText)
-      defaultResponse(senderID)
+       askAgent(simpleText)
+      //defaultResponse(senderID)
      }
    } else if (messageAttachments) {
      sendTextMessage(senderID, "Message with attachment received")
