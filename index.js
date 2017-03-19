@@ -802,8 +802,7 @@ function askAgent(message,recipientId){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
-   var parsed = JSON.parse(response)
-   var text = parsed.result.fulfillment.speech
+   var text = response.result.fulfillment.speech
    sendTextMessage(text,recipientId)
     console.log(response);
  });
