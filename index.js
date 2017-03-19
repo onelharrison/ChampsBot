@@ -566,6 +566,7 @@ function topSchools(recipientId,popSchools){
       school_details[2] = snapshot.val().nickName
       schools.push(school_details)
   })
+  db.ref('/schools/' + popSchools[i] ).off()
   }
     var messageData = {
     recipient: {
@@ -634,6 +635,7 @@ function topSchools(recipientId,popSchools){
       }
     }
   callSendAPI(messageData)
+  re
 }
 
 function schoolScore(recipientId,nickName){
@@ -644,20 +646,20 @@ function schoolScore(recipientId,nickName){
   var points="failed"
   var follow
   var followbtn
-  db.ref('/fans/' + recipientId ).on('value',function(snapshot){
+  db.ref('/fans/' + recipientId ).once('value',function(snapshot){
     follow = snapshot.val()
   })
 
   followbtn = "unfollow"
   console.log(nickName)
 
-  db.ref('/schools/' + nickName).on('value',function(snapshot) {
+  db.ref('/schools/' + nickName).once('value',function(snapshot) {
   if (snapshot.val().schoolName!= null){
     schoolName = snapshot.val().schoolName
     logo = snapshot.val().logo
   }
   })
-  db.ref('/schools/' + nickName+'/boy').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/boy').once('value',function(snapshot){
     if (snapshot.val().points!= null) {
       points = snapshot.val().points
       rank = snapshot.val().rank
@@ -689,7 +691,7 @@ function schoolScore(recipientId,nickName){
   }
   callSendAPI(messageData)
   }
-  db.ref('/schools/' + nickName+'/girl').on('value',function(snapshot){
+  db.ref('/schools/' + nickName+'/girl').once('value',function(snapshot){
   points = snapshot.val().points
   rank = snapshot.val().rank
   })
