@@ -657,10 +657,12 @@ function schoolScore(recipientId,nickName){
   }
   })
   db.ref('/schools/' + nickName+'/boy').on('value',function(snapshot){
-    points = snapshot.val().points
-    rank = snapshot.val().rank
+    if (snapshot.val().points!= null) {
+      points = snapshot.val().points
+      rank = snapshot.val().rank
+    }
     })
-    if(points != null){
+  if(points != null){
     var messageData = {
     recipient: {
       id: recipientId
@@ -689,7 +691,7 @@ function schoolScore(recipientId,nickName){
   points = snapshot.val().points
   rank = snapshot.val().rank
   })
-  if(points != null){
+  if(points =! null){
   var messageData = {
     recipient: {
       id: recipientId
