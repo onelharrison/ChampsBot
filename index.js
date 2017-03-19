@@ -225,39 +225,44 @@ app.post('/webhook', function (req, res) {
      res.sendStatus(200);
    }
  });
-/*function initialize(){
+function initializeSchool(){
+  var logos = ["https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/KC.jpg?alt=media&token=9faf0e8c-5b6c-40cd-b6f4-0e9806f59397","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Calabar.jpg?alt=media&token=b8ade407-e13c-403f-9672-b33a879d0a51","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Excelsior.jpg?alt=media&token=2083e477-bca9-4325-87e8-5c9a32cd7e5c"]
+  var schoolNames = ["St Jago High School","Kingston College","Calabar HighSchool","Hydel high School","Excelsior High School"]
+  var popSchools = ["jago","kingstonCollege","calabar","hydel","excelsior"]
+
   for (var i = 0; i < schools.length; i++) {
-    firebase.database().ref('schools/' + nickName).set({
-      schoolName: ,
-      logo: logo,
-      nickName: nickName
+
+    firebase.database().ref('schools/' + popSchools[i]).set({
+      schoolName: schoolNames[i] ,
+      logo: logos[i],
+      nickName: popSchools[i]
     });
     if(gender = 0){
-      firebase.database().ref('schools/' + nickName + "/boy").update({
+      firebase.database().ref('schools/' + popSchools[i] + "/boy").update({
         points: 0,
         rank: 0,
 
       })
     }else if(gender = 1){
-      firebase.database().ref('schools/' + nickName + "/girl").update({
+      firebase.database().ref('schools/' + popSchools[i] + "/girl").update({
         points: 0,
         rank: 0,
 
       })
     }else {
-      firebase.database().ref('schools/' + nickName + "/boy").update({
+      firebase.database().ref('schools/' + popSchools[i] + "/boy").update({
         points: 0,
         rank: 0,
 
       })
-      firebase.database().ref('schools/' + nickName + "/girl").update({
+      firebase.database().ref('schools/' + popSchools[i] + "/girl").update({
         points: 0,
         rank: 0,
 
       })
     }
   }
-}*/
+}
 
 function defaultResponse(recipientId){
   var messageData = {
@@ -342,6 +347,7 @@ function pointStanding(recipientId){
 }
 
 function topStanding(recipientID,team1,team2,team3,gender,gimage){
+  initializeSchool()
   var messageData = {
     recipient:{
       id:recipientID
@@ -791,6 +797,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   //sendTextMessage(recipientId,"")
+
   sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
   topSchools(recipientId,popSchools)
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
