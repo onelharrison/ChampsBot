@@ -566,7 +566,6 @@ function topSchools(recipientId,popSchools){
       school_details[2] = snapshot.val().nickName
       schools.push(school_details)
   })
-  db.ref('/schools/' + popSchools[i] ).off()
   }
     var messageData = {
     recipient: {
