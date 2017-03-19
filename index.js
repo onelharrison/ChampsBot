@@ -483,7 +483,7 @@ function generateSchoolTemp(recipientId,nickName){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
-  if(points != null){
+  if(points !== null){
     var messageData = {
       recipient: {
         id: recipientId
@@ -512,7 +512,7 @@ function generateSchoolTemp(recipientId,nickName){
     points = snapshot.val().points
     rank = snapshot.val().rank
   })
-  if(points != null){
+  if(points !== null){
     var messageData = {
       recipient: {
         id: recipientId
@@ -655,70 +655,65 @@ function schoolScore(recipientId,nickName){
   if (snapshot.val().schoolName!== null){
     schoolName = snapshot.val().schoolName
     logo = snapshot.val().logo
-  }
-  })
-  db.ref('/schools/' + nickName+'/boy').once('value',function(snapshot){
-    if (snapshot.val().points!== null) {
-      points = snapshot.val().points
-      rank = snapshot.val().rank
-    }
-    })
-  if(points !== null){
-    var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: schoolName,
-            subtitle: "after 8 finals",
-            image_url: logo,
-            buttons: [{
-              type: "postback",
-              title: "unfollow",
-              payload:"unfollow!" + nickName
-            }],
-          }]
+    if(snapshot.child("girl").exists()){
+      points = snapshot.child("girl").val().points
+      rank = snapshot.child("girl").val().rank
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: schoolName,
+                subtitle:"Rank:"+ rank + "\n Points:" + points,
+                image_url: logo,
+                buttons: [{
+                  type: "postback",
+                  title: "unfollow",
+                  payload:"unfollow!" + nickName
+                }],
+              }]
+            }
+          }
         }
       }
+      callSendAPI(messageData)
     }
-  }
-  callSendAPI(messageData)
-  }
-  db.ref('/schools/' + nickName+'/girl').once('value',function(snapshot){
-  points = snapshot.val().points
-  rank = snapshot.val().rank
-  })
-  if(points !== null){
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: schoolName,
-            subtitle: "after 8 finals",
-            image_url: logo,
-            buttons: [{
-              type: "postback",
-              title: "unfollow",
-              payload:"unfollow!" + nickName
-            }],
-          }]
+    if(snapshot.child("boy").exists()){
+      points = snapshot.child("boy").val().points
+      rank = snapshot.child("boy").val().rank
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: schoolName,
+                subtitle:"Rank:"+ rank + "\n Points:" + points,
+                image_url: logo,
+                buttons: [{
+                  type: "postback",
+                  title: "unfollow",
+                  payload:"unfollow!" + nickName
+                }],
+              }]
+            }
+          }
         }
       }
+      callSendAPI(messageData)
     }
   }
-  callSendAPI(messageData)
-  }
+  })
+
 }
 
 function inviteFriends(recipientId){
