@@ -134,7 +134,7 @@ request.post({
       thread_state:"existing_thread"
     },
     json:true
-}, (err,res,body) =>{
+  }, (err,res,body) =>{
     console.log("error deleting previous thread");
     //Deal with response
   })
@@ -225,7 +225,39 @@ app.post('/webhook', function (req, res) {
      res.sendStatus(200);
    }
  });
+function initialize(){
+  for (var i = 0; i < schools.length; i++) {
+    firebase.database().ref('schools/' + nickName).set({
+      schoolName: ,
+      logo: logo,
+      nickName: nickName
+    });
+    if(gender = 0){
+      firebase.database().ref('schools/' + nickName + "/boy").update({
+        points: 0,
+        rank: 0,
 
+      })
+    }else if(gender = 1){
+      firebase.database().ref('schools/' + nickName + "/girl").update({
+        points: 0,
+        rank: 0,
+
+      })
+    }else {
+      firebase.database().ref('schools/' + nickName + "/boy").update({
+        points: 0,
+        rank: 0,
+
+      })
+      firebase.database().ref('schools/' + nickName + "/girl").update({
+        points: 0,
+        rank: 0,
+
+      })
+    }
+  }
+}
 
 function defaultResponse(recipientId){
   var messageData = {
@@ -524,7 +556,7 @@ function displayJago(recipientId){
 
 function topSchools(recipientId,popSchools){
   var schools = new Array()
-  for (var i = 0; i < schools.length; i++) {
+  for (var i = 0; i < popSchools.length; i++) {
   db.ref('/schools/' + popSchools[i] ).on('value',function(snapshot){
      var school_details= new Array()
       school_details[0] = snapshot.val().schoolName
@@ -768,8 +800,8 @@ function askAgent(message,recipientId){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
-   var parseResponse = JSON.parse(response)
-   var text = parseResponse.result.fulfillment.speech
+   var parsed = JSON.parse(response)
+   var text = parsed.result.fulfillment.speech
    sendTextMessage(text,recipientId)
     console.log(response);
  });
