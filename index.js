@@ -798,7 +798,7 @@ function welcomeMessage(recipientId){
   setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
 }
 
-function askAgent(recipientId,text){
+function askAgent(recipientId,message){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
