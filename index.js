@@ -638,10 +638,10 @@ function topSchools(recipientId,popSchools){
 
 function schoolScore(recipientId,nickName){
   //generate score template
-  var schoolName
-  var logo
-  var rank
-  var points
+  var schoolName ="failed"
+  var logo="failed"
+  var rank="failed"
+  var points="failed"
   var follow
   var followbtn
   db.ref('/fans/' + recipientId ).on('value',function(snapshot){
