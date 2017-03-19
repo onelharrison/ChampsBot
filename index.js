@@ -20,7 +20,7 @@
 
  const token = process.env.MESSENGER_VERIFY_TOKEN
  const accessToken = process.env.MESSENGER_ACCESS_TOKEN
-
+ const alexAccessToken = "EAAOLAnTeKzUBADs49YyC1KH4G0DnpDTu3rwHRy8qZBb6V2bDq0MbG0eDKY7ofzCfESv21iFZCw7yJf9ZBDZAxjS3wcg0U3yPYxZAt41gmp7CY1ijbzHQIZCuYfLWE1YE8qqrwYxY4KZAY6cgw0upblN1ZCX0FLU592q9hhATg7wNQwZDZD"
  var boyteam1 = ["Calabar","http://i.imgur.com/MC42Cw7.png", "186"]
  var boyteam2 = ["Kingston College","http://i.imgur.com/lv5b3Ja.png", "154"]
  var boyteam3 = ["St. Jago High School","http://i.imgur.com/9aex0JD.png", "123"]
@@ -114,7 +114,7 @@ app.get('/webhook/',function(req, res){
 
  request.post({
     method: 'POST',
-    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${alexAccessToken}`,
     qs: {
         setting_type: 'call_to_actions',
         thread_state: 'new_thread',
@@ -129,7 +129,7 @@ app.get('/webhook/',function(req, res){
 
 request.post({
   method:'DELETE',
-  uri:'https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}',
+  uri:'https://graph.facebook.com/v2.6/me/thread_settings?access_token=${alexAccessToken}',
   qs:{setting_type:"call_to_actions",
       thread_state:"existing_thread"
     },
@@ -141,7 +141,7 @@ request.post({
 
 request.post({
    method: 'POST',
-   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${alexAccessToken}`,
    qs: {
      setting_type:"call_to_actions",
      thread_state:"existing_thread",
@@ -173,7 +173,7 @@ request.post({
 })
 request.post({
    method: 'DELETE',
-   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${alexAccessToken}`,
    qs: {
        setting_type: "greeting",
        },
@@ -183,7 +183,7 @@ request.post({
  });
 request.post({
    method: 'POST',
-   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
+   uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${alexAccessToken}`,
    qs: {
        setting_type: "greeting",
        greeting:{
@@ -913,7 +913,7 @@ function receivedPostback(event){
  function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: accessToken},
+    qs: { access_token: alexAccessToken},
     method: 'POST',
     json: messageData
 
