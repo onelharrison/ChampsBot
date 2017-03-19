@@ -679,7 +679,7 @@ function schoolScore(recipientId,nickName){
             buttons: [{
               type: "postback",
               title: "unfollow",
-              payload:"unfollow!" + nickName
+              payload:"unfollow!"
             }],
           }]
         }
@@ -708,7 +708,7 @@ function schoolScore(recipientId,nickName){
             buttons: [{
               type: "postback",
               title: "unfollow",
-              payload:"unfollow!" + nickName
+              payload:"unfollow!" 
             }],
           }]
         }
