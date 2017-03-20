@@ -559,11 +559,12 @@ function topSchools(recipientId,popSchools){
        school_details[1] = snapshot.val().logo
        school_details[2] = snapshot.val().nickName
        schools.push(school_details)
-       console.log(schools[0][0])
-       console.log(school_details[0])
+       console.log(snapshot.val().schoolName);
+       console.log("sch00:"+schools[0][0])
+       console.log("schldet0"+school_details[0])
     })
   })
-  console.log(schools[0][0])
+  console.log("afterloop"+schools[0][0])
     var messageData = {
     recipient: {
       id: recipientId
