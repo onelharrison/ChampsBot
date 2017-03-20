@@ -219,43 +219,28 @@ app.post('/webhook', function (req, res) {
      res.sendStatus(200);
    }
  });
-function initializeSchool(){
-  var logos = ["https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Jago.jpg?alt=media&token=446a4307-fae0-4186-b88e-6ea1db5ac8ad","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/KC.jpg?alt=media&token=9faf0e8c-5b6c-40cd-b6f4-0e9806f59397","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Calabar.jpg?alt=media&token=b8ade407-e13c-403f-9672-b33a879d0a51","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Hydel.jpg?alt=media&token=f3064801-a407-4027-a27c-6bc006d93c4a","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Excelsior.jpg?alt=media&token=2083e477-bca9-4325-87e8-5c9a32cd7e5c"]
-  var schoolNames = ["St Jago High School","Kingston College","Calabar HighSchool","Hydel high School","Excelsior High School"]
-  var popSchools = ["jago","kingstonCollege","calabar","hydel","excelsior"]
-  var gender = [2,0,0,1,1]
-  for (var i = 0; i < popSchools.length; i++) {
+function initializeSchoolRank(){
+  var qSchools=db.ref('schools/').orderByKey()
+  qSchools.once('value',function(snapshot){
+    var brank = 1
+    var grank = 2
+    snapshot.forEach(function(childSnapshot){
+      var nickName = childSnapshot.key
+      if(snapshot.child("boy").exists){
+        db.ref("schools/"+nickName).child("boy").update({
+          rank:brank
+        })
+        brank =brank +1
+      }
 
-    db.ref('schools/' + popSchools[i]).set({
-      schoolName: schoolNames[i] ,
-      logo: logos[i],
-      nickName: popSchools[i]
-    });
-    if(gender[i] == 0){
-      db.ref('schools/' + popSchools[i] + "/boy").update({
-        points: 0,
-        rank: 0,
-
-      })
-    }else if(gender[i] == 1){
-      db.ref('schools/' + popSchools[i] + "/girl").update({
-        points: 0,
-        rank: 0,
-
-      })
-    }else {
-      db.ref('schools/' + popSchools[i] + "/boy").update({
-        points: 0,
-        rank: 0,
-
-      })
-      db.ref('schools/' + popSchools[i] + "/girl").update({
-        points: 0,
-        rank: 0,
-
-      })
-    }
-  }
+      if(snapshot.child("girl").exists){
+        db.ref("schools/"+nickName).child("girl").update({
+          rank:grank
+        })
+        grank =grank +1
+      }
+    })
+  })
 }
 
 function defaultResponse(recipientId){
@@ -801,6 +786,9 @@ function receivedMessage(event){
         break;
       case 'schedule':
         postSchedule(senderID)
+      break;
+      case 'initRank':
+        initializeSchoolRank(senderID)
       break;
           break;
        default:
