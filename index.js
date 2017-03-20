@@ -569,7 +569,6 @@ function topSchools(recipientId,popSchools){
       })
     })
   })
-  console.log("afterloop"+schools[0][0])
     var messageData = {
     recipient: {
       id: recipientId
