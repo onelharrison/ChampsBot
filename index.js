@@ -243,6 +243,27 @@ function initializeSchoolRank(){
   })
 }
 
+function displayRanks(recipientId,gender,length){
+  var currentRank= length - 9
+  var schoolsQuery = db.ref("schools/").orderByKey()
+  schoolsQuery.once('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var nickName = childSnapshot.key
+      if(db.ref("schools/"+nickName).child(gender).exist()){
+        if(db.ref("schools/"+nickName).child(gender+ "/rank") == currentRank){
+          var schoolName = childSnapshot.val().schoolName
+          var points = childSnapshot.child(gender+"/points").val()
+          var rank = childSnapshot.child(gender+"/rank").val()
+          sendTextMessage(recipientId,schoolName +"\nPoints:"+points+"\nRank:"+rank)
+          currentRank= currentRank + 1
+        }
+      }
+    })
+
+  })
+
+}
+
 function defaultResponse(recipientId){
   var messageData = {
     recipient:{
@@ -321,7 +342,7 @@ function pointStanding(recipientId){
 }
 
 function topStanding(recipientID,team1,team2,team3,gender,gimage){
-  initializeSchool()
+  //initializeSchool()
   var messageData = {
     recipient:{
       id:recipientID
@@ -726,7 +747,7 @@ function askAgent(recipientId,message){
 
  request.on('response', function(response) {
 
-   var text = response.result.fulfillment.speech
+   var text = response.result.fulfillment.messages.speech
    var parameters = response.result.parameters
    if(text == "default" ){
      defaultResponse(recipientId)
@@ -790,9 +811,9 @@ function receivedMessage(event){
       case 'initrank':
         initializeSchoolRank(senderID)
       break;
+        break;
           break;
        default:
-       //generateSchoolTemp(senderID,simpleText)
        askAgent(senderID,simpleText)
       //defaultResponse(senderID)
      }
