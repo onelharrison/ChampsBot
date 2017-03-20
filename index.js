@@ -126,7 +126,6 @@ request.post({
   }, (err, res, body) => {
     // Deal with the response
   });
-
 request.post({
   method:'DELETE',
   uri:'https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}',
@@ -407,10 +406,9 @@ function postSchedule(recipientID){
               subtitle:"#Champs2017",
               image_url:"http://i.imgur.com/Tt4EF9i.png",
               buttons:[{
+                type:"postback",
                 title:"Day 1 Events",
-                type:"web_url",
-                url:"https://www.google.com/",
-                webview_height_ratio: "tall"
+                payload:"day1"
               }]
             },
             {
@@ -418,10 +416,9 @@ function postSchedule(recipientID){
               subtitle:"#Champs2017",
               image_url:"http://i.imgur.com/3bGHJvf.png",
               buttons:[{
+                type:"postback",
                 title:"Day 2 Events",
-                type:"web_url",
-                url:"https://www.google.com/",
-                webview_height_ratio: "tall"
+                payload:"day1"
               }]
             },
             {
@@ -429,10 +426,9 @@ function postSchedule(recipientID){
               subtitle:"#Champs2017",
               image_url:"http://i.imgur.com/JKl7yoT.png",
               buttons:[{
+                type:"postback",
                 title:"Day 3 Events",
-                type:"web_url",
-                url:"https://www.google.com/",
-                webview_height_ratio: "tall"
+                payload:"day1"
               }]
             },
             {
@@ -440,10 +436,9 @@ function postSchedule(recipientID){
               subtitle:"#Champs2017",
               image_url:"http://i.imgur.com/a112XYq.png",
               buttons:[{
+                type:"postback",
                 title:"Day 4 Events",
-                type:"web_url",
-                url:"https://www.google.com/",
-                webview_height_ratio: "tall"
+                payload:"day4"
               }]
             },
             {
@@ -451,10 +446,9 @@ function postSchedule(recipientID){
               subtitle:"#Champs2017",
               image_url:"http://i.imgur.com/ZCeoA7m.png",
               buttons:[{
+                type:"postback",
                 title:"Day 5 Events",
-                type:"web_url",
-                url:"https://www.google.com/",
-                webview_height_ratio: "tall"
+                payload:"day5"
               }]
             }
           ]
@@ -467,6 +461,22 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
+function sendDayImage(recipientId){
+  var messageData ={
+    recipient:{
+    id:recipientId
+  },
+  message:{
+    attachment:{
+      type:"image",
+      payload:{
+        url:"https://ig-s-b-a.akamaihd.net/hphotos-ak-xat1/t51.2885-15/s1080x1080/e15/fr/14574105_1801139806771017_711610050119991296_n.jpg"
+      }
+    }
+    }
+  }
+  callSendAPI(recipientId,messageData)
+}
 function topSchools(recipientId){
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
@@ -701,15 +711,85 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
+function addToSet(recipientId,messageData,nickName){
+  var schoolName ="failed"
+  var logo="failed"
+  var rank="failed"
+  var points="failed"
+  var btn = "Follow"
+
+  db.ref('/fans/' + nickName).once('value',function(snapshot){
+    if(snapshot.child(recipientId).exists()){
+      btn = "Unfollow"
+    }
+  })
+
+  db.ref('/schools/' + nickName).once('value',function(snapshot) {
+  if (snapshot.child('schoolName').exists()){
+    schoolName = snapshot.val().schoolName
+    logo = snapshot.val().logo
+    if(snapshot.child("girl").exists()){
+      points = snapshot.child("girl").val().points
+      rank = snapshot.child("girl").val().rank
+      var element = {
+        title: schoolName,
+        subtitle:"Rank:"+ rank + "\nPoints:" + points,
+        image_url: logo,
+        buttons: [{
+          type: "postback",
+          title: btn ,
+          payload:btn+"!"+nickName
+        }]
+      }
+      messageData = messageData["message/attachment/payload/elements"] + element
+    }
+    if(snapshot.child("boy").exists()){
+      points = snapshot.child("boy").val().points
+      rank = snapshot.child("boy").val().rank
+      var element = {
+        title: schoolName,
+        subtitle:"Rank:"+ rank + "\nPoints:" + points,
+        image_url: logo,
+        buttons: [{
+          type: "postback",
+          title: btn ,
+          payload:btn+"!"+nickName
+        }]
+      }
+      messageData = messageData["message/attachment/payload/elements"] + element
+    }
+
+  return messageData
+}
+
+
 function mySchool(recipientId){
   var schlsQuery
   db.ref('/users/').once('value', function(snapshot){
     if (snapshot.child(recipientId).exists()){
+      var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              }]
+            }
+          }
+        }
+      }
       schlsQuery = db.ref('/users/'  + recipientId ).orderByKey()
       schlsQuery.once('value',function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          schoolScore(recipientId,nickName)
+          messageData = addToSet(recipientId,messageData,nickName)
+
+          }
+        callSendAPI(recipientId,messageData)
         })
       })
     }else if(snapshot.child(recipientId).val()== null){
@@ -745,8 +825,7 @@ function welcomeMessage(recipientId){
 function askAgent(recipientId,message){
   var request = agentapp.textRequest(message,options);
 
- request.on('response', function(response) {
-
+ request.on('response', function(response){
    var text = response.result.fulfillment.messages[0].speech
    var parameters = response.result.parameters
    if(text == "default" ){
@@ -861,6 +940,8 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
+      case 'day1':
+        sendDayImage(recipientId)
         default:
         followSchool(senderID,payload)
 
