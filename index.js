@@ -438,7 +438,7 @@ function postSchedule(recipientID){
               buttons:[{
                 type:"postback",
                 title:"Day 4 Events",
-                payload:"day4"
+                payload:"day1"
               }]
             },
             {
@@ -448,7 +448,7 @@ function postSchedule(recipientID){
               buttons:[{
                 type:"postback",
                 title:"Day 5 Events",
-                payload:"day5"
+                payload:"day1"
               }]
             }
           ]
@@ -465,15 +465,15 @@ function sendDayImage(recipientId){
   var messageData ={
     recipient:{
     id:recipientId
-  },
-  message:{
-    attachment:{
-      type:"image",
-      payload:{
-        url:"https://ig-s-b-a.akamaihd.net/hphotos-ak-xat1/t51.2885-15/s1080x1080/e15/fr/14574105_1801139806771017_711610050119991296_n.jpg"
+    },
+    message:{
+      attachment:{
+        type:"image",
+        payload:{
+          url:"https://petersapparel.com/img/shirt.png"
+          }
+        }
       }
-    }
-    }
   }
   callSendAPI(recipientId,messageData)
 }
@@ -892,7 +892,6 @@ function receivedMessage(event){
       case 'initrank':
         initializeSchoolRank(senderID)
       break;
-        break;
           break;
        default:
        askAgent(senderID,simpleText)
@@ -944,6 +943,7 @@ function receivedPostback(event){
         break;
       case 'day1':
         sendDayImage(senderID)
+        break;
         break;
         default:
         followSchool(senderID,payload)
