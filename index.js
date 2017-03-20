@@ -462,7 +462,7 @@ function postSchedule(recipientID){
 }
 
 function sendDayImage(recipientId){
-  console.log("THE IS ID:" + recipientId)
+
   var messageData ={
     recipient:{
       id:recipientId
@@ -944,9 +944,8 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'day':
-      console.log("THE IS ID:" + senderID)
-      console.log("reaach day1")
-        sendDayImage(senderID)
+        //sendDayImage(senderID)
+        sendTextMessage(senderID,"day work")
         break;
         default:
         followSchool(senderID,payload)
@@ -973,7 +972,6 @@ function callSendAPI(messageData) {
       console.error("Unable to send message.")
       console.error(response)
       console.error(error)
-      console.error(messageData);
     }
   })
   }
