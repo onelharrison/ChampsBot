@@ -810,7 +810,7 @@ function askAgent(recipientId,message){
       var nickName = response.result.parameters.School
         db.ref('/schools/' + nickName ).once('value',function(snapshot){
           var schoolName = snapshot.val().schoolName
-          sendTextMessage(recipientId,"Here is " + schoolName)
+          sendTextMessage(recipientId,"Here is " + nickName)
         })
       schoolScore(recipientId,nickName)
     }
