@@ -942,7 +942,7 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
-      case 'day1':
+      case 'day':
       console.log("reaach day1")
         sendDayImage(senderID)
         break;
