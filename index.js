@@ -641,7 +641,7 @@ function schoolScore(recipientId,nickName){
   var btn = "Follow"
 
   db.ref('/fans/' + nickName).once('value',function(snapshot){
-    if(snapshot.child(recipientId)){
+    if(snapshot.child(recipientId).exists()){
       btn = "Unfollow"
     }
   })
