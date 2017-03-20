@@ -636,14 +636,13 @@ function schoolScore(recipientId,nickName){
   var logo="failed"
   var rank="failed"
   var points="failed"
-  var follow
-  var followbtn
-  db.ref('/fans/' + recipientId ).once('value',function(snapshot){
-    follow = snapshot.val()
-  })
+  var btn = "Follow"
 
-  followbtn = "unfollow"
-  console.log(nickName)
+  db.ref('/fans/' + nickName).once('value',function(snapshot){
+    if(snapshot.child(recipientId)){
+      btn = "Unfollow"
+    }
+  })
 
   db.ref('/schools/' + nickName).once('value',function(snapshot) {
   if (snapshot.val().schoolName!== null){
@@ -667,8 +666,8 @@ function schoolScore(recipientId,nickName){
                 image_url: logo,
                 buttons: [{
                   type: "postback",
-                  title: "unfollow",
-                  payload:"unfollow!" + nickName
+                  title: btn,
+                  payload: btn + nickName
                 }],
               }]
             }
@@ -695,8 +694,8 @@ function schoolScore(recipientId,nickName){
                 image_url: logo,
                 buttons: [{
                   type: "postback",
-                  title: "unfollow",
-                  payload:"unfollow!" + nickName
+                  title: btn ,
+                  payload:btn + nickName
                 }],
               }]
             }
