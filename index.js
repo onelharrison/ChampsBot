@@ -277,11 +277,6 @@ function defaultResponse(recipientId){
         title:"Points",
         payload:"points"
       },
-      {
-          content_type:"text",
-          title:"News",
-          payload:"news"
-        },
         {
             content_type:"text",
             title:"Schedule",
