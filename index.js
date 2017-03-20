@@ -944,6 +944,7 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'day':
+      console.log("THE IS ID:" + senderID)
       console.log("reaach day1")
         sendDayImage(senderID)
         break;
