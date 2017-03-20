@@ -813,7 +813,6 @@ function askAgent(recipientId,message){
           sendTextMessage(recipientId,"Here is " + schoolName)
         })
       schoolScore(recipientId,nickName)
-      d
     }
  });
 
