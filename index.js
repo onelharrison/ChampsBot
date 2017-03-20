@@ -770,6 +770,7 @@ function addToSet(recipientId,messageData,nickName){
 function mySchool(recipientId){
   var schlsQuery
   db.ref('/users/').once('value', function(snapshot){
+    console.log(recipientId)
     if (snapshot.child(recipientId).exists()){
       var messageData = {
       recipient: {
