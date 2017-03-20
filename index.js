@@ -265,7 +265,7 @@ function defaultResponse(recipientId){
       id:recipientId
     },
   message:{
-    text:"Let’s get you back on track. I can help you with the following: \n - My Schools: schools you are following and alerts you’re subscribed to",
+    text:"Let’s get you back on track. I can help you with the following:",
     quick_replies:[
       {
         content_type:"text",
