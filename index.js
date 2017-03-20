@@ -550,18 +550,17 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId,popSchools){
-
   var schools = new Array()
-  for (var i = 0; i < popSchools.length; i++) {
-  db.ref('/schools/' + popSchools[i] ).once('value',function(snapshot){
-     var school_details= new Array()
-      school_details[0] = snapshot.val().schoolName
-      school_details[1] = snapshot.val().logo
-      school_details[2] = snapshot.val().nickName
-      schools.push(school_details)
-      console.log(school_details[0])
+  var popSchoolsQuery= db.ref("popSchools/").orderByKey()
+  popSchoolsQuery.once('value',function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var school_details= new Array()
+       school_details[0] = snapshot.val().schoolName
+       school_details[1] = snapshot.val().logo
+       school_details[2] = snapshot.val().nickName
+       schools.push(school_details)
+    })
   })
-  }
     var messageData = {
     recipient: {
       id: recipientId
@@ -577,7 +576,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[0][2]
+              payload:"Follow!" + schools[0][2]
             }],
           },
           {
@@ -586,7 +585,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[1][2]
+              payload:"Follow!" + schools[1][2]
             }],
           },
          {
@@ -595,7 +594,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[2][2]
+              payload:"Follow!" + schools[2][2]
             }],
           },
           {
@@ -604,7 +603,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[3][2]
+              payload:"Follow!" + schools[3][2]
             }],
           },
           {
@@ -613,7 +612,7 @@ function topSchools(recipientId,popSchools){
             buttons: [{
               type:"postback",
               title:"Follow School",
-              payload:"follow!" + schools[4][2]
+              payload:"Follow!" + schools[4][2]
             }],
           },/*{
             title: schools[5][0],
