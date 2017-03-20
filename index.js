@@ -464,17 +464,17 @@ function postSchedule(recipientID){
 function sendDayImage(recipientId){
   var messageData ={
     recipient:{
-    id:recipientId
+      id:recipientId
     },
     message:{
       attachment:{
         type:"image",
         payload:{
-          url:"https://petersapparel.com/img/shirt.png"
+          url:"https://ig-s-b-a.akamaihd.net/hphotos-ak-xat1/t51.2885-15/s1080x1080/e15/fr/14574105_1801139806771017_711610050119991296_n.jpg"
           }
         }
       }
-  }
+    }
   callSendAPI(recipientId,messageData)
 }
 
