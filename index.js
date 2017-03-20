@@ -549,7 +549,7 @@ function displayJago(recipientId){
   console.log(schoolName)
 }
 
-function topSchools(recipientId,popSchools){
+function topSchools(recipientId){
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
     snapshot.forEach(function(childSnapshot){
@@ -768,7 +768,7 @@ function mySchool(recipientId){
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
-          topSchools(recipientId,popSchools)
+          topSchools(recipientId)
           setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
     }
   })
