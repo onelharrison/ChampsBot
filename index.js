@@ -550,10 +550,10 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId,popSchools){
-initializeSchool()
+
   var schools = new Array()
   for (var i = 0; i < popSchools.length; i++) {
-  db.ref('/schools/' + popSchools[i] ).on('value',function(snapshot){
+  db.ref('/schools/' + popSchools[i] ).once('value',function(snapshot){
      var school_details= new Array()
       school_details[0] = snapshot.val().schoolName
       school_details[1] = snapshot.val().logo
