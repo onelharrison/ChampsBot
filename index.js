@@ -550,7 +550,7 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId,popSchools){
-  initializeSchool()
+
 
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
