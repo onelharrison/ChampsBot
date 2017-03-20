@@ -559,6 +559,7 @@ function topSchools(recipientId,popSchools){
       school_details[1] = snapshot.val().logo
       school_details[2] = snapshot.val().nickName
       schools.push(school_details)
+      console.log(school_details[0])
   })
   }
     var messageData = {
