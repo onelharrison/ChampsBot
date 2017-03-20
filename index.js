@@ -88,7 +88,7 @@ admin.initializeApp({
   });
 
   // As an admin, the app has access to read and write all data, regardless of Security Rules
- var db = admin.database();
+  var db = admin.database();
 /*  var ref = db.ref("restricted_access/secret_document");
   ref.once("value", function(snapshot) {
     console.log(snapshot.val());
@@ -802,9 +802,15 @@ function askAgent(recipientId,message){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response) {
+
    var text = response.result.fulfillment.speech
    sendTextMessage(recipientId,text)
     console.log(response);
+    var parameter = response.result.parameter
+    if (parameter.hasOwnProperty("School")){
+      var nickName = response.result.parameter.School
+      schoolScore(recipientId,nickName)
+    }
  });
 
  request.on('error', function(error) {
