@@ -787,7 +787,7 @@ function receivedMessage(event){
       case 'schedule':
         postSchedule(senderID)
       break;
-      case 'initRank':
+      case 'initrank':
         initializeSchoolRank(senderID)
       break;
           break;
