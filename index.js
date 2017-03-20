@@ -806,16 +806,15 @@ function askAgent(recipientId,message){
    }else if(!("School" in parameters)) {
      sendTextMessage(recipientId,text)
    }
-
-    if ("School" in parameters){
-      var nickName = response.result.parameters.School
-      sendTextMessage(recipientId,"Here is " + nickName)
-        /*db.ref('/schools/' + nickName ).once('value',function(snapshot){
-          var schoolName = snapshot.val().schoolName
-          sendTextMessage(recipientId,"Here is " + schoolName)
-        })*/
-      schoolScore(recipientId,nickName)
-    }
+   if ("School" in parameters){
+     var nickName = response.result.parameters.School
+     sendTextMessage(recipientId,"Here is " + nickName)
+       /*db.ref('/schools/' + nickName ).once('value',function(snapshot){
+         var schoolName = snapshot.val().schoolName
+         sendTextMessage(recipientId,"Here is " + schoolName)
+       })*/
+     schoolScore(recipientId,nickName)
+   }
  });
 
  request.on('error', function(error) {
