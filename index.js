@@ -138,7 +138,6 @@ request.post({
     console.log("error deleting previous thread");
     //Deal with response
   })
-
 request.post({
    method: 'POST',
    uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
@@ -168,8 +167,8 @@ request.post({
        }]
        },
    json: true
-}, (err, res, body) => {
-// Deal with the response
+ }, (err, res, body) => {
+  // Deal with the response
 })
 request.post({
    method: 'DELETE',
@@ -551,7 +550,7 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId,popSchools){
-  initializeSchool()
+
   var schools = new Array()
   for (var i = 0; i < popSchools.length; i++) {
   db.ref('/schools/' + popSchools[i] ).on('value',function(snapshot){
@@ -800,15 +799,21 @@ function askAgent(recipientId,message){
  request.on('response', function(response) {
 
    var text = response.result.fulfillment.speech
-   if(text == "default"){
+   var parameters = response.result.parameters
+   if(text == "default" && "School" in parameters ){
      defaultResponse(recipientId)
    }else {
      sendTextMessage(recipientId,text)
    }
-    var parameters = response.result.parameters
+
     if ("School" in parameters){
       var nickName = response.result.parameters.School
+        db.ref('/schools/' + nickName ).once('value',function(snapshot){
+          var schoolName = snapshot.val().schoolName
+          sendTextMessage(recipientId,"Here is " + schoolName)
+        })
       schoolScore(recipientId,nickName)
+      d
     }
  });
 
