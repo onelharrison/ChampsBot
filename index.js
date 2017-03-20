@@ -805,8 +805,11 @@ function askAgent(recipientId,message){
  request.on('response', function(response) {
 
    var text = response.result.fulfillment.speech
-   sendTextMessage(recipientId,text)
-    console.log(response);
+   if(text == "default"){
+     defaultResponse(recipientId)
+   }else {
+     sendTextMessage(recipientId,text)
+   }
     var parameters = response.result.parameters
     if ("School" in parameters){
       var nickName = response.result.parameters.School
@@ -857,9 +860,6 @@ function receivedMessage(event) {
       case 'schedule':
         postSchedule(senderID)
       break;
-      case 'jago':
-          displayJago(senderID)
-          //generateSchoolTemp(senderID)
           break;
        default:
        //generateSchoolTemp(senderID,simpleText)
