@@ -747,7 +747,7 @@ function askAgent(recipientId,message){
 
  request.on('response', function(response) {
 
-   var text = response.result.fulfillment.messages.speech
+   var text = response.result.fulfillment.messages[0].speech
    var parameters = response.result.parameters
    if(text == "default" ){
      defaultResponse(recipientId)
