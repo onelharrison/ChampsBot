@@ -112,7 +112,7 @@ app.get('/webhook/',function(req, res){
   res.send('Access not authorized')
  })
 
- request.post({
+request.post({
     method: 'POST',
     uri: `https://graph.facebook.com/v2.6/me/thread_settings?access_token=${accessToken}`,
     qs: {
@@ -461,94 +461,6 @@ function postSchedule(recipientID){
   callSendAPI(messageData);
 }
 
-function generateSchoolTemp(recipientId,nickName){
-  var schoolName
-  var logo
-  var rank
-  var points
-  console.log(nickName)
-    db.ref('/test/').child(nickName).set(true)
-    db.ref('/schools/' + nickName).on('value', function(snapshot){
-    schoolName = snapshot.val().schoolName
-    logo = snapshot.val().logo
-  })
-
-  db.ref('/schools/' + nickName +'/boy').on('value',function(snapshot){
-    points = snapshot.val().points
-    rank = snapshot.val().rank
-  })
-  if(points !== null){
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: schoolName,
-              image_url: logo,
-              buttons: [{
-                type: "postback",
-                title: "unfollow",
-                payload:"unfollow!" + nickName
-              }],
-            }]
-          }
-        }
-      }
-    }
-    callSendAPI(messageData)
-  }
-  db.ref('/schools/' + nickName+'/girl').on('value',function(snapshot){
-    points = snapshot.val().points
-    rank = snapshot.val().rank
-  })
-  if(points !== null){
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: schoolName,
-              image_url: logo,
-              buttons: [{
-                type: "postback",
-                title: "unfollow",
-                payload:"unfollow!" + nickName
-              }],
-            }]
-          }
-        }
-      }
-    }
-    callSendAPI(messageData)
-  }
-
-}
-
-function displayJago(recipientId){
-  var schoolName
-  var points
-  var rank
-  db.ref('/schools/jago').on('value',function(snapshot) {
-  schoolName = snapshot.val().schoolName
-  points = snapshot.val().points
-  rank = snapshot.val().rank
-  });
-  sendTextMessage(recipientId,schoolName)
-  sendTextMessage(recipientId,"" + points)
-  sendTextMessage(recipientId,"" + rank)
-  console.log(schoolName)
-}
-
 function topSchools(recipientId){
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
@@ -749,6 +661,34 @@ function followSchool(recipientId,payload){
     sendTextMessage(recipientId,"You are no longer following this school")
     mySchool(recipientId)
   }
+  var messageData = {
+    recipient:{
+      id:recipientId
+    },
+  message:{
+    text:" ",
+    quick_replies:[
+      {
+        content_type:"text",
+        title:"My Schools",
+        payload:"my schools"
+      },
+      {
+        content_type:"text",
+        title:"Points",
+        payload:"points"
+      },
+        {
+            content_type:"text",
+            title:"Schedule",
+            payload:"events"
+          },
+
+    ]
+  }
+  }
+  callSendAPI(messageData)
+
 }
 
 function generateUpdate(recipientId){
@@ -790,8 +730,9 @@ function welcomeMessage(recipientId){
   //sendTextMessage(recipientId,"")
 
   sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
+  sendTextMessage(recipientId,"Type your school to follow or Choose from th list below")
   topSchools(recipientId,popSchools)
-  setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
+
 }
 
 function askAgent(recipientId,message){
@@ -825,7 +766,7 @@ function askAgent(recipientId,message){
 }
 
 //Funtion for handling recieved messages
-function receivedMessage(event) {
+function receivedMessage(event){
    var senderID = event.sender.id
    var recipientID = event.recipient.id
    var timeOfMessage = event.timestamp
@@ -845,8 +786,8 @@ function receivedMessage(event) {
 
      // If we receive a text message, check to see if it matches a keyword
      switch (simpleText) {
-       case 'testfeed':
-         testFeed()
+       case 'my schools':
+         mySchool()
          break;
       case 'start':
           welcomeMessage(senderID)
