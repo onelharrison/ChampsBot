@@ -761,21 +761,22 @@ function generateUpdate(recipientId){
 }
 
 function mySchool(recipientId){
-  var schls = new Array()
-
-    db.ref('/users/'  + recipientId ).on('child_added',function(snapshot) {
-    schls = snapshot.key
-    })
-
-  if(schls!= null){
-    for (var i = 0; i < schls.length; i++) {
-      generateSchoolTemp(recipientId,schls[1])
+  var schlsQuery
+  db.ref('/users/').once('value', function(snapshot){
+    if (snapshot.child(recipientId).exists){
+      schlsQuery = db.ref('/users/'  + recipientId ).orderByKey()
+    }else{
+          sendTextMessage(recipientId,"You’re not following any schools yet.")
+          topSchools(recipientId,popSchools)
+          setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
     }
-  }else{
-        sendTextMessage(recipientId,"You’re not following any schools yet.")
-        topSchools(recipientId,popSchools)
-        setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
-  }
+  })
+  schlsQuery.once('value',function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var nickName = childSnapshot.key
+      schoolScore(recipientId,nickName)
+    })
+  })
 }
 // function for sending simple text messages
 function sendTextMessage(recipientId, messageText) {
