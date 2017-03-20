@@ -787,10 +787,8 @@ function mySchool(recipientId){
         snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
           messageData = addToSet(recipientId,messageData,nickName)
-
-          }
-        callSendAPI(recipientId,messageData)
         })
+        callSendAPI(recipientId,messageData)
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
