@@ -764,7 +764,7 @@ function mySchool(recipientId){
           schoolScore(recipientId,nickName)
         })
       })
-    }else{
+    }else if(snapshot.child(recipientId).val()!= null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
           topSchools(recipientId,popSchools)
           setTimeout(function(){sendTextMessage(recipientId,"Choose from the list above or type in a school name.")},1500)
