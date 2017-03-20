@@ -226,7 +226,7 @@ function initializeSchoolRank(){
     var grank = 1
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
-      if(childSnapshot.child(nickName+"/boy").exists()){
+      if(snapshot.child(nickName+"/boy").exists()){
         db.ref("schools/"+nickName).child("boy").update({
           rank:brank
         })
