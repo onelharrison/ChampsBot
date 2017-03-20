@@ -223,7 +223,7 @@ function initializeSchoolRank(){
   var qSchools=db.ref('schools/').orderByKey()
   qSchools.once('value',function(snapshot){
     var brank = 1
-    var grank = 2
+    var grank = 1
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
       if(childSnapshot.child(nickName+"/boy").exists()){
