@@ -666,7 +666,7 @@ function followSchool(recipientId,payload){
       id:recipientId
     },
   message:{
-    text:" ",
+    text:"Here are some options you can try:",
     quick_replies:[
       {
         content_type:"text",
@@ -729,7 +729,7 @@ function sendTextMessage(recipientId, messageText) {
 function welcomeMessage(recipientId){
   //sendTextMessage(recipientId,"")
   sendTextMessage(recipientId,"Type your school to follow or Choose from th list below")
-  
+
   sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
 
   topSchools(recipientId,popSchools)
