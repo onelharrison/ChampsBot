@@ -737,11 +737,11 @@ function inviteFriends(recipientId){
 
 function followSchool(recipientId,payload){
   var result =  payload.split("!")
-  if(result[0] === "follow"){
+  if(result[0] === "Follow"){
     db.ref('/fans/' + result[1]).child(recipientId).set(true)
     db.ref('/users/' + recipientId).child(result[1]).set(true)
     schoolScore(recipientId,result[1])
-  }else if(result[0] === "unfollow") {
+  }else if(result[0] === "Unfollow") {
     db.ref('/fans/' + result[1]).child(recipientId).remove()
     db.ref('/users/' + recipientId).child(result[1]).remove()
     sendTextMessage(recipientId,"You are no longer following this school")
