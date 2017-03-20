@@ -226,14 +226,14 @@ function initializeSchoolRank(){
     var grank = 2
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
-      if(snapshot.child("boy").exists){
+      if(childSnapshot.child(nickName+"/boy").exists()){
         db.ref("schools/"+nickName).child("boy").update({
           rank:brank
         })
         brank =brank +1
       }
 
-      if(snapshot.child("girl").exists){
+      if(snapshot.child(nickName+"/girl").exists()){
         db.ref("schools/"+nickName).child("girl").update({
           rank:grank
         })
