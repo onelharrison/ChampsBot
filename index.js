@@ -800,9 +800,9 @@ function askAgent(recipientId,message){
 
    var text = response.result.fulfillment.speech
    var parameters = response.result.parameters
-   if(text == "default" && "School" in parameters ){
+   if(text == "default" ){
      defaultResponse(recipientId)
-   }else {
+   }else if(!("School" in parameters)) {
      sendTextMessage(recipientId,text)
    }
 
