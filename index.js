@@ -408,7 +408,7 @@ function postSchedule(recipientID){
               buttons:[{
                 type:"postback",
                 title:"Day 1 Events",
-                payload:"day1"
+                payload:"day"
               }]
             },
             {
@@ -941,7 +941,7 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
-      case 'day1':
+      case 'day':
         sendDayImage(senderID)
         break;
         break;
