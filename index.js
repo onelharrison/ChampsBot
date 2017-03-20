@@ -554,14 +554,16 @@ function topSchools(recipientId,popSchools){
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
     snapshot.forEach(function(childSnapshot){
-      var school_details= new Array()
-       school_details[0] = snapshot.val().schoolName
-       school_details[1] = snapshot.val().logo
-       school_details[2] = snapshot.val().nickName
-       schools.push(school_details)
-       console.log(snapshot.val().schoolName);
-       console.log("sch00:"+schools[0][0])
-       console.log("schldet0"+school_details[0])
+      db.ref("schools/").child(childSnapshot.key).once('value',function(snapshot){
+        var school_details= new Array()
+        school_details[0] = snapshot.val().schoolName
+        school_details[1] = snapshot.val().logo
+        school_details[2] = snapshot.val().nickName
+        schools.push(school_details)
+        console.log(snapshot.val().schoolName);
+        console.log("sch00:"+schools[0][0])
+        console.log("schldet0"+school_details[0])
+      })   
     })
   })
   console.log("afterloop"+schools[0][0])
