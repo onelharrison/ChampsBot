@@ -645,7 +645,7 @@ function schoolScore(recipientId,nickName){
   })
 
   db.ref('/schools/' + nickName).once('value',function(snapshot) {
-  if (snapshot.val().schoolName!== null){
+  if (snapshot.child('schoolName').exists()){
     schoolName = snapshot.val().schoolName
     logo = snapshot.val().logo
     if(snapshot.child("girl").exists()){
