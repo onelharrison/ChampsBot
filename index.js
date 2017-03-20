@@ -758,7 +758,8 @@ function addToSet(recipientId,messageData,nickName){
       }
       messageData = messageData["message/attachment/payload/elements"] + element
     }
-
+  }
+  })
   return messageData
 }
 
