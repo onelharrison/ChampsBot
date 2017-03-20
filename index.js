@@ -462,6 +462,7 @@ function postSchedule(recipientID){
 }
 
 function sendDayImage(recipientId){
+  console.log("THE IS ID:" + recipientId)
   var messageData ={
     recipient:{
       id:recipientId
@@ -941,9 +942,9 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
-      case 'day':
+      case 'day1':
+      console.log("reaach day1")
         sendDayImage(senderID)
-        break;
         break;
         default:
         followSchool(senderID,payload)
