@@ -806,7 +806,7 @@ function askAgent(recipientId,message){
    var text = response.result.fulfillment.speech
    sendTextMessage(recipientId,text)
     console.log(response);
-    var parameter = response.result.parameter
+    var parameters = response.result.parameters
     if ("School" in parameter){
       var nickName = response.result.parameter.School
       schoolScore(recipientId,nickName)
