@@ -807,10 +807,11 @@ function askAgent(recipientId,message){
 
     if ("School" in parameters){
       var nickName = response.result.parameters.School
-        db.ref('/schools/' + nickName ).once('value',function(snapshot){
+      sendTextMessage(recipientId,"Here is " + nickName)
+        /*db.ref('/schools/' + nickName ).once('value',function(snapshot){
           var schoolName = snapshot.val().schoolName
-          sendTextMessage(recipientId,"Here is " + nickName)
-        })
+          sendTextMessage(recipientId,"Here is " + schoolName)
+        })*/
       schoolScore(recipientId,nickName)
     }
  });
