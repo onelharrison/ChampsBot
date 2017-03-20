@@ -664,7 +664,7 @@ function schoolScore(recipientId,nickName){
               template_type: "generic",
               elements: [{
                 title: schoolName,
-                subtitle:"Rank:"+ rank + "\n Points:" + points,
+                subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
                   type: "postback",
@@ -692,7 +692,7 @@ function schoolScore(recipientId,nickName){
               template_type: "generic",
               elements: [{
                 title: schoolName,
-                subtitle:"Rank:"+ rank + "\n Points:" + points,
+                subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
                   type: "postback",
