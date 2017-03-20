@@ -11,7 +11,7 @@
  var form = require('./server.js');
  var apiai= require('apiai')
  const agentapp= apiai("e3c7e92607ec4caca07cfb4c50990954")
-
+ var schools = new Array()
  var options = {
      sessionId: 'champsMessenId'
  }
@@ -550,9 +550,8 @@ function displayJago(recipientId){
 }
 
 function topSchools(recipientId,popSchools){
-  initializeSchool(
-  )
-  var schools = new Array()
+  initializeSchool()
+
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
     snapshot.forEach(function(childSnapshot){
