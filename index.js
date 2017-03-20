@@ -477,6 +477,7 @@ function sendDayImage(recipientId){
   }
   callSendAPI(recipientId,messageData)
 }
+
 function topSchools(recipientId){
   var popSchoolsQuery= db.ref("popSchools/").orderByKey()
   popSchoolsQuery.once('value',function(snapshot){
@@ -703,7 +704,8 @@ function followSchool(recipientId,payload){
     ]
   }
   }
-  callSendAPI(messageData)
+  setTimeout(function(){ callSendAPI(messageData)}, 3000);
+
 
 }
 
@@ -789,6 +791,7 @@ function mySchool(recipientId){
           var nickName = childSnapshot.key
           messageData = addToSet(recipientId,messageData,nickName)
         })
+        console.log(messageData)
         callSendAPI(recipientId,messageData)
       })
     }else if(snapshot.child(recipientId).val()== null){
@@ -940,7 +943,8 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'day1':
-        sendDayImage(recipientId)
+        sendDayImage(senderID)
+        break;
         default:
         followSchool(senderID,payload)
 
