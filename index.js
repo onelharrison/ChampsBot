@@ -470,7 +470,7 @@ function sendDayImage(recipientId){
       attachment:{
         type:"image",
         payload:{
-          url:"https://ig-s-b-a.akamaihd.net/hphotos-ak-xat1/t51.2885-15/s1080x1080/e15/fr/14574105_1801139806771017_711610050119991296_n.jpg"
+          url:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/day1.jpg?alt=media&token=5df4954d-2f25-4d0f-abe2-cbeed41e28d5"
           }
         }
       }
