@@ -745,7 +745,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData.message.attachment.payload.elements.push({
+      messageData["elements"].push({
         title: schoolName,
         subtitle:"Rank:"+ rank + "\nPoints:" + points,
         image_url: logo,
@@ -770,7 +770,16 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData.message.attachment.payload.elements.push(element)
+      messageData["elements"].push({
+        title: schoolName,
+        subtitle:"Rank:"+ rank + "\nPoints:" + points,
+        image_url: logo,
+        buttons: [{
+          type: "postback",
+          title: btn ,
+          payload:btn+"!"+nickName
+        }]
+      })
       console.log(element);
     }
   }
