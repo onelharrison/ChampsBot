@@ -746,8 +746,9 @@ function addSchoolTemps(recipientId,elements,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      elements[elements.length] = element
+      //elements[elements.length] = element
       arr.push(element)
+      console.log(arr)
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -762,7 +763,7 @@ function addSchoolTemps(recipientId,elements,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      elements[elements.length] = element
+      //elements[elements.length] = element
       arr.push(element)
     }
   }
