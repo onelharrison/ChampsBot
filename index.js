@@ -745,7 +745,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData["elements"].push({
+      messageData[elements].push({
         title: schoolName,
         subtitle:"Rank:"+ rank + "\nPoints:" + points,
         image_url: logo,
@@ -770,7 +770,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData["elements"].push({
+      messageData[elements].push({
         title: schoolName,
         subtitle:"Rank:"+ rank + "\nPoints:" + points,
         image_url: logo,
