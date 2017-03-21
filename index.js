@@ -799,7 +799,7 @@ function mySchool(recipientId){
         if(messageData.message.attachment.payload.elements!== []){
           callSendAPI(messageData)
         }else {
-          console.log("its empty");
+          console.log("its empty")
         }
       })
     }else if(snapshot.child(recipientId).val()== null){
