@@ -408,7 +408,7 @@ function postSchedule(recipientID){
               buttons:[{
                 type:"postback",
                 title:"Day 1 Events",
-                payload:"day"
+                payload:"day1"
               }]
             },
             {
@@ -476,7 +476,7 @@ function sendDayImage(recipientId){
         }
       }
     }
-  callSendAPI(recipientId,messageData)
+  callSendAPI(messageData)
 }
 
 function topSchools(recipientId){
@@ -795,7 +795,7 @@ function mySchool(recipientId){
           messageData = addSchoolTemps(recipientId,messageData,nickName)
         })
         console.log(messageData)
-        //callSendAPI(recipientId,messageData)
+        callSendAPI(messageData)
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
@@ -944,9 +944,8 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
-      case 'day':
-        //sendDayImage(senderID)
-        sendTextMessage(senderID,"day work")
+      case 'day1':
+        sendDayImage(senderID)
         break;
         default:
         followSchool(senderID,payload)
