@@ -249,7 +249,7 @@ function displayRanks(recipientId,gender,length){
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
       if(childSnapshot.child(nickName + "/"+gender).exists()){
-        if(childSnapshot.child(nickName + "/"+gender+ "/rank") == currentRank){
+        if(childSnapshot.child(nickName + "/"+gender+ "/rank").val() == currentRank){
           var schoolName = childSnapshot.val().schoolName
           var points = childSnapshot.child(gender+"/points").val()
           var rank = childSnapshot.child(gender+"/rank").val()
