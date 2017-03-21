@@ -797,7 +797,7 @@ function mySchool(recipientId){
           var nickName = childSnapshot.key
           elements = addSchoolTemps(recipientId,elements,nickName)
         })
-        console.log(elements"Elements")
+        console.log(elements+" Elements")
         messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
           callSendAPI(messageData)
