@@ -747,7 +747,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
       }
       messageData["message/attachment/payload/elements"][messageData.message.attachment.payload.elements.length]= element
     //  console.log(element)
-      console.log(messageData)
+      console.log(messageData["message/attachment/payload/elements"])
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
