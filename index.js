@@ -715,7 +715,7 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
-function addSchoolTemps(recipientId,elements,nickName){
+function addSchoolTemps(recipientId,els,nickName){
   var schoolName ="failed"
   var logo="failed"
   var rank="failed"
@@ -745,7 +745,7 @@ function addSchoolTemps(recipientId,elements,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      elements.push(element)
+      els.push(element)
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -760,12 +760,12 @@ function addSchoolTemps(recipientId,elements,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      elements.push(element)
+      els.push(element)
     }
   }
   })
-  console.log(elements)
-  return elements
+  console.log(els)
+  return els
 }
 
 function mySchool(recipientId){
