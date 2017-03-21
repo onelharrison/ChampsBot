@@ -795,8 +795,9 @@ function mySchool(recipientId){
           var nickName = childSnapshot.key
           messageData = addSchoolTemps(recipientId,messageData,nickName)
         })
-        console.log(messageData)
-        callSendAPI(messageData)
+        console.log(messageData.message.attachment.payload.elements)
+
+        //callSendAPI(messageData)
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
