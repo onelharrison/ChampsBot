@@ -721,7 +721,7 @@ function addSchoolTemps(recipientId,els,nickName){
   var rank="failed"
   var points="failed"
   var btn = "Follow"
-
+  var element
   db.ref('/fans/' + nickName).once('value',function(snapshot){
     if(snapshot.child(recipientId).exists()){
       btn = "Unfollow"
@@ -735,7 +735,7 @@ function addSchoolTemps(recipientId,els,nickName){
     if(snapshot.child("girl").exists()){
       points = snapshot.child("girl").val().points
       rank = snapshot.child("girl").val().rank
-      var element = {
+      element = {
         title: schoolName,
         subtitle:"Rank:"+ rank + "\nPoints:" + points,
         image_url: logo,
@@ -745,12 +745,12 @@ function addSchoolTemps(recipientId,els,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      els.push(element)
+      elements.push(element)
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
       rank = snapshot.child("boy").val().rank
-      var element = {
+      element = {
         title: schoolName,
         subtitle:"Rank:"+ rank + "\nPoints:" + points,
         image_url: logo,
@@ -760,12 +760,12 @@ function addSchoolTemps(recipientId,els,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      els.push(element)
+      elements.push(element)
     }
   }
   })
-  console.log(els)
-  return els
+  console.log(elements)
+  return elements
 }
 
 function mySchool(recipientId){
