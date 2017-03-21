@@ -746,7 +746,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      })
+
       elsArr.push(element)
       console.log(element);
     }
