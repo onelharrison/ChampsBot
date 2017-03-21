@@ -934,10 +934,10 @@ function receivedPostback(event){
         pointStanding(senderID)
         break;
       case 'top_boys':
-        topStanding(senderID,boyteam1,boyteam2,boyteam3,"Boy","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/boys.jpg?alt=media&token=9c64ce9e-6cde-4a10-82d1-c84813ee8fe6")
+        topStanding(senderID,boyteam1,boyteam2,boyteam3,"boy","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/boys.jpg?alt=media&token=9c64ce9e-6cde-4a10-82d1-c84813ee8fe6")
         break;
       case 'top_girls':
-        topStanding(senderID,girlteam1,girlteam2,girlteam3,"Girl","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls.jpg?alt=media&token=75d03ed0-ec14-43ea-97e9-562b0ae1fa7f")
+        topStanding(senderID,girlteam1,girlteam2,girlteam3,"girl","https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/Girls.jpg?alt=media&token=75d03ed0-ec14-43ea-97e9-562b0ae1fa7f")
         break;
       case 'get_started':
         welcomeMessage(senderID)
