@@ -746,9 +746,6 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       elements.push(element)
-    //  console.log(element)
-      console.log(messageData)
-      console.log(messageData.message.attachment.payload.elements)
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -764,11 +761,10 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       elements.push(element)
-      //console.log(element)
-      console.log(messageData)
     }
   }
   })
+  console.log(elements)
   return elements
 }
 
