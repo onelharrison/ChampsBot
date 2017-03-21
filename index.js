@@ -951,12 +951,12 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
-        case 'rankStartboy':
-          displayRanks(senderID,"boy",10)
+      case 'rankStartboy':
+        displayRanks(senderID,"boy",10)
+        break;
+      case 'rankStartgirl':
+          displayRanks(senderID,"girl",10)
           break;
-        case 'rankStartgirl':
-            displayRanks(senderID,"girl",10)
-            break;
       case 'day1':
         sendDayImage(senderID)
         break;
