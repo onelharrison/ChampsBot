@@ -784,8 +784,7 @@ function mySchool(recipientId){
           type: "template",
           payload: {
             template_type: "generic",
-            elements: [{
-              }]
+            elements: []
             }
           }
         }
