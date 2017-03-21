@@ -754,7 +754,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           title: btn ,
           payload:btn+"!"+nickName
         }]
-      })  
+      })
       console.log(element);
     }
     if(snapshot.child("boy").exists()){
