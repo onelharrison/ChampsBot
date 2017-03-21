@@ -376,7 +376,7 @@ function topStanding(recipientID,team1,team2,team3,gender,gimage){
         {
           type:"postback",
           title:"View More",
-          payload:"rankStart"+gender
+          payload:"rankStartboy"
         }
       ]
         }
