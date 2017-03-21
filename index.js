@@ -778,7 +778,6 @@ function addSchoolTemps(recipientId,messageData,nickName){
   return messageData
 }
 
-
 function mySchool(recipientId){
   var schlsQuery
   db.ref('/users').once('value', function(snapshot){
@@ -792,7 +791,7 @@ function mySchool(recipientId){
           type: "template",
           payload: {
             template_type: "generic",
-            elements: []
+            elements:
             }
           }
         }
