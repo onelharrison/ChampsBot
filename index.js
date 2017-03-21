@@ -767,7 +767,7 @@ function addSchoolTemps(recipientId,elements,nickName){
     }
   }
   })
-  console.log(elements)
+  console.log(arr)
   return arr
 }
 
@@ -798,7 +798,7 @@ function mySchool(recipientId){
         console.log(elements)
         messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
-          //callSendAPI(messageData)
+          callSendAPI(messageData)
         }else {
           console.log("its empty")
         }
