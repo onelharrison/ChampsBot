@@ -715,7 +715,7 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
-function addSchoolTemps(recipientId,els,nickName){
+function addSchoolTemps(recipientId,elements,nickName){
   var schoolName ="failed"
   var logo="failed"
   var rank="failed"
