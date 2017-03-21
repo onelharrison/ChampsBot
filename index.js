@@ -721,6 +721,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
   var rank="failed"
   var points="failed"
   var btn = "Follow"
+  var elsArr=[]
 
   db.ref('/fans/' + nickName).once('value',function(snapshot){
     if(snapshot.child(recipientId).exists()){
@@ -745,16 +746,8 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData[elements].push({
-        title: schoolName,
-        subtitle:"Rank:"+ rank + "\nPoints:" + points,
-        image_url: logo,
-        buttons: [{
-          type: "postback",
-          title: btn ,
-          payload:btn+"!"+nickName
-        }]
       })
+      elsArr.push(element)
       console.log(element);
     }
     if(snapshot.child("boy").exists()){
@@ -770,20 +763,13 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData[elements].push({
-        title: schoolName,
-        subtitle:"Rank:"+ rank + "\nPoints:" + points,
-        image_url: logo,
-        buttons: [{
-          type: "postback",
-          title: btn ,
-          payload:btn+"!"+nickName
-        }]
-      })
+      elsArr.push(element)
       console.log(element);
     }
   }
-  })
+})elsArr
+  console.log();
+  messageData.message.attachment.payload.elements = elsArr
   return messageData
 }
 
