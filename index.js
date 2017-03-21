@@ -794,7 +794,7 @@ function mySchool(recipientId){
           messageData = addSchoolTemps(recipientId,messageData,nickName)
         })
         console.log(messageData)
-        callSendAPI(recipientId,messageData)
+        //callSendAPI(recipientId,messageData)
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
