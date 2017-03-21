@@ -796,7 +796,7 @@ function mySchool(recipientId){
           messageData = addSchoolTemps(recipientId,messageData,nickName)
         })
         console.log(messageData.message.attachment.payload.elements)
-        if(messageData.message.attachment.payload.elements!== []){
+        if(messageData.message.attachment.payload.elements.length >0){
           callSendAPI(messageData)
         }else {
           console.log("its empty")
