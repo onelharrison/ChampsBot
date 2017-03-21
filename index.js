@@ -715,7 +715,7 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
-function addSchoolTemps(recipientId,messageData,nickName){
+function addSchoolTemps(recipientId,elements,nickName){
   var schoolName ="failed"
   var logo="failed"
   var rank="failed"
@@ -745,7 +745,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData.message.attachment.payload.elements.push(element)
+      elements.push(element)
     //  console.log(element)
       console.log(messageData)
       console.log(messageData.message.attachment.payload.elements)
@@ -763,17 +763,18 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData.message.attachment.payload.elements.push(element)
+      elements.push(element)
       //console.log(element)
       console.log(messageData)
     }
   }
   })
-  return messageData
+  return elements
 }
 
 function mySchool(recipientId){
   var schlsQuery
+  var elements =new Array()
   db.ref('/users').once('value', function(snapshot){
     if (snapshot.child(recipientId).exists()){
       var messageData = {
@@ -785,16 +786,6 @@ function mySchool(recipientId){
           type: "template",
           payload: {
             template_type: "generic",
-            elements:[{
-              title: "My Schools",
-              //subtitle:"Rank:"+ rank + "\nPoints:" + points,
-              image_url:"https://firebasestorage.googleapis.com/v0/b/champsbot-a783e.appspot.com/o/bot_logo.jpg?alt=media&token=cb8ab096-1259-47f8-9c45-77a810cc66b2", //logo,
-              buttons: [{
-                type: "postback",
-                title: "clear" ,
-                payload:"cut"//btn+"!"+nickName
-              }]
-            }]
             }
           }
         }
@@ -803,9 +794,10 @@ function mySchool(recipientId){
       schlsQuery.once('value',function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          messageData = addSchoolTemps(recipientId,messageData,nickName)
+          elements = addSchoolTemps(recipientId,elements,nickName)
         })
-        console.log(messageData.message.attachment.payload.elements)
+        console.log(elements)
+        messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
           callSendAPI(messageData)
         }else {
