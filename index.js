@@ -714,7 +714,7 @@ function generateUpdate(recipientId){
   //generate update carosel with news
 }
 
-function addToSet(recipientId,messageData,nickName){
+function addSchoolTemps(recipientId,messageData,nickName){
   var schoolName ="failed"
   var logo="failed"
   var rank="failed"
@@ -744,7 +744,7 @@ function addToSet(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData = messageData["message/attachment/payload/elements"] + element
+      messageData.message.attachment.payload.elements.push(element)
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -759,7 +759,7 @@ function addToSet(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData = messageData["message/attachment/payload/elements"] + element
+      messageData.message.attachment.payload.elements.push(element)
     }
   }
   })
@@ -791,7 +791,7 @@ function mySchool(recipientId){
       schlsQuery.once('value',function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          messageData = addToSet(recipientId,messageData,nickName)
+          messageData = addSchoolTemps(recipientId,messageData,nickName)
         })
         console.log(messageData)
         callSendAPI(recipientId,messageData)
