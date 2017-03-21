@@ -769,7 +769,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
 
 function mySchool(recipientId){
   var schlsQuery
-  db.ref('/users/').once('value', function(snapshot){
+  db.ref('/users').once('value', function(snapshot){
     console.log(recipientId)
     if (snapshot.child(recipientId).exists()){
       var messageData = {
@@ -877,7 +877,7 @@ function receivedMessage(event){
      // If we receive a text message, check to see if it matches a keyword
      switch (simpleText) {
        case 'my schools':
-         mySchool()
+         mySchool(senderID)
          break;
       case 'start':
           welcomeMessage(senderID)
