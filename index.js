@@ -746,6 +746,7 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       elements[elements.length] = element
+      elements.push('nemasj')
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -795,7 +796,7 @@ function mySchool(recipientId){
         console.log(elements)
         messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
-          callSendAPI(messageData)
+          //callSendAPI(messageData)
         }else {
           console.log("its empty")
         }
