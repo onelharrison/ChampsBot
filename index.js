@@ -374,10 +374,9 @@ function topStanding(recipientID,team1,team2,team3,gender,gimage){
       ],
       buttons:[
         {
+          type:"postback",
           title:"View More",
-          type:"web_url",
-          url:"http://gracechamps.com/points/",
-          webview_height_ratio: "tall"
+          payload:"rankStart"+gender
         }
       ]
         }
@@ -952,6 +951,12 @@ function receivedPostback(event){
       case 'myschools':
         mySchool(senderID)
         break;
+        case 'rankStartboy':
+          displayRanks(senderID,"boy",10)
+          break;
+        case 'rankStartgirl':
+            displayRanks(senderID,"girl",10)
+            break;
       case 'day1':
         sendDayImage(senderID)
         break;
