@@ -745,8 +745,16 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      var els = messageData.message.attachment.payload.elements
-      messageData.message.attachment.payload.elements[els.length]=element
+      messageData.message.attachment.payload.elements.push({
+        title: schoolName,
+        subtitle:"Rank:"+ rank + "\nPoints:" + points,
+        image_url: logo,
+        buttons: [{
+          type: "postback",
+          title: btn ,
+          payload:btn+"!"+nickName
+        }]
+      })  
       console.log(element);
     }
     if(snapshot.child("boy").exists()){
@@ -762,8 +770,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      var els = messageData.message.attachment.payload.elements
-      messageData.message.attachment.payload.elements[els.length]=element
+      messageData.message.attachment.payload.elements.push(element)
       console.log(element);
     }
   }
@@ -775,7 +782,6 @@ function addSchoolTemps(recipientId,messageData,nickName){
 function mySchool(recipientId){
   var schlsQuery
   db.ref('/users').once('value', function(snapshot){
-    console.log(recipientId)
     if (snapshot.child(recipientId).exists()){
       var messageData = {
       recipient: {
