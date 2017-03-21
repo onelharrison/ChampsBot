@@ -767,9 +767,10 @@ function addSchoolTemps(recipientId,messageData,nickName){
       console.log(element);
     }
   }
-})elsArr
-  console.log();
+})
+
   messageData.message.attachment.payload.elements = elsArr
+  console.log(messageData)
   return messageData
 }
 
