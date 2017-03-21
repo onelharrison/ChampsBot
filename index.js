@@ -748,7 +748,7 @@ function addSchoolTemps(recipientId,elements,nickName){
       }
       //elements[elements.length] = element
       arr.push(element)
-      console.log(arr)
+      console.log(arr"ARR ONE")
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -765,10 +765,11 @@ function addSchoolTemps(recipientId,elements,nickName){
       }
       //elements[elements.length] = element
       arr.push(element)
+      console.log(arr"ARR TWO")
     }
   }
   })
-  console.log(arr)
+  console.log(arr"arr Final")
   return arr
 }
 
@@ -796,7 +797,7 @@ function mySchool(recipientId){
           var nickName = childSnapshot.key
           elements = addSchoolTemps(recipientId,elements,nickName)
         })
-        console.log(elements)
+        console.log(elements"Elements")
         messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
           callSendAPI(messageData)
