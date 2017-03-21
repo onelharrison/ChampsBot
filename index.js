@@ -559,6 +559,7 @@ function topSchools(recipientId){
         }
       }
     }
+    console.log(messageData);
   callSendAPI(messageData)
 }
 
