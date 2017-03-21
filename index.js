@@ -745,7 +745,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData.message.attachment.payload.elements.push(element)
+      messageData["message/attachmen/payload"].elements.push(element)
       console.log(element);
     }
     if(snapshot.child("boy").exists()){
@@ -761,7 +761,7 @@ function addSchoolTemps(recipientId,messageData,nickName){
           payload:btn+"!"+nickName
         }]
       }
-      messageData["message/attachmen/payload/elements"].push(element)
+      messageData["message/attachmen/payload"].elements.push(element)
       console.log(element);
     }
   }
