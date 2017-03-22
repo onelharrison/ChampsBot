@@ -789,7 +789,7 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       //elements[elements.length] = element
-      arr.push(element)
+      arr = arr.concat(new Array(element))
       console.log(arr+"ARR ONE")
     }
     if(snapshot.child("boy").exists()){
@@ -806,7 +806,7 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       //elements[elements.length] = element
-      arr.push(element)
+      arr = arr.concat(new Array(element))
       console.log(arr+" ARR TWO")
     }
   }
