@@ -248,7 +248,7 @@ function displayRanks(recipientId,gender,length){
   schoolsQuery.once('value', function(snapshot){
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
-      console.log("forEach nickName:"+nickName)
+      //console.log("forEach nickName:"+nickName)
       if(childSnapshot.child(gender).exists()){
         if(childSnapshot.child(gender+ "/rank").val() == currentRank){
           console.log("got thru second loop if")
