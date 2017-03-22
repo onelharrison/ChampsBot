@@ -988,10 +988,10 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'rankStartboy':
-        displayRanks(senderID,"boy",6)
+        displayRanks(senderID,"boy",5)
         break;
       case 'rankStartgirl':
-          displayRanks(senderID,"girl",6)
+          displayRanks(senderID,"girl",5)
           break;
       case 'day1':
         sendDayImage(senderID)
