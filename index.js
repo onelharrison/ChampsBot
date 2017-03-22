@@ -764,7 +764,7 @@ function addSchoolTemps(recipientId,elements,nickName){
   var points="failed"
   var btn = "Follow"
   var element
-  var arr = elements
+  var arr = new Array()
   db.ref('/fans/' + nickName).once('value',function(snapshot){
     if(snapshot.child(recipientId).exists()){
       btn = "Unfollow"
@@ -837,7 +837,7 @@ function mySchool(recipientId){
       schlsQuery.once('value',function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          elements = addSchoolTemps(recipientId,elements,nickName)
+          elements = elements.concat(addSchoolTemps(recipientId,elements,nickName))
         })
         console.log(elements+" Elements")
         messageData.message.attachment.payload.elements = elements
