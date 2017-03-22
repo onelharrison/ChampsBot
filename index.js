@@ -268,24 +268,27 @@ function displayRanks(recipientId,gender,length){
               quick_replies:[
                 {
                   content_type:"text",
-                  title:"6th - 10th",
-                  payload:"rank"
+                  title:"9th - 14th",
+                  payload:gender + "rank1"
                 },
                 {
                   content_type:"text",
-                  title:"11th - 15th",
-                  payload:"rank"
+                  title:"15th - 20th",
+                  payload:gender+"rank2"
                 },
                   {
                       content_type:"text",
-                      title:"16th - 20th",
-                      payload:"rank"
+                      title:"21th - 26th",
+                      payload:gender+"rank3"
                     },
-
-              ]
+                    {
+                        content_type:"text",
+                        title:"27th - 32th",
+                        payload:gender+"rank4"
+                      }]
+                    }
             }
-            }
-             setTimeout(function(){ callSendAPI(messageData)}, 600)
+            setTimeout(function(){ callSendAPI(messageData)}, 600)
           }else if(currentRank<length) {
             delay= delay +100
             setTimeout(function(){ sendTextMessage(recipientId,text)}, delay)
@@ -942,6 +945,9 @@ function receivedMessage(event){
       case 'initrank':
         initializeSchoolRank(senderID)
       break;
+      case 'initrank':
+        initializeSchoolRank(senderID)
+      break;
           break;
        default:
        askAgent(senderID,simpleText)
@@ -992,10 +998,10 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'rankStartboy':
-        displayRanks(senderID,"boy",5)
+        displayRanks(senderID,"boy",8)
         break;
       case 'rankStartgirl':
-          displayRanks(senderID,"girl",5)
+          displayRanks(senderID,"girl",8)
           break;
       case 'day1':
         sendDayImage(senderID)
