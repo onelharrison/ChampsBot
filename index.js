@@ -248,7 +248,9 @@ function displayRanks(recipientId,gender,length){
   schoolsQuery.once('value', function(snapshot){
     snapshot.forEach(function(childSnapshot){
       var nickName = childSnapshot.key
+      console.log("forEach nickName:"+nickName)
       if(childSnapshot.child(gender).exists()){
+        console.log("got thru first if")
         if(childSnapshot.child(gender+ "/rank").val() == currentRank){
           var schoolName = childSnapshot.val().schoolName
           var points = childSnapshot.child(gender+"/points").val()
