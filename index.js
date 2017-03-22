@@ -255,8 +255,7 @@ function displayRanks(recipientId,gender,length){
           var schoolName = childSnapshot.val().schoolName
           var points = childSnapshot.child(gender+"/points").val()
           var rank = childSnapshot.child(gender+"/rank").val()
-          var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
-          console.log(text);
+          var text =rank + "th "+schoolName+" "+ points
           sendTextMessage(recipientId,text)
           if(currentRank<=length){
             currentRank= currentRank + 1
