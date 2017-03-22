@@ -258,7 +258,10 @@ function displayRanks(recipientId,gender,length){
           var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
           console.log(text);
           sendTextMessage(recipientId,text)
-          currentRank= currentRank + 1
+          if(currentRank<=length){
+            currentRank= currentRank + 1
+          }
+
         }
       }
     })
