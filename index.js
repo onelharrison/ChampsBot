@@ -268,22 +268,22 @@ function displayRanks(recipientId,gender,length){
               quick_replies:[
                 {
                   content_type:"text",
-                  title:"9th - 14th",
+                  title:"9th - 13th",
                   payload:gender + "rank1"
                 },
                 {
                   content_type:"text",
-                  title:"15th - 20th",
+                  title:"14th - 18th",
                   payload:gender+"rank2"
                 },
                   {
                       content_type:"text",
-                      title:"21th - 26th",
+                      title:"19th - 23th",
                       payload:gender+"rank3"
                     },
                     {
                         content_type:"text",
-                        title:"27th - 32th",
+                        title:"24th - 28th",
                         payload:gender+"rank4"
                       }]
                     }
@@ -945,8 +945,17 @@ function receivedMessage(event){
       case 'initrank':
         initializeSchoolRank(senderID)
       break;
-      case 'initrank':
-        initializeSchoolRank(senderID)
+      case 'boyrank1':
+        displayRanks(senderID,"boy",13)
+      break;
+      case 'boyrank2':
+        displayRanks(senderID,"boy",18)
+      break;
+      case 'boyrank3':
+        displayRanks(senderID,"boy",23)
+      break;
+      case 'boyrank4':
+        displayRanks(senderID,"boy",28)
       break;
           break;
        default:
