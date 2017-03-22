@@ -257,7 +257,7 @@ function displayRanks(recipientId,gender,length){
           var rank = childSnapshot.child(gender+"/rank").val()
           var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
         setTimeout(function(){ sendTextMessage(recipientId,text)}, 500)
-          if (currentRank = length){
+          if (currentRank == length){
             var messageData = {
               recipient:{
                 id:recipientId
@@ -284,7 +284,7 @@ function displayRanks(recipientId,gender,length){
               ]
             }
             }
-            setTimeout(function(){ callSendAPI(messageData)}, 3000)
+             callSendAPI(messageData)
           }
           if(currentRank<=length){
             currentRank= currentRank + 1
@@ -988,10 +988,10 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'rankStartboy':
-        displayRanks(senderID,"boy",5)
+        displayRanks(senderID,"boy",6)
         break;
       case 'rankStartgirl':
-          displayRanks(senderID,"girl",5)
+          displayRanks(senderID,"girl",6)
           break;
       case 'day1':
         sendDayImage(senderID)
