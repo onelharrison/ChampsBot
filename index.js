@@ -243,6 +243,7 @@ function initializeSchoolRank(){
 }
 
 function displayRanks(recipientId,gender,length){
+  var  delay = 100
   var currentRank= length - 4
   var schoolsQuery = db.ref("schools/").orderByKey()
   schoolsQuery.once('value', function(snapshot){
@@ -256,7 +257,7 @@ function displayRanks(recipientId,gender,length){
           var points = childSnapshot.child(gender+"/points").val()
           var rank = childSnapshot.child(gender+"/rank").val()
           var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
-        setTimeout(function(){ sendTextMessage(recipientId,text)}, 500)
+
           if (currentRank == length){
             var messageData = {
               recipient:{
@@ -284,7 +285,10 @@ function displayRanks(recipientId,gender,length){
               ]
             }
             }
-             callSendAPI(messageData)
+             setTimeout(function(){ sendTextMessage(recipientId,text)}, 600)
+          }else if(currentRank<length) {
+            delay= delay +100
+            setTimeout(function(){ sendTextMessage(recipientId,text)}, delay)
           }
           if(currentRank<length){
             currentRank= currentRank + 1
