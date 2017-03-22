@@ -243,7 +243,7 @@ function initializeSchoolRank(){
 }
 
 function displayRanks(recipientId,gender,length){
-  var currentRank= length - 9
+  var currentRank= length - 4
   var schoolsQuery = db.ref("schools/").orderByKey()
   schoolsQuery.once('value', function(snapshot){
     snapshot.forEach(function(childSnapshot){
@@ -255,8 +255,37 @@ function displayRanks(recipientId,gender,length){
           var schoolName = childSnapshot.val().schoolName
           var points = childSnapshot.child(gender+"/points").val()
           var rank = childSnapshot.child(gender+"/rank").val()
-          var text =rank + "th "+schoolName+" "+ points
-          sendTextMessage(recipientId,text)
+          var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
+        setTimeout(function(){ sendTextMessage(recipientId,text)}, 500)
+          if (currentRank = length){
+            var messageData = {
+              recipient:{
+                id:recipientId
+              },
+            message:{
+              text:text,
+              quick_replies:[
+                {
+                  content_type:"text",
+                  title:"6th - 10th",
+                  payload:"rank"
+                },
+                {
+                  content_type:"text",
+                  title:"11th - 15th",
+                  payload:"rank"
+                },
+                  {
+                      content_type:"text",
+                      title:"16th - 20th",
+                      payload:"rank"
+                    },
+
+              ]
+            }
+            }
+            setTimeout(function(){ callSendAPI(messageData)}, 3000)
+          }
           if(currentRank<=length){
             currentRank= currentRank + 1
           }
@@ -268,7 +297,8 @@ function displayRanks(recipientId,gender,length){
   })
 
 }
-
+function sendQuickReplies(recipientId){
+}
 function defaultResponse(recipientId){
   var messageData = {
     recipient:{
@@ -958,10 +988,10 @@ function receivedPostback(event){
         mySchool(senderID)
         break;
       case 'rankStartboy':
-        displayRanks(senderID,"boy",10)
+        displayRanks(senderID,"boy",5)
         break;
       case 'rankStartgirl':
-          displayRanks(senderID,"girl",10)
+          displayRanks(senderID,"girl",5)
           break;
       case 'day1':
         sendDayImage(senderID)
