@@ -285,7 +285,7 @@ function displayRanks(recipientId,gender,length){
               ]
             }
             }
-             setTimeout(function(){ sendTextMessage(recipientId,text)}, 600)
+             setTimeout(function(){ callSendAPI(messageData)}, 600)
           }else if(currentRank<length) {
             delay= delay +100
             setTimeout(function(){ sendTextMessage(recipientId,text)}, delay)
