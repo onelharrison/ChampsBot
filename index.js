@@ -286,7 +286,7 @@ function displayRanks(recipientId,gender,length){
             }
              callSendAPI(messageData)
           }
-          if(currentRank<=length){
+          if(currentRank<length){
             currentRank= currentRank + 1
           }
 
