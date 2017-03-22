@@ -945,16 +945,16 @@ function receivedMessage(event){
       case 'initrank':
         initializeSchoolRank(senderID)
       break;
-      case 'boyrank1':
+      case '9th - 13th':
         displayRanks(senderID,"boy",13)
       break;
-      case 'boyrank2':
+      case '14th - 18th':
         displayRanks(senderID,"boy",18)
       break;
-      case 'boyrank3':
+      case '19th - 23th':
         displayRanks(senderID,"boy",23)
       break;
-      case 'boyrank4':
+      case '24th - 28th':
         displayRanks(senderID,"boy",28)
       break;
           break;
