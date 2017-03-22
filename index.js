@@ -250,12 +250,14 @@ function displayRanks(recipientId,gender,length){
       var nickName = childSnapshot.key
       console.log("forEach nickName:"+nickName)
       if(childSnapshot.child(gender).exists()){
-        console.log("got thru first if")
         if(childSnapshot.child(gender+ "/rank").val() == currentRank){
+          console.log("got thru second loop if")
           var schoolName = childSnapshot.val().schoolName
           var points = childSnapshot.child(gender+"/points").val()
           var rank = childSnapshot.child(gender+"/rank").val()
-          sendTextMessage(recipientId,schoolName +"\nPoints:"+points+"\nRank:"+rank)
+          var text =schoolName +"\nPoints:"+points+"\nRank:"+rank
+          console.log(text);
+          sendTextMessage(recipientId,text)
           currentRank= currentRank + 1
         }
       }
