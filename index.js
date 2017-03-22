@@ -789,8 +789,7 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       //elements[elements.length] = element
-      arr = arr.concat(new Array(element))
-      console.log(arr+"ARR ONE")
+
     }
     if(snapshot.child("boy").exists()){
       points = snapshot.child("boy").val().points
@@ -806,8 +805,7 @@ function addSchoolTemps(recipientId,elements,nickName){
         }]
       }
       //elements[elements.length] = element
-      arr = arr.concat(new Array(element))
-      console.log(arr+" ARR TWO")
+
     }
   }
   })
@@ -835,12 +833,59 @@ function mySchool(recipientId){
       }
       schlsQuery = db.ref('/users/'  + recipientId ).orderByKey()
       schlsQuery.once('value',function(snapshot){
-        snapshot.forEach(function(childSnapshot){
+      snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          elements = elements.concat(addSchoolTemps(recipientId,elements,nickName))
+          var schoolName ="failed"
+          var logo="failed"
+          var rank="failed"
+          var points="failed"
+          var btn = "Follow"
+          var element
+          db.ref('/fans/' + nickName).once('value',function(snapshot){
+            if(snapshot.child(recipientId).exists()){
+              btn = "Unfollow"
+            }
+          })
+
+          db.ref('/schools/' + nickName).once('value',function(snapshot) {
+            if (snapshot.child('schoolName').exists()){
+              schoolName = snapshot.val().schoolName
+              logo = snapshot.val().logo
+              if(snapshot.child("girl").exists()){
+                points = snapshot.child("girl").val().points
+                rank = snapshot.child("girl").val().rank
+                element = {
+                  title: schoolName,
+                  subtitle:"Rank:"+ rank + "\nPoints:" + points,
+                  image_url: logo,
+                  buttons: [{
+                    type: "postback",
+                    title: btn ,
+                    payload:btn+"!"+nickName
+                  }]
+                }
+                messageData.message.attachment.payload.elements.push(element)
+
+              }
+              if(snapshot.child("boy").exists()){
+                points = snapshot.child("boy").val().points
+                rank = snapshot.child("boy").val().rank
+                element = {
+                  title: schoolName,
+                  subtitle:"Rank:"+ rank + "\nPoints:" + points,
+                  image_url: logo,
+                  buttons: [{
+                    type: "postback",
+                    title: btn ,
+                    payload:btn+"!"+nickName
+                  }]
+                }
+                messageData.message.attachment.payload.elements.push(element)
+              }
+            }
+          })
         })
         console.log(elements+" Elements")
-        messageData.message.attachment.payload.elements = elements
         if(messageData.message.attachment.payload.elements.length >0){
           callSendAPI(messageData)
         }else {
