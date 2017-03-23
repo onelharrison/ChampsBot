@@ -355,11 +355,6 @@ function pointStanding(recipientId){
               type: "postback",
               title: "Top Boys",
               payload:"top_boys"
-            }, {
-              title:"Boys' List",
-              type:"web_url",
-              url:"http://gracechamps.com/points/",
-              webview_height_ratio: "tall"
             }],
           }, {
             title: "Girl's Points Standings",
@@ -369,11 +364,6 @@ function pointStanding(recipientId){
               type: "postback",
               title: "Top Girls",
               payload: "top_girls"
-            }, {
-              title:"Girls' List",
-              type:"web_url",
-              url:"http://gracechamps.com/points/",
-              webview_height_ratio: "tall"
             }]
           }]
         }
