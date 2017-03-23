@@ -929,7 +929,7 @@ function askAgent(recipientId,message){
    var actionIncomplete = response.result.actionIncomplete
    if(text == "default" ){
      defaultResponse(recipientId)
-   }else if(!("School" in parameters)&& actionIncomplete) {
+   }else if(!("School" in parameters)&& !(actionIncomplete)) {
      sendTextMessage(recipientId,text)
    }
    if ("School" in parameters){
