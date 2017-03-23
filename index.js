@@ -852,7 +852,8 @@ function mySchool(recipientId){
                     payload:btn+"!"+nickName
                   }]
                 }
-                messageData.message.attachment.payload.elements.push(element)
+                var arr =messageData.message.attachment.payload.elements
+                arr.push(element)
 
               }
               if(snapshot.child("boy").exists()){
