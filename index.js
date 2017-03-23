@@ -949,9 +949,9 @@ function askAgent(recipientId,message){
      scheduleQuery = db.ref("schedule/" + gender +"/"+klass + "/"+ evnt+"/")
      scheduleQuery.once('value',function(snapshot){
        if(snapshot.child(status).exists()){
-         var title = snapshot.val().title
-         var date = snapshot.val().date
-         var time = snapshot.val().time
+         var title = snapshot.child(status).val().title
+         var date = snapshot.child(status).val().date
+         var time = snapshot.child(status).val().time
          sendTextMessage(recipientId,title +" is "+date + " @ " + time)
        }else {
          sendTextMessage(recipientId,"This event doesn't have a semi-final")
