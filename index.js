@@ -12,9 +12,7 @@
  var apiai= require('apiai')
  const agentapp= apiai("e3c7e92607ec4caca07cfb4c50990954")
  var schools = new Array()
- var options = {
-     sessionId: 'champsMessenId'
- }
+
  var feedReq = request('http://rss.cnn.com/rss/edition.rss')
  var feedparser = new FeedParser()
 
@@ -911,6 +909,9 @@ function welcomeMessage(recipientId){
 }
 
 function askAgent(recipientId,message){
+  var options = {
+      sessionId: recipientId
+  }
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response){
