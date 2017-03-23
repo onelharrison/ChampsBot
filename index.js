@@ -824,7 +824,7 @@ function mySchool(recipientId){
         var x = 0
       snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
-          /*var schoolName ="failed"
+        /*  var schoolName ="failed"
           var logo="failed"
           var rank="failed"
           var points="failed"
@@ -879,12 +879,11 @@ function mySchool(recipientId){
                 console.log(element)
               }
             }
-          })
+          })*/
         })
-        console.log(elements+" Elements")
+        //console.log(elements+" Elements")
 
-          callSendAPI(messageData)*/
-        schoolScore(recipientId,nickName)
+              schoolScore(recipientId,nickName)
 
       })
     }else if(snapshot.child(recipientId).val()== null){
