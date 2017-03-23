@@ -951,7 +951,7 @@ function askAgent(recipientId,message){
        var title = snapshot.val().title
        var date = snapshot.val().date
        var time = snapshot.val().time
-       sendTextMessage(recipientId,title +" is \n"+date + "\n" + time)
+       sendTextMessage(recipientId,title +" is "+date + " @" + time)
      })
    }
  });
