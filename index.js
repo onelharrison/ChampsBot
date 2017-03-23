@@ -946,12 +946,16 @@ function askAgent(recipientId,message){
      var klass = response.result.parameters.class
      var evnt = response.result.parameters.event
      var status = response.result.parameters.status
-     scheduleQuery = db.ref("schedule/" + gender +"/"+klass + "/"+ evnt+"/"+status)
+     scheduleQuery = db.ref("schedule/" + gender +"/"+klass + "/"+ evnt+"/")
      scheduleQuery.once('value',function(snapshot){
-       var title = snapshot.val().title
-       var date = snapshot.val().date
-       var time = snapshot.val().time
-       sendTextMessage(recipientId,title +" is "+date + " @ " + time)
+       if(snapshot.child(status).exists()){
+         var title = snapshot.val().title
+         var date = snapshot.val().date
+         var time = snapshot.val().time
+         sendTextMessage(recipientId,title +" is "+date + " @ " + time)
+       }else {
+         sendTextMessage(recipientId,"This event doesn't have a semi-final")
+       }
      })
    }
  });
