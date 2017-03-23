@@ -886,11 +886,9 @@ function mySchool(recipientId){
           })
         })
         console.log(elements+" Elements")
-        if(messageData.message.attachment.payload.elements.length >0){
+
           callSendAPI(messageData)
-        }else {
-          console.log("its empty")
-        }
+
       })
     }else if(snapshot.child(recipientId).val()== null){
           sendTextMessage(recipientId,"You’re not following any schools yet.")
@@ -928,19 +926,34 @@ function askAgent(recipientId,message){
  request.on('response', function(response){
    var text = response.result.fulfillment.messages[0].speech
    var parameters = response.result.parameters
+   var actionIncomplete = response.result.actionIncomplete
    if(text == "default" ){
      defaultResponse(recipientId)
    }else if(!("School" in parameters)) {
      sendTextMessage(recipientId,text)
+   }else if(("status" in parameters) && actionIncomplete ) {
+     sendTextMessage(recipientId,text)
    }
    if ("School" in parameters){
      var nickName = response.result.parameters.School
-     sendTextMessage(recipientId,"Here is " + nickName)
-       /*db.ref('/schools/' + nickName ).once('value',function(snapshot){
+    // sendTextMessage(recipientId,"Here is " + nickName)
+       db.ref('/schools/' + nickName ).once('value',function(snapshot){
          var schoolName = snapshot.val().schoolName
          sendTextMessage(recipientId,"Here is " + schoolName)
-       })*/
+       })
      schoolScore(recipientId,nickName)
+   }
+   if(("status" in parameters) && !(actionIncomplete)){
+     var gender = response.result.parameters.gender
+     var klass = response.result.parameters.class
+     var evnt = response.result.parameters.event
+     var status = response.result.parameters.status
+     scheduleQuery = db.ref("schedule/" + gender +"/"+klass + "/"+ evnt+"/"+status)
+     scheduleQuery.once('value',function(snapshot){
+       var date = snapshot.val().date
+       var time = snapshot.val().time
+       sendTextMessage(recipientId,date + "\n" + time)
+     })
    }
  });
 
