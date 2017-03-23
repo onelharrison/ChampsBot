@@ -624,7 +624,7 @@ function schoolScore(recipientId,nickName){
             payload: {
               template_type: "generic",
               elements: [{
-                title: schoolName,
+                title: schoolName +"(girl)",
                 subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
@@ -652,7 +652,7 @@ function schoolScore(recipientId,nickName){
             payload: {
               template_type: "generic",
               elements: [{
-                title: schoolName,
+                title: schoolName+"(boy)",
                 subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
@@ -908,7 +908,7 @@ function sendTextMessage(recipientId, messageText) {
 
 function welcomeMessage(recipientId){
   //sendTextMessage(recipientId,"")
-  sendTextMessage(recipientId,"Type your school to follow or Choose from th list below")
+  sendTextMessage(recipientId,"Type your school to follow or Choose from the list below")
 
   sendTextMessage(recipientId,"Hey! I'm Champs Bot. I'll keep you up to date with the latest scores and updates.")
 
