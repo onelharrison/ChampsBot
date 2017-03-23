@@ -624,7 +624,7 @@ function schoolScore(recipientId,nickName){
             payload: {
               template_type: "generic",
               elements: [{
-                title: schoolName +"(girl)",
+                title: schoolName +"(Girls)",
                 subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
@@ -652,7 +652,7 @@ function schoolScore(recipientId,nickName){
             payload: {
               template_type: "generic",
               elements: [{
-                title: schoolName+"(boy)",
+                title: schoolName+"(Boys)",
                 subtitle:"Rank:"+ rank + "\nPoints:" + points,
                 image_url: logo,
                 buttons: [{
