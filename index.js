@@ -929,9 +929,7 @@ function askAgent(recipientId,message){
    var actionIncomplete = response.result.actionIncomplete
    if(text == "default" ){
      defaultResponse(recipientId)
-   }else if(!("School" in parameters)) {
-     sendTextMessage(recipientId,text)
-   }else if(("status" in parameters) && actionIncomplete ) {
+   }else if(!("School" in parameters)&& actionIncomplete) {
      sendTextMessage(recipientId,text)
    }
    if ("School" in parameters){
@@ -950,9 +948,10 @@ function askAgent(recipientId,message){
      var status = response.result.parameters.status
      scheduleQuery = db.ref("schedule/" + gender +"/"+klass + "/"+ evnt+"/"+status)
      scheduleQuery.once('value',function(snapshot){
+       var title = snapshot.val().title
        var date = snapshot.val().date
        var time = snapshot.val().time
-       sendTextMessage(recipientId,date + "\n" + time)
+       sendTextMessage(recipientId,title +"is \n"+date + "\n" + time)
      })
    }
  });
