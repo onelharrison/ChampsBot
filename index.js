@@ -821,6 +821,7 @@ function mySchool(recipientId){
       }
       schlsQuery = db.ref('/users/'  + recipientId ).orderByKey()
       schlsQuery.once('value',function(snapshot){
+        var x = 0
       snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
           var schoolName ="failed"
@@ -852,8 +853,8 @@ function mySchool(recipientId){
                     payload:btn+"!"+nickName
                   }]
                 }
-                var arr =messageData.message.attachment.payload.elements
-                arr.push(element)
+                messageData.message.attachment.payload.elements[x] = element
+                x=x+1
 
               }
               if(snapshot.child("boy").exists()){
@@ -869,7 +870,9 @@ function mySchool(recipientId){
                     payload:btn+"!"+nickName
                   }]
                 }
-                messageData.message.attachment.payload.elements.push(element)
+              //  var x = messageData.message.attachment.payload.elements.length
+                messageData.message.attachment.payload.elements[x] = element
+                x=x+1
               }
             }
           })
