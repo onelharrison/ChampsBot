@@ -919,10 +919,7 @@ function askAgent(recipientId,message){
    var actionIncomplete = response.result.actionIncomplete
    if(text == "default" ){
      defaultResponse(recipientId)
-   }else if(!("School" in parameters)&& !(actionIncomplete)) {
-     sendTextMessage(recipientId,text)
-   }
-   if ("School" in parameters){
+   }else if("School" in parameters) {
      var nickName = response.result.parameters.School
     // sendTextMessage(recipientId,"Here is " + nickName)
        db.ref('/schools/' + nickName ).once('value',function(snapshot){
@@ -930,8 +927,7 @@ function askAgent(recipientId,message){
          sendTextMessage(recipientId,"Here is " + schoolName)
        })
      schoolScore(recipientId,nickName)
-   }
-   if(("status" in parameters) && !(actionIncomplete)){
+   }else if(("status" in parameters) && !(actionIncomplete)){
      var gender = response.result.parameters.gender
      var klass = response.result.parameters.class
      var evnt = response.result.parameters.event
@@ -947,6 +943,8 @@ function askAgent(recipientId,message){
          sendTextMessage(recipientId,"This event doesn't have a semi-final")
        }
      })
+   }else {
+     sendTextMessage(recipientId,text)
    }
  });
 
