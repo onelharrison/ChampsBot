@@ -853,8 +853,10 @@ function mySchool(recipientId){
                     payload:btn+"!"+nickName
                   }]
                 }
+                console.log(element);
                 messageData.message.attachment.payload.elements[x] = element
                 x=x+1
+                console.log(element)
 
               }
               if(snapshot.child("boy").exists()){
@@ -870,9 +872,11 @@ function mySchool(recipientId){
                     payload:btn+"!"+nickName
                   }]
                 }
+                console.log(element)
               //  var x = messageData.message.attachment.payload.elements.length
                 messageData.message.attachment.payload.elements[x] = element
                 x=x+1
+                console.log(element)
               }
             }
           })
