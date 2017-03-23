@@ -862,16 +862,16 @@ function mySchool(recipientId){
               if(snapshot.child("boy").exists()){
                 points = snapshot.child("boy").val().points
                 rank = snapshot.child("boy").val().rank
-              var  element = {
-                  title: schoolName,
-                  subtitle:"Rank:"+ rank + "\nPoints:" + points,
-                  image_url: logo,
-                  buttons: [{
-                    type: "postback",
-                    title: btn ,
-                    payload:btn+"!"+nickName
-                  }]
-                }
+              var  element ={
+                        title: schoolName,
+                        subtitle:"Rank:"+ rank + "\nPoints:" + points,
+                        image_url: logo,
+                        buttons: [{
+                          type: "postback",
+                          title: btn ,
+                          payload:btn+"!"+nickName
+                        }]
+                      }
                 console.log(element)
               //  var x = messageData.message.attachment.payload.elements.length
                 messageData.message.attachment.payload.elements[x] = element
