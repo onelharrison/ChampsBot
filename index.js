@@ -824,6 +824,7 @@ function mySchool(recipientId){
         var x = 0
       snapshot.forEach(function(childSnapshot){
           var nickName = childSnapshot.key
+          schoolScore(recipientId,nickName)
         /*  var schoolName ="failed"
           var logo="failed"
           var rank="failed"
@@ -883,7 +884,6 @@ function mySchool(recipientId){
         })
         //console.log(elements+" Elements")
 
-              schoolScore(recipientId,nickName)
 
       })
     }else if(snapshot.child(recipientId).val()== null){
