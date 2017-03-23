@@ -915,7 +915,7 @@ function askAgent(recipientId,message){
   var request = agentapp.textRequest(message,options);
 
  request.on('response', function(response){
-   var text = response.result.fulfillment.speech
+   var text = response.result.fulfillment.message[0].speech
    var parameters = response.result.parameters
    var actionIncomplete = response.result.actionIncomplete
    if(text == "default" ){
