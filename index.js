@@ -829,7 +829,7 @@ function mySchool(recipientId){
           var rank="failed"
           var points="failed"
           var btn = "Follow"
-          var element
+
           db.ref('/fans/' + nickName).once('value',function(snapshot){
             if(snapshot.child(recipientId).exists()){
               btn = "Unfollow"
@@ -843,7 +843,7 @@ function mySchool(recipientId){
               if(snapshot.child("girl").exists()){
                 points = snapshot.child("girl").val().points
                 rank = snapshot.child("girl").val().rank
-                element = {
+              var  element = {
                   title: schoolName,
                   subtitle:"Rank:"+ rank + "\nPoints:" + points,
                   image_url: logo,
@@ -860,7 +860,7 @@ function mySchool(recipientId){
               if(snapshot.child("boy").exists()){
                 points = snapshot.child("boy").val().points
                 rank = snapshot.child("boy").val().rank
-                element = {
+              var  element = {
                   title: schoolName,
                   subtitle:"Rank:"+ rank + "\nPoints:" + points,
                   image_url: logo,
